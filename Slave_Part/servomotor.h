@@ -10,8 +10,7 @@
 #define SERVOMOTOR BIT2
 #define SERVOMOTOR_INIT 500
 #define SERVOMOTOR_MAX 2500
-#define TIME_TO_CHECK 700000
-
+#define TIME_TO_CHECK 300000
 //------------------------------------------------------------------------------
 // Servomotor_Init :  called to initialize the ir motor configuration
 // IN/OUT:    none.

@@ -38,10 +38,11 @@ void Servomotor_PWM_Init(void)
     TACTL   = (TASSEL_2 | MC_1 | ID_0);
     TACCTL1 = OUTMOD_7;
     TACCR0  = 20000;
-    TACCR1  = SERVOMOTOR_INIT;
+    TACCR1  = SERVOMOTOR_INIT; 			// 500
+
 
     //TACCTL1 |= CCIE;
-    __enable_interrupt();               // enable interrupt
+    //__enable_interrupt();               // enable interrupt
 }
 
 //------------------------------------------------------------------------------
