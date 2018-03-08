@@ -33,10 +33,10 @@ int i=0;
 void measure_init()
 {
 	ADC_init();
-	P1SEL 	&=	~(BIT1);
-	P1SEL2 	&=	~(BIT1);
-	P1DIR 	&=	~(BIT1);
-	P1OUT 	&=	~(BIT1);
+	P1SEL 	&=	~(BIT0);
+	P1SEL2 	&=	~(BIT0);
+	P1DIR 	&=	~(BIT0);
+	P1OUT 	&=	~(BIT0);
 }
 
 
@@ -47,7 +47,7 @@ int measure()
 	for(i=0;i<10;i++)
 	{
 
-		ADC_Demarrer_conversion(1);
+		ADC_Demarrer_conversion(0);
 		tab[i]=ADC_Lire_resultat ();
 
 	}
