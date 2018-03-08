@@ -22,8 +22,17 @@
 //   March 2018
 //******************************************************************************
 
+
 //******************************************************************************
-//	 		 move :	This function initialize the port P1.1 where the IR sensor
+//	 		 move :	This function initializes the ports of the device connected on
+//	the motherboard. (Odometers, motors and sense of rotation)
+//			input :	N/A
+//   	   output :	N/A
+//******************************************************************************
+void init_move();
+
+//******************************************************************************
+//	 		 move :	This function initializes the port P1.1 where the IR sensor
 //	is connected and initialize the ADC. 
 //			input :	- enum {FORWARD, BACKWARD, LEFT, RIGHT} -> direction of the robot
 //					- int -> speed of the left motor
@@ -33,8 +42,10 @@
 void move();
 
 //******************************************************************************
-//	 		 stop :	This function stop both motors and do not change the sense of rotation
+//	 		 stop :	This function stops both motors and do not change the sense of rotation
 //			input :	N/A
 //   	   output :	N/A
 //******************************************************************************
 void stop();
+
+void init_timer_A1();

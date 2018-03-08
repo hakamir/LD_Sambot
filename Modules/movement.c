@@ -1,4 +1,3 @@
-
 //******************************************************************************
 //   
 //	This module is used to set the direction and the speed that the robot SAMBot
@@ -24,38 +23,68 @@
 //   March 2018
 //******************************************************************************
 
-#include <msp430>
+#include <msp430.h>
+
+/*#define f FORWARD
+#define b BACKWARD
+#define l LEFT
+#define r RIGHT*/
+
+int taccr0;
+
+void init_timer_A1()
+{
+	/*** Timer A1 - set PWM ***/
+
+	TA1CTL = TASSEL_2 | MC_1 | ID_0;
+	TA1CCTL1 = TA1CCTL2 = OUTMOD_7;
+	TA1CCR0 = 100;
+	TA1CCR1 = 0;
+	TA1CCR2 = 0;
+}
 
 
-void move(enum direction {FORWARD, BACKWARD, LEFT, RIGHT}, int speed_l, int speed_r)
+
+void init_move()
+{
+	P2OUT &= ~(BIT1); 				/* Left motor go forward */
+	P2OUT |= BIT5;					/* Right motor go forward */
+	P2OUT &= ~BIT2;					/* Left motor is switched off */
+	P2OUT &= ~BIT4;					/* Right motor is switched off */
+	P2DIR |= (BIT1 | BIT2 | BIT4 | BIT5) ;
+	P2DIR &= ~BIT0;
+	P2DIR &= ~BIT3;
+}
+
+void move(char direction, int speed_l, int speed_r)
 {
 	
 	/*** direction define the sense of rotation of each motor as well as the activation mode ***/
-	
-	switch direction
+	//direction =  {FORWARD, BACKWARD, LEFT, RIGHT};
+	switch (direction)
 	{
-		case FORWARD :
+		case 'f' :
 		{
 			P2OUT |= (BIT2 | BIT4);		/* Both motors are switched on */
 			P2OUT &= ~(BIT1); 			/* Left motor go forward */
 			P2OUT |= BIT5;				/* Right motor go forward */
 			break;
 		}
-		case BACKWARD :
+		case 'b' :
 		{
 			P2OUT |= (BIT2 | BIT4);		/* Both motors are switched on */
 			P2OUT |= BIT1;				/* Left motor go backward */
 			P2OUT &= ~(BIT5);			/* Right motor go backward */
 			break;
 		}
-		case LEFT :
+		case 'l' :
 		{
 			P2OUT |= (BIT2 | BIT4);		/* Both motors are switched on */
 			P2OUT |= BIT1;				/* Left motor go backward */
 			P2OUT |= BIT5;				/* Right motor go forward */
 			break;
 		}
-		case RIGHT :
+		case 'r' :
 		{
 			P2OUT |= (BIT2 | BIT4);		/* Both motors are switched on */
 			P2OUT &= ~(BIT1);			/* Left motor go forward */
@@ -76,8 +105,9 @@ void move(enum direction {FORWARD, BACKWARD, LEFT, RIGHT}, int speed_l, int spee
 	
 	if((speed_l >= 0) && (speed_l <= 100))
 	{
-		double time_l = TA1CCR0*(speed_l/100);
-		TA1CCR1 = (int)time_l;
+		//double time_l = taccr0*(speed_l/100);
+		//TA1CCR1 = (int)time_l;
+		TA1CCR1 = speed_l;
 	}
 	else
 	{
@@ -89,8 +119,9 @@ void move(enum direction {FORWARD, BACKWARD, LEFT, RIGHT}, int speed_l, int spee
 	
 	if((speed_r >= 0) && (speed_r <= 100))
 	{
-		double time_r = TA1CCR0*(speed_r/100);
-		TA1CCR2 = (int)time_r;
+		//double time_r = taccr0*(speed_r/100);
+		//TA1CCR2 = (int)time_r;
+		TA1CCR2 = speed_r;
 	}
 	else
 	{
