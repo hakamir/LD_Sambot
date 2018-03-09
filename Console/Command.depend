@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1518354981 source:c:\users\rodolphe\documents\project test\command\main.c
+	<windows.h>
+	<stdio.h>
+	<stdlib.h>
+
+1518427460 source:x:\bus de communication\command\main.c
+	<windows.h>
+	<stdio.h>
+	<stdlib.h>
+
+1520603318 source:x:\ld_sambot\console\main.c
+	<windows.h>
+	<stdio.h>
+	<stdlib.h>
+
