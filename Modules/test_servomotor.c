@@ -16,7 +16,7 @@
 //------------------------------------------------------------------------------
 // main:    call each init functions and wait for ever.
 //------------------------------------------------------------------------------
-int main(void)
+int servomotor_sweeping(void)
 {
   WDTCTL = WDTPW + WDTHOLD;             // Stop watchdog timer
 
