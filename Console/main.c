@@ -60,12 +60,12 @@ int main(void)
 
     while(1)
     {
-        /*distance = Read();
+        distance = Read();
         printf("%d\n",distance);
         printf("----------\n");
-        Sleep(1000);*/
+        Sleep(1000);
 
-        do{
+        /*do{
 
             printf("-------------------------------------------------------------------------------------\n\n\n");
             printf("Appuyer sur h pour obtenir de l'aide. \n");
@@ -78,13 +78,9 @@ int main(void)
                     printf("Voici la liste des commandes disponibles :\n");
                     printf("    h. Obtenir de l'aide.\n");
                     printf("    e. Fermer la console.\n");
-                    printf("    8. Faire avancer le robot tout droit. \n");
-                    printf("    2. Faire reculer le robot. \n");
-                    printf("    6. Faire tourner le robot a droite\n");
-                    printf("    4. Faire tourner le robot a gauche\n");
-                    printf("    5. Stopper le robot. \n");
-                    printf("    1. Engager un blayage du capteur IR\n");
-                    printf("    3. Debrayer le blayage du capteur IR\n\n");
+                    printf("    1. Frequence de clignotement de la LED a 2 Hz.\n");
+                    printf("    2. Frequence de clignotement de la LED a 5 Hz.\n");
+                    printf("    3. Frequence de clignotement de la LED a 10 Hz.\n\n");
                     printf("Appuyez sur une touche pour continuer...\n");
                     if (read()!=NULL)
                     {
@@ -102,8 +98,8 @@ int main(void)
                     return 0;
                     break;
 
-                case '8':
-                    printf("8. Le robot avance tout droit.\n");
+                case '1':
+                    printf("1. Clignotement de la LED a 2 Hz.\n");
                     Write(c);
                     printf("Appuyez sur une touche pour continuer...\n");
                     getch();
@@ -111,39 +107,7 @@ int main(void)
                     break;
 
                 case '2':
-                    printf("2. Le robot recule.\n");
-                    Write(c);
-                    printf("Appuyez sur une touche pour continuer...\n");
-                    getch();
-                    system("cls");
-                    break;
-
-                case '6':
-                    printf("6. Le robot tourne a droite.\n");
-                    Write(c);
-                    printf("Appuyez sur une touche pour continuer...\n");
-                    getch();
-                    system("cls");
-                    break;
-
-                case '4':
-                    printf("1. Le robot tourne a gauche.\n");
-                    Write(c);
-                    printf("Appuyez sur une touche pour continuer...\n");
-                    getch();
-                    system("cls");
-                    break;
-
-                case '5':
-                    printf("5. Robot stoppe.\n");
-                    Write(c);
-                    printf("Appuyez sur une touche pour continuer...\n");
-                    getch();
-                    system("cls");
-                    break;
-
-                case '1':
-                    printf("6. Le capteur engage un blayage.\n");
+                    printf("2. Clignotement de la LED a 5 Hz.\n");
                     Write(c);
                     printf("Appuyez sur une touche pour continuer...\n");
                     getch();
@@ -151,18 +115,15 @@ int main(void)
                     break;
 
                 case '3':
-                    printf("3. Le capteur debraye le blayage.\n");
+                    printf("3. Clignotement de la LED a 10 Hz.\n");
                     Write(c);
                     printf("Appuyez sur une touche pour continuer...\n");
                     getch();
                     system("cls");
                     break;
 
-                default :
-                    break;
-
             }
-        }while(1);
+        }while(1);*/
 
     }
 	CloseHandle(hCom);					//fermeture du gestionnaire de port (jamais atteint !)
