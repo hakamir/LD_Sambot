@@ -20,19 +20,36 @@
 //   March 2018
 //******************************************************************************
 
+#ifndef MEASURE_H_
+#define MEASURE_H_
+
+#include "ADC.h"
+
+#define SENSOR BIT0
+#define PIN_SENSOR 0
+
 //******************************************************************************
-//	 measure_init :	This function initialize the port P1.1 where the IR sensor
+//	measure_init :	This function initialize the port P1.1 where the IR sensor
 //	is connected and initialize the ADC. 
 //			input :	N/A
 //   	   output :	N/A
 //******************************************************************************
-void measure_init();
+void measure_init(void);
 
 //******************************************************************************
-//	 	  measure :	This function take the distance give from the IR sensor
+// measure :	This function take the distance give from the IR sensor
 //	and send it in output. The value sends is between 0 and 1023.
 //			input :	N/A
 //   	   output :	integer (between 0 and 1023)
 //******************************************************************************
-int measure();
+int measure(void);
 
+//******************************************************************************
+// convert_measure :	This function converts the value of function measure in
+//  meters. The value sends is between 40 and 300.
+//			input :	integer (between 0 and 1023)
+//   	   output :	integer (between 40 and 300)
+//******************************************************************************
+int convert_measure(int mes);
+
+#endif /* MEASURE_H_ */

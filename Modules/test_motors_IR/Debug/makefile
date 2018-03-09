@@ -11,9 +11,11 @@ GEN_CMDS__FLAG :=
 
 ORDERED_OBJS += \
 "./ADC.obj" \
+"./UART.obj" \
 "./main.obj" \
 "./measure.obj" \
 "./movement.obj" \
+"./servomotor.obj" \
 "../lnk_msp430g2553.cmd" \
 $(GEN_CMDS__FLAG) \
 -l"libc.a" \
@@ -152,8 +154,8 @@ test_motors_IR.hex: $(EXE_OUTPUTS)
 # Other Targets
 clean:
 	-$(RM) $(EXE_OUTPUTS__QUOTED)$(BIN_OUTPUTS__QUOTED)
-	-$(RM) "ADC.pp" "main.pp" "measure.pp" "movement.pp" 
-	-$(RM) "ADC.obj" "main.obj" "measure.obj" "movement.obj" 
+	-$(RM) "ADC.pp" "UART.pp" "main.pp" "measure.pp" "movement.pp" "servomotor.pp" 
+	-$(RM) "ADC.obj" "UART.obj" "main.obj" "measure.obj" "movement.obj" "servomotor.obj" 
 	-@echo 'Finished clean'
 	-@echo ' '
 

@@ -22,62 +22,81 @@
 //******************************************************************************
 
 #include "msp430.h"
-#include "ADC.h"
+#include "measure.h"
+#include <math.h>
 
-int memory;
-int tab[10];
-int value=0;
-int i=0;
 
-/*** Initialization ***/
+//------------------------------------------------------------------------------
+// measure_init :  Called to initialized the IR sensor
+// IN:        none.
+// OUT:       none.
+// return:    none.
+//------------------------------------------------------------------------------
 void measure_init()
 {
 	ADC_init();
-	P1SEL 	&=	~(BIT0);
-	P1SEL2 	&=	~(BIT0);
-	P1DIR 	&=	~(BIT0);
-	P1OUT 	&=	~(BIT0);
+	P1SEL 	&=	~(SENSOR);
+	P1SEL2 	&=	~(SENSOR);
+	P1DIR 	&=	~(SENSOR);
+	P1OUT 	&=	~(SENSOR);
 }
 
 
-/*** Take measures from the pin 1 - IR sensor ***/
+//------------------------------------------------------------------------------
+// measure :  Take measures from the pin 0 - IR sensor
+// IN:        none.
+// OUT:       integer (between 0 and 1023).
+// return:    none.
+//------------------------------------------------------------------------------
 int measure()
 {
-	value=0;
+	int memory;
+	int tab[10];
+	int value = 0;
+	int i = 0;
+
 	for(i=0;i<10;i++)
 	{
+		ADC_Demarrer_conversion(PIN_SENSOR);
 
-		ADC_Demarrer_conversion(0);
-		tab[i]=ADC_Lire_resultat ();
-
+		tab[i] = ADC_Lire_resultat();
 	}
 
-		do
+	do
+	{
+		for(i=0;i<10;i++)
 		{
-
-			for(i=0;i<10;i++)
-			{
-		        if(tab[i]>tab[i+1])
-		        {
-		           memory=tab[i];
-		            tab[i]=tab[i+1];
-		           tab[i+1]=memory;
-		        }
-			}
-
+	        if(tab[i]>tab[i+1])
+	        {
+	           memory = tab[i];
+	           tab[i] = tab[i+1];
+	           tab[i+1] = memory;
+	        }
 		}
+	}
 
-		while(tab[0]>tab[1] || tab[1]>tab[2] || tab[2]>tab[3] || tab[3]>tab[4] || tab[4]>tab[5] || tab[5]>tab[6] || tab[6]>tab[7] || tab[7]>tab[8] || tab[8]>tab[9]);
+	while(tab[0]>tab[1] || tab[1]>tab[2] || tab[2]>tab[3] || tab[3]>tab[4] || tab[4]>tab[5] || tab[5]>tab[6] || tab[6]>tab[7] || tab[7]>tab[8] || tab[8]>tab[9]);
 
-		for(i=3;i<7;i++)
-		{
-		value=tab[i]+value;
-		}
+	for(i=3;i<7;i++)
+	{
+		value = tab[i] + value;
+	}
 
-		value=value/4;
+	value = value/4;
 
-		return value;
-
+	return value;
 }
 
-
+//------------------------------------------------------------------------------
+// convert_measure :  converts the value of function measure in meters.
+// IN:        			integer (between 0 and 1023).
+// OUT:       			integer (between 40 and 300).
+// return:    			none.
+//------------------------------------------------------------------------------
+int convert_measure(int mes)
+{
+	double mes_mm = 28195 * pow((double)mes,-1.367);  // formule find with several measures
+	//double mes_mm = -3,935 * (double)mes + 1180,4;
+	mes_mm = (int) mes_mm;
+	return mes_mm;
+}
