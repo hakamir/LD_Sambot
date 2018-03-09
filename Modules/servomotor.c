@@ -18,11 +18,12 @@
 //------------------------------------------------------------------------------
 void Servomotor_Init(void)
 {
-    // Motor management
-    Servomotor_Start();
+	// Motor management
+	P1SEL |= SERVOMOTOR;
+	P1DIR |= SERVOMOTOR;
 
-    // PWM init
-    Servomotor_PWM_Init();
+	// PWM init
+	Servomotor_PWM_Init();
 }
 
 //------------------------------------------------------------------------------
@@ -33,16 +34,16 @@ void Servomotor_Init(void)
 //------------------------------------------------------------------------------
 void Servomotor_PWM_Init(void)
 {
-    BCSCTL1 = CALBC1_1MHZ;              // Clock frequency 1MHz
-    DCOCTL  = CALDCO_1MHZ;              // Clock frequency 1MHz
-    TACTL   = (TASSEL_2 | MC_1 | ID_0);
-    TACCTL1 = OUTMOD_7;
-    TACCR0  = 20000;
-    TACCR1  = SERVOMOTOR_INIT; 			// 500
+	BCSCTL1 = CALBC1_1MHZ;              // Clock frequency 1MHz
+	DCOCTL  = CALDCO_1MHZ;              // Clock frequency 1MHz
+	TACTL   = (TASSEL_2 | MC_1 | ID_0);
+	TACCTL1 = OUTMOD_7;
+	TACCR0  = 20000;					// 20ms, 50Hz
+	TACCR1  = SERVOMOTOR_INIT; 			// 500
 
 
-    //TACCTL1 |= CCIE;
-    //__enable_interrupt();               // enable interrupt
+	//TACCTL1 |= CCIE;
+	//__enable_interrupt();               // enable interrupt
 }
 
 //------------------------------------------------------------------------------
@@ -53,19 +54,7 @@ void Servomotor_PWM_Init(void)
 //------------------------------------------------------------------------------
 void Servomotor_Stop(void)
 {
-    P1DIR &= ~(SERVOMOTOR);
-}
-
-//------------------------------------------------------------------------------
-// servomotor_Start :  start the motor
-// IN:        none.
-// OUT:       none.
-// return:    none.
-//------------------------------------------------------------------------------
-void Servomotor_Start(void)
-{
-    P1SEL |= SERVOMOTOR;
-    P1DIR |= SERVOMOTOR;
+	P1DIR &= ~(SERVOMOTOR);
 }
 
 //------------------------------------------------------------------------------
@@ -76,24 +65,55 @@ void Servomotor_Start(void)
 //------------------------------------------------------------------------------
 int Servomotor_Set_Deg(int deg)
 {
-    int taccr = 0;
+	int taccr = 0;
 
-    // < 45
-    if(deg == 0){
-        taccr = SERVOMOTOR_MAX / 5;
-    // > 0 & < 45
-    }else if(deg > 0 && deg <= 45){
-        taccr = (2 * SERVOMOTOR_MAX) / 5;
-    // > 45 & < 90
-    }else if(deg > 45 && deg <= 90){
-        taccr = (3 * SERVOMOTOR_MAX) / 5;
-    // > 90 & < 135
-    }else if(deg > 90 && deg <= 135){
-        taccr = (4 * SERVOMOTOR_MAX) / 5;
-    // > 135 & 180
-    }else if(deg > 135 && deg <= 180){
-        taccr = SERVOMOTOR_MAX;
-    }
+	// < 45
+	if(deg == 0){
+		taccr = SERVOMOTOR_MAX / 5;
+		// > 0 & < 45
+	}else if(deg > 0 && deg <= 45){
+		taccr = (2 * SERVOMOTOR_MAX) / 5;
+		// > 45 & < 90
+	}else if(deg > 45 && deg <= 90){
+		taccr = (3 * SERVOMOTOR_MAX) / 5;
+		// > 90 & < 135
+	}else if(deg > 90 && deg <= 135){
+		taccr = (4 * SERVOMOTOR_MAX) / 5;
+		// > 135 & 180
+	}else if(deg > 135 && deg <= 180){
+		taccr = SERVOMOTOR_MAX;
+	}
 
-    return taccr;
+	return taccr;
+}
+
+
+//------------------------------------------------------------------------------
+// servomotor_sweeping :  realize the sweeping of IR sensor
+// IN:        none.
+// OUT:       none.
+// return:    none.
+//------------------------------------------------------------------------------
+void servomotor_sweeping(void)
+{
+	Servomotor_Init();                      // Set pwm for ir motor
+
+	TACCR1 = Servomotor_Set_Deg(0);   // initialization to 0 deg
+	__delay_cycles(TIME_TO_CHECK*4);
+	TACCR1 = Servomotor_Set_Deg(0);   // set to 0 deg
+	__delay_cycles(TIME_TO_CHECK);
+	TACCR1 = Servomotor_Set_Deg(45);  // set to 45 deg
+	__delay_cycles(TIME_TO_CHECK);
+	TACCR1 = Servomotor_Set_Deg(90);  // set to 90 deg
+	__delay_cycles(TIME_TO_CHECK);
+	TACCR1 = Servomotor_Set_Deg(135); // set to 135 deg
+	__delay_cycles(TIME_TO_CHECK);
+	TACCR1 = Servomotor_Set_Deg(180); // set to 180 deg
+	__delay_cycles(TIME_TO_CHECK);
+	TACCR1 = Servomotor_Set_Deg(135);  // set to 135 deg
+	__delay_cycles(TIME_TO_CHECK);
+	TACCR1 = Servomotor_Set_Deg(90);  // set to 90 deg
+	__delay_cycles(TIME_TO_CHECK);
+	TACCR1 = Servomotor_Set_Deg(45); // set to 45 deg
+	__delay_cycles(TIME_TO_CHECK);
 }

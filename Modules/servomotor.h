@@ -34,17 +34,16 @@ void Servomotor_Stop(void);
 
 //------------------------------------------------------------------------------
 // Servomotor_Start :  start the motor
-// IN/OUT:    none.
-// return:    none.
-//------------------------------------------------------------------------------
-void Servomotor_Start(void);
-
-//------------------------------------------------------------------------------
-// Servomotor_Start :  start the motor
 // IN/OUT:    deg (int) degree of rotation.
 // return:    int value of TACCR1 to set the rotation.
 //------------------------------------------------------------------------------
 int Servomotor_Set_Deg(int deg);
 
-
+//------------------------------------------------------------------------------
+// servomotor_sweeping :  realize the sweeping of IR sensor
+// IN:        none.
+// OUT:       none.
+// return:    none.
+//------------------------------------------------------------------------------
+void servomotor_sweeping(void);
 #endif /* SERVOMOTOR_H_ */
