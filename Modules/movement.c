@@ -1,34 +1,31 @@
 //******************************************************************************
-//   
-//	This module is used to set the direction and the speed that the robot SAMBot
-// 	have to get. It is composed of two different functions that interact with the
-//	pins of the MSP430G2xx3 affected to the manipulation
+//	Name:                movement.c 
+// 
+//	Description:         This module is used to set the direction and the speed that the robot SAMBot
+// 						 have to get. It is composed of two different functions that interact with the
+//						 pins of the MSP430G2xx3 affected to the manipulation
 //
 //
 //                  	  		 	MSP430G2553
 //                	   			 -----------------
 //        	 	        	   -|VCC           GND|- 
-//        	 	        	   -|P1.0          XIN|-
-//	 	  	   Data In (UART) <-|P1.1         XOUT|- 
+//        	 	    IR Sensor ->|P1.0          XIN|-
+//	 	  	   Data In (UART) ->|P1.1         XOUT|- 
 //		 	  Data OUT (UART) <-|P1.2         TEST|- 
 //      	        		  <-|P1.3          RST|--->
 // Serial Clock Out (UCA0CLK) <-|P1.4         P1.7|-> Data Out (UCA0SIMO)
 //  			  Slave reset <-|P1.5         P1.6|<- Data In (UCA0SOMI)
-//		 		   odometer A <-|P2.0         P2.5|-> Sense Motor B
+//		 		   odometer A ->|P2.0         P2.5|-> Sense Motor B
 //	  		  	Sense Motor A <-|P2.1         P2.4|-> PWM Motor B
-// 				  PWM Motor A <-|P2.2         P2.3|-> odometer B
+// 				  PWM Motor A <-|P2.2         P2.3|<- odometer B
 //								 -----------------
 //
 //   Rodolphe LATOUR
+//	 Marie DONNET
 //   March 2018
 //******************************************************************************
 
 #include <msp430.h>
-
-/*#define f FORWARD
-#define b BACKWARD
-#define l LEFT
-#define r RIGHT*/
 
 int taccr0;
 
@@ -45,7 +42,7 @@ void init_timer_A1()
 
 
 
-void init_move()
+void move_init()
 {
 	P2OUT &= ~(BIT1); 				/* Left motor go forward */
 	P2OUT |= BIT5;					/* Right motor go forward */
@@ -56,42 +53,42 @@ void init_move()
 	P2DIR &= ~BIT3;
 }
 
-void move(char direction, int speed_l, int speed_r)
+void move(int direction, int speed_l, int speed_r)
 {
 	
-	/*** direction define the sense of rotation of each motor as well as the activation mode ***/
+	/*** direction define the sense of rotation of each motor as well as if the motor are on or not ***/
 	//direction =  {FORWARD, BACKWARD, LEFT, RIGHT};
 	switch (direction)
 	{
-		case 'f' :
+		case 1 :						/* Forward */
 		{
 			P2OUT |= (BIT2 | BIT4);		/* Both motors are switched on */
 			P2OUT &= ~(BIT1); 			/* Left motor go forward */
 			P2OUT |= BIT5;				/* Right motor go forward */
 			break;
 		}
-		case 'b' :
+		case 2 :						/* Backward */
 		{
 			P2OUT |= (BIT2 | BIT4);		/* Both motors are switched on */
 			P2OUT |= BIT1;				/* Left motor go backward */
 			P2OUT &= ~(BIT5);			/* Right motor go backward */
 			break;
 		}
-		case 'l' :
+		case 3 :						/* Left */
 		{
 			P2OUT |= (BIT2 | BIT4);		/* Both motors are switched on */
 			P2OUT |= BIT1;				/* Left motor go backward */
 			P2OUT |= BIT5;				/* Right motor go forward */
 			break;
 		}
-		case 'r' :
+		case 4 :						/* Right */
 		{
 			P2OUT |= (BIT2 | BIT4);		/* Both motors are switched on */
 			P2OUT &= ~(BIT1);			/* Left motor go forward */
 			P2OUT &= ~(BIT5);			/* Right motor go backward */
 			break;
 		}
-		default :
+		default :						/* Forward as default */
 		{
 			P2OUT |= (BIT2 | BIT4);		/* Both motors are switched on */
 			P2OUT &= ~(BIT1); 			/* Left motor go forward */
