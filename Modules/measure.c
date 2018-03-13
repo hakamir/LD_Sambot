@@ -1,27 +1,23 @@
 //******************************************************************************
-//	Name:                measure.c
 //
-//	Description:         This module is used to give the distance kept by the IR sensor. It is composed
-//						 of a initialization function which call the initialization of the ADC module
-//						 and set the P1.1 pin where's the sensor is connected.
+//	This module is used to give the distance kept by the IR sensor. It is composed
+//	of a initialization function which call the initialization of the ADC module
+//	and set the P1.1 pin where's the sensor is connected.
 //
 //
-//                  	  		 	MSP430G2553
+//                  	  		 	MSP430G2231
 //                	   			 -----------------
-//        	 	        	   -|VCC           GND|- 
-//        	 	    IR Sensor ->|P1.0          XIN|-
-//	 	  	   Data In (UART) ->|P1.1         XOUT|- 
-//		 	  Data OUT (UART) <-|P1.2         TEST|- 
-//      	        		  <-|P1.3          RST|--->
+//        	 	        	   -|VCC           GND|-
+//        	 	        	   -|P1.0          XIN|-
+//	 	  	   		IR Sensor <-|P1.1         XOUT|-
+//		 	  		Stepmotor <-|P1.2         TEST|-
+//      	       			  <-|P1.3          RST|--->
 // Serial Clock Out (UCA0CLK) <-|P1.4         P1.7|-> Data Out (UCA0SIMO)
 //  			  Slave reset <-|P1.5         P1.6|<- Data In (UCA0SOMI)
-//		 		   odometer A ->|P2.0         P2.5|-> Sense Motor B
-//	  		  	Sense Motor A <-|P2.1         P2.4|-> PWM Motor B
-// 				  PWM Motor A <-|P2.2         P2.3|<- odometer B
 //								 -----------------
 //
+//
 //   Rodolphe LATOUR
-//	 Marie DONNET
 //   March 2018
 //******************************************************************************
 
@@ -36,7 +32,7 @@
 // OUT:       none.
 // return:    none.
 //------------------------------------------------------------------------------
-void measure_init()
+void measure_init(void)
 {
 	ADC_init();
 	P1SEL 	&=	~(SENSOR);
@@ -52,7 +48,7 @@ void measure_init()
 // OUT:       integer (between 0 and 1023).
 // return:    none.
 //------------------------------------------------------------------------------
-int measure()
+int measure(void)
 {
 	int memory;
 	int tab[10];
@@ -61,9 +57,9 @@ int measure()
 
 	for(i=0;i<10;i++)
 	{
-		ADC_convert(PIN_SENSOR);
+		ADC_Demarrer_conversion(PIN_SENSOR);
 
-		tab[i] = ADC_read();
+		tab[i] = ADC_Lire_resultat();
 	}
 
 	do
