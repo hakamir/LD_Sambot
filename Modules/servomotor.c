@@ -25,6 +25,7 @@
 
 
 #include "servomotor.h"
+#include "SPIS.h"
 
 //------------------------------------------------------------------------------
 // servomotor_Init :  called to initialize the servomotor configuration
@@ -40,6 +41,7 @@ void servomotor_init(void)
 
 	// PWM init
 	Servomotor_PWM_Init();
+
 }
 
 //------------------------------------------------------------------------------
@@ -116,20 +118,29 @@ void servomotor_sweeping(void)
 
 	TACCR1 = Servomotor_Set_Deg(0);   // initialization to 0 deg
 	__delay_cycles(TIME_TO_CHECK*4);
+
 	TACCR1 = Servomotor_Set_Deg(0);   // set to 0 deg
+	SPIS_Tx('0');
 	__delay_cycles(TIME_TO_CHECK);
 	TACCR1 = Servomotor_Set_Deg(45);  // set to 45 deg
+	SPIS_Tx('45');
 	__delay_cycles(TIME_TO_CHECK);
 	TACCR1 = Servomotor_Set_Deg(90);  // set to 90 deg
+	SPIS_Tx('90');
 	__delay_cycles(TIME_TO_CHECK);
 	TACCR1 = Servomotor_Set_Deg(135); // set to 135 deg
+	SPIS_Tx('135');
 	__delay_cycles(TIME_TO_CHECK);
 	TACCR1 = Servomotor_Set_Deg(180); // set to 180 deg
+	SPIS_Tx('180');
 	__delay_cycles(TIME_TO_CHECK);
 	TACCR1 = Servomotor_Set_Deg(135);  // set to 135 deg
+	SPIS_Tx('135');
 	__delay_cycles(TIME_TO_CHECK);
 	TACCR1 = Servomotor_Set_Deg(90);  // set to 90 deg
+	SPIS_Tx('90');
 	__delay_cycles(TIME_TO_CHECK);
 	TACCR1 = Servomotor_Set_Deg(45); // set to 45 deg
+	SPIS_Tx('45');
 	__delay_cycles(TIME_TO_CHECK);
 }
