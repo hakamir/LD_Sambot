@@ -78,6 +78,7 @@ int main(void)
                     printf("Voici la liste des commandes disponibles :\n");
                     printf("    h. Obtenir de l'aide.\n");
                     printf("    e. Fermer la console.\n");
+                    printf("    9. Mode automatique. \n");
                     printf("    8. Faire avancer le robot tout droit. \n");
                     printf("    2. Faire reculer le robot. \n");
                     printf("    6. Faire tourner le robot a droite\n");
@@ -100,6 +101,14 @@ int main(void)
                     getch();
                     CloseHandle(hCom);
                     return 0;
+                    break;
+
+                case '9':
+                    printf("9. Mode automatique. \n");
+                    Write(c);
+                    printf("Appuyez sur une touche pour continuer...\n");
+                    getch();
+                    system("cls");
                     break;
 
                 case '8':
