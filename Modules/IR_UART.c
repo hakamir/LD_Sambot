@@ -18,13 +18,12 @@
 //------------------------------------------------------------------------------
 void IR_UART(void)
 {
-  WDTCTL = WDTPW + WDTHOLD;             // Stop watchdog timer
 
   int mes; 					// measure of distance between IR sensor and object (value between 0 and 1023)
   int mes_mm;				// measure of distance between IR sensor and object in millimeters (value between 40 and 300)
   char mes_send = 'A';		// measure of distance between IR sensor and object in millimeters convert in char to send with UART
 
-  init_UART();
+  UART_init();
   measure_init();
   mes = measure();
 
@@ -32,7 +31,7 @@ void IR_UART(void)
 
   mes_send = mes_mm;
 
-  TX_UART(mes_send);		// Send of meausre with UART
+  UART_Tx(mes_send);		// Send of meausre with UART
 
 }
 

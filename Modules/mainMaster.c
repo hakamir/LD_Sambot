@@ -1,98 +1,60 @@
-
+//------------------------------------------------------------------------------
+// Name:                mainMaster.c
+//
+// Description:         mainMaster.c contains the masters main
+//
+// Authors:             Marie DONNET & Rodolphe LATOUR
+//
+// Version:             1.0
+//------------------------------------------------------------------------------
 
 #include <msp430.h>
 #include "measure.h"
 #include "UART.h"
-#include "movement.h"
-#include "SPIM.h"
 
 
 void main(void)
 {
-	WDTCTL = WDTPW | WDTHOLD; // Stop watchdog timer
+    WDTCTL = WDTPW | WDTHOLD; // Stop watchdog timer
 
-	char direction;
-	int mes[5];
-	char dir = "FORWARD";
+    measure_init();
+    init_timer_A1();
+    init_move();
+    SPIM_init();
+    init_UART();
 
-	measure_init();
-	init_timer_A1();
-	init_move();
-	SPIM_init();
-	init_UART();
+    while(1)
+    {
 
-	while(1)
-	{
+        move("FORWARD",80,80);
+        scan_IR();
 
-		move("FORWARD",80,80);
-		direction = SPIM_Rx();
-		mes = measure();
-		if (mes<300)
-		{
-			switch (direction)
-			{
-			case '0':
-			{
-				move(RIGHT,80,80);
-				__delay_cycles(15000);
-				move("FORWARD",80,80);
-				break;
-			}
-			case '45':
-			{
-				move('RIGHT',80,80);
-				__delay_cycles(30000);
-				move("FORWARD",80,80);
-				break;
-			case '90':
-			{
-				move('RIGHT',80,80);
-				__delay_cycles(60000);
-				move("FORWARD",80,80);
-				break;
-			}
-			case '135':
-			{
-				move('LEFT',80,80);
-				__delay_cycles(30000);
-				move("FORWARD",80,80);
-				break;
-			}
-			case '180':
-			{
-				move(LEFT,80,80);
-				__delay_cycles(15000);
-				move("LEFT",80,80);
-				break;
-			}
-			default :
-			{
-				break;
-			}
-		}
-
-		/*move("FORWARD",80,80);
+        /*move("FORWARD",80,80);
 		dir = scan();
 		move(dir,80,80);
 		__delay_cycles(30000);
 		move("FORWARD",80,80);*/
 
+    }
+}
 
 
-	}
 
-	char scan(void)
+
+
+
+/*	char scan(void)
 	{
 		int mes[5];
 		char dir;
 		direction = SPIM_Rx();
 		if (direction == '0')
 		{
-			*mes = scanc();
+ *mes = scanc();
 		}
 		elseif(direction == '180')
 		{
-			*mes = scand();
+ *mes = scand();
 		}
 
 		int right = mes[0] + mes[1];
@@ -131,4 +93,4 @@ void main(void)
 			mes[i] = measure();
 		}
 		return *mes;
-	}
+	}*/
