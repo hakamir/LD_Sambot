@@ -4,12 +4,60 @@
 #include "UART.h"
 #include "servomotor.h"
 
-/*
- * main.c
- */
+
+
+#define DEG_90 300000
+#define DEG_180 600000
+#define TIME_1 1000000
+#define TIME_2 5000000
+
+
 int a;
 int distance;
 char c;
+int mode;
+
+/* --------------------------------------------------------------------------------------- */
+
+void auto_behaviour(int mode) {
+	switch(mode)
+	{
+	case 1 :
+	    move(FORWARD, 100, 100);
+	    __delay_cycles(TIME_2);
+
+	    stop();
+	    __delay_cycles(TIME_1);
+
+	    move(RIGHT, 80, 80);
+	    __delay_cycles(DEG_90*2);
+
+	    stop();
+	    __delay_cycles(TIME_1);
+
+	    move(FORWARD, 100, 100);
+	    __delay_cycles(TIME_2);
+
+	    break;
+	case 2 :
+	    move(FORWARD, 100, 100);
+	    __delay_cycles(TIME_2);
+	    __delay_cycles(TIME_1);
+
+	    stop();
+	    __delay_cycles(TIME_2);
+
+	    move(LEFT, 80, 80);
+	    __delay_cycles(DEG_180);
+
+	    move(FORWARD, 100, 100);
+	    __delay_cycles(TIME_2);
+	    break;
+	}
+}
+
+
+/* --------------------------------------------------------------------------------------- */
 
 int main(void) {
     WDTCTL = WDTPW | WDTHOLD;	// Stop watchdog timer
@@ -22,18 +70,30 @@ int main(void) {
 	servomotor_init();
 
 	stop();			/* Stop the robot */
-
+	__enable_interrupt();
     while(1)
     {
-    	__enable_interrupt();
-    	c = RX_UART();
+
+    	c = UART_Rx();
+    	if (mode == 1)
+		{
+			auto_behaviour(1);
+		}
+    	else if (mode == 2)
+		{
+			auto_behaviour(2);
+		}
     }
 }
+
+
+/* --------------------------------------------------------------------------------------- */
 
 // Echo back RXed character, confirm TX buffer is ready first
 #pragma vector=USCIAB0RX_VECTOR
 __interrupt void USCI0RX_ISR(void)
 {
+	c = UART_Rx();
 	switch (c)
 	{
 	case '8' :
@@ -63,6 +123,16 @@ __interrupt void USCI0RX_ISR(void)
 	case '5' :
 		stop();
 		break;
-
+	case '9' :
+		mode = 1;
+		break;
+	case '7' :
+		mode = 2;
+		break;
+	case '0' :
+		mode = 0;
+		break;
 	}
 }
+
+

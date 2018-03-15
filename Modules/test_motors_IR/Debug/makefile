@@ -12,7 +12,7 @@ GEN_CMDS__FLAG :=
 ORDERED_OBJS += \
 "./ADC.obj" \
 "./UART.obj" \
-"./main.obj" \
+"./integration_test_MSP430G2553.obj" \
 "./measure.obj" \
 "./movement.obj" \
 "./servomotor.obj" \
@@ -141,7 +141,7 @@ all: test_motors_IR.out
 test_motors_IR.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: MSP430 Linker'
-	"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.5/bin/cl430" -vmsp --abi=eabi --use_hw_mpy=none --advice:power=all -g --define=__MSP430G2553__ --diag_warning=225 --diag_wrap=off --display_error_number --printf_support=minimal -z -m"test_motors_IR.map" --heap_size=80 --stack_size=80 -i"C:/ti/ccsv6/ccs_base/msp430/include" -i"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.5/lib" -i"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.5/include" --reread_libs --warn_sections --diag_wrap=off --display_error_number --xml_link_info="test_motors_IR_linkInfo.xml" --use_hw_mpy=none --rom_model -o "test_motors_IR.out" $(ORDERED_OBJS)
+	"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.5/bin/cl430" -vmsp --abi=eabi --use_hw_mpy=none --advice:power=all -g --define=__MSP430G2553__ --diag_warning=225 --display_error_number --diag_wrap=off --printf_support=minimal -z -m"test_motors_IR.map" --heap_size=80 --stack_size=80 -i"C:/ti/ccsv6/ccs_base/msp430/include" -i"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.5/lib" -i"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.5/include" --reread_libs --warn_sections --display_error_number --diag_wrap=off --xml_link_info="test_motors_IR_linkInfo.xml" --use_hw_mpy=none --rom_model -o "test_motors_IR.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -154,8 +154,8 @@ test_motors_IR.hex: $(EXE_OUTPUTS)
 # Other Targets
 clean:
 	-$(RM) $(EXE_OUTPUTS__QUOTED)$(BIN_OUTPUTS__QUOTED)
-	-$(RM) "ADC.pp" "UART.pp" "main.pp" "measure.pp" "movement.pp" "servomotor.pp" 
-	-$(RM) "ADC.obj" "UART.obj" "main.obj" "measure.obj" "movement.obj" "servomotor.obj" 
+	-$(RM) "ADC.pp" "UART.pp" "integration_test_MSP430G2553.pp" "measure.pp" "movement.pp" "servomotor.pp" 
+	-$(RM) "ADC.obj" "UART.obj" "integration_test_MSP430G2553.obj" "measure.obj" "movement.obj" "servomotor.obj" 
 	-@echo 'Finished clean'
 	-@echo ' '
 

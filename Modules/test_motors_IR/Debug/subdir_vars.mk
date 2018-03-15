@@ -9,7 +9,7 @@ CMD_SRCS += \
 C_SRCS += \
 ../ADC.c \
 ../UART.c \
-../main.c \
+../integration_test_MSP430G2553.c \
 ../measure.c \
 ../movement.c \
 ../servomotor.c 
@@ -17,7 +17,7 @@ C_SRCS += \
 OBJS += \
 ./ADC.obj \
 ./UART.obj \
-./main.obj \
+./integration_test_MSP430G2553.obj \
 ./measure.obj \
 ./movement.obj \
 ./servomotor.obj 
@@ -25,7 +25,7 @@ OBJS += \
 C_DEPS += \
 ./ADC.pp \
 ./UART.pp \
-./main.pp \
+./integration_test_MSP430G2553.pp \
 ./measure.pp \
 ./movement.pp \
 ./servomotor.pp 
@@ -33,7 +33,7 @@ C_DEPS += \
 C_DEPS__QUOTED += \
 "ADC.pp" \
 "UART.pp" \
-"main.pp" \
+"integration_test_MSP430G2553.pp" \
 "measure.pp" \
 "movement.pp" \
 "servomotor.pp" 
@@ -41,7 +41,7 @@ C_DEPS__QUOTED += \
 OBJS__QUOTED += \
 "ADC.obj" \
 "UART.obj" \
-"main.obj" \
+"integration_test_MSP430G2553.obj" \
 "measure.obj" \
 "movement.obj" \
 "servomotor.obj" 
@@ -49,7 +49,7 @@ OBJS__QUOTED += \
 C_SRCS__QUOTED += \
 "../ADC.c" \
 "../UART.c" \
-"../main.c" \
+"../integration_test_MSP430G2553.c" \
 "../measure.c" \
 "../movement.c" \
 "../servomotor.c" 
