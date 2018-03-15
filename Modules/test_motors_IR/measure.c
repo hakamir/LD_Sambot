@@ -1,5 +1,5 @@
 //******************************************************************************
-//   
+//
 //	This module is used to give the distance kept by the IR sensor. It is composed
 //	of a initialization function which call the initialization of the ADC module
 //	and set the P1.1 pin where's the sensor is connected.
@@ -7,10 +7,10 @@
 //
 //                  	  		 	MSP430G2231
 //                	   			 -----------------
-//        	 	        	   -|VCC           GND|- 
+//        	 	        	   -|VCC           GND|-
 //        	 	        	   -|P1.0          XIN|-
-//	 	  	   		IR Sensor <-|P1.1         XOUT|- 
-//		 	  		Stepmotor <-|P1.2         TEST|- 
+//	 	  	   		IR Sensor <-|P1.1         XOUT|-
+//		 	  		Stepmotor <-|P1.2         TEST|-
 //      	       			  <-|P1.3          RST|--->
 // Serial Clock Out (UCA0CLK) <-|P1.4         P1.7|-> Data Out (UCA0SIMO)
 //  			  Slave reset <-|P1.5         P1.6|<- Data In (UCA0SOMI)
@@ -32,7 +32,7 @@
 // OUT:       none.
 // return:    none.
 //------------------------------------------------------------------------------
-void measure_init()
+void measure_init(void)
 {
 	ADC_init();
 	P1SEL 	&=	~(SENSOR);
@@ -48,7 +48,7 @@ void measure_init()
 // OUT:       integer (between 0 and 1023).
 // return:    none.
 //------------------------------------------------------------------------------
-int measure()
+int measure(void)
 {
 	int memory;
 	int tab[10];
@@ -82,7 +82,7 @@ int measure()
 		value = tab[i] + value;
 	}
 
-	value = value/4;
+	value = (int)(value/4);
 
 	return value;
 }
@@ -95,8 +95,7 @@ int measure()
 //------------------------------------------------------------------------------
 int convert_measure(int mes)
 {
-	double mes_mm = 28195 * pow((double)mes,-1.367);  // formule find with several measures
-	//double mes_mm = -3,935 * (double)mes + 1180,4;
+	double mes_mm = 16184 * pow(mes,-0.692);  // formule find with several measures
 	mes_mm = (int) mes_mm;
 	return mes_mm;
 }

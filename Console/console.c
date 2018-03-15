@@ -26,7 +26,7 @@ int main(void)
 
 
 
-    NumPort=27;                     //a adapter
+    NumPort=50;                     //a adapter
 	//-----------ouverture------------------
 	sprintf(NomPort, "\\\\.\\COM%d", NumPort);
 	hCom=CreateFile(NomPort, GENERIC_READ | GENERIC_WRITE, 0, NULL, OPEN_EXISTING, 0, NULL);
