@@ -34,11 +34,11 @@
 //------------------------------------------------------------------------------
 void measure_init(void)
 {
-    ADC_init();
-    P1SEL 	&=	~(SENSOR);
-    P1SEL2 	&=	~(SENSOR);
-    P1DIR 	&=	~(SENSOR);
-    P1OUT 	&=	~(SENSOR);
+    ADC_init();					/* Initialization of the ADC needed for the whole module */
+    P1SEL 	&=	~(SENSOR);		
+    P1SEL2 	&=	~(SENSOR);		
+    P1DIR 	&=	~(SENSOR);		
+    P1OUT 	&=	~(SENSOR);		/* The port of the sensor (BIT2) is ready to receive PWM value */
 }
 
 
@@ -102,7 +102,7 @@ int convert_measure(int mes)
 
 
 //------------------------------------------------------------------------------
-// scan_IR :  scan the espace forward robot
+// scan_IR :  scan the espace forward robot. This is the automatic movement function. 
 // IN:                  none.
 // OUT:                 none.
 // return:              none.

@@ -27,22 +27,33 @@
 
 #include <msp430.h>
 
-int taccr0;
+typedef signed int		SINT_32;
 
-void init_timer_A1()
+//------------------------------------------------------------------------------
+// init_timer_A1 :  Timer A1 - set PWM
+// IN:        none.
+// OUT:       none.
+// return:    none.
+//------------------------------------------------------------------------------
+	
+void init_timer_A1(void)
 {
-    /*** Timer A1 - set PWM ***/
 
-    TA1CTL = TASSEL_2 | MC_1 | ID_0;
-    TA1CCTL1 = TA1CCTL2 = OUTMOD_7;
-    TA1CCR0 = 100;
-    TA1CCR1 = 0;
-    TA1CCR2 = 0;
+    TA1CTL = TASSEL_2 | MC_1 | ID_0;	
+    TA1CCTL1 = TA1CCTL2 = OUTMOD_7;		
+    TA1CCR0 = 100;					/* Set to 100. The TA1CCR1 and TA1CCR2 can be a percentage of the TA1CCR0 */
+    TA1CCR1 = 0;					/* Used to set the speed of the left motor */
+    TA1CCR2 = 0;					/* Used to set the speed of the right motor */
 }
 
+//------------------------------------------------------------------------------
+// move_init :  Initialization of each port
+// IN:        none.
+// OUT:       none.
+// return:    none.
+//------------------------------------------------------------------------------
 
-
-void move_init()
+void move_init(void)
 {
     P2OUT &= ~(BIT1); 				/* Left motor go forward */
     P2OUT |= BIT5;					/* Right motor go forward */
@@ -53,11 +64,18 @@ void move_init()
     P2DIR &= ~BIT3;
 }
 
-void move(int direction, int speed_l, int speed_r)
+//------------------------------------------------------------------------------
+// move :  Direction define the sense of rotation of each motor as well as if the motor are on or not
+// IN:        none.
+// OUT:       none.
+// return:    none.
+//------------------------------------------------------------------------------
+
+void move(SINT_32 direction, SINT_32 speed_l, SINT_32 speed_r)
 {
 
-    /*** direction define the sense of rotation of each motor as well as if the motor are on or not ***/
-    //direction =  {FORWARD, BACKWARD, LEFT, RIGHT};
+    
+    /*direction =  {FORWARD, BACKWARD, LEFT, RIGHT};*/
     switch (direction)
     {
     case 1 :						/* Forward */
@@ -99,36 +117,27 @@ void move(int direction, int speed_l, int speed_r)
 
 
     /*** speed_l is a percentage of the TA1CCR0 set in the A1 timer function and act on the TA1CCR1 ***/
-
-    if((speed_l >= 0) && (speed_l <= 100))
+	/*** speed_r is a percentage of the TA1CCR0 set in the A1 timer function and act on the TA1CCR2 ***/
+    if(((speed_l >= 0) && (speed_l <= 100)) && ((speed_r >= 0) && (speed_r <= 100)))	//The value taken have to be between 0% and 100%
     {
-        //double time_l = taccr0*(speed_l/100);
-        //TA1CCR1 = (int)time_l;
-        TA1CCR1 = speed_l;
+        TA1CCR1 = speed_l;		/*The value taken is assigned to the Left motor*/
+		TA1CCR2 = speed_r;		/*The value taken is assigned to the Right motor*/
     }
     else
     {
         TA1CCR1 = 0;
-    }
-
-
-    /*** speed_r is a percentage of the TA1CCR0 set in the A1 timer function and act on the TA1CCR2 ***/
-
-    if((speed_r >= 0) && (speed_r <= 100))
-    {
-        //double time_r = taccr0*(speed_r/100);
-        //TA1CCR2 = (int)time_r;
-        TA1CCR2 = speed_r;
-    }
-    else
-    {
-        TA1CCR2 = 0;
+		TA1CCR2 = 0;
     }
 }
 
-/*** stop is a function that define the activation mode of each motor to off without interact with the sense of rotation ***/
+//------------------------------------------------------------------------------
+// stop :  Stop is a function that define the activation mode of each motor to off without interact with the sense of rotation
+// IN:        none.
+// OUT:       none.
+// return:    none.
+//------------------------------------------------------------------------------
 
-void stop()
+void stop(void)
 {
     P2OUT &= ~BIT2;					/* Left motor is switched off */
     P2OUT &= ~BIT4;					/* Right motor is switched off */

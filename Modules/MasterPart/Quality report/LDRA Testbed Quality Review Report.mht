@@ -1,0 +1,1512 @@
+From: =?Windows-1252?Q?Enregistr=E9_par_Internet_Explorer=A011?=
+Subject: LDRA Testbed Quality Review Report
+Date: Fri, 16 Mar 2018 17:19:26 +0100
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----=_NextPart_000_0000_01D3BD4A.EF6D65B0"
+X-MimeOLE: Produced By Microsoft MimeOLE V6.1.7601.23651
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_0000_01D3BD4A.EF6D65B0
+Content-Type: text/html;
+	charset="Windows-1252"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file://C:\LDRA_Workarea\Tbwrkfls\movement_9.met.htm
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><META content=3D"IE=3D7.0000" =
+http-equiv=3D"X-UA-Compatible">
+<TITLE>LDRA Testbed Quality Review Report</TITLE>
+<META content=3D"text/html; charset=3Dwindows-1252" =
+http-equiv=3DContent-Type>
+<STYLE type=3Dtext/css>.orag-line {
+	BACKGROUND-COLOR: #ff7b42
+}
+.break {
+	BACKGROUND-COLOR: #ff7b42
+}
+.blue-line {
+	BACKGROUND-COLOR: #000080
+}
+.break-p {
+	BACKGROUND-COLOR: #000084
+}
+.break-p {
+	border-radius: 10px
+}
+.break {
+	border-radius: 10px
+}
+DIV {
+	PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; =
+PADDING-RIGHT: 0px
+}
+H2 {
+	TEXT-ALIGN: center
+}
+H3 {
+	TEXT-ALIGN: center
+}
+.header {
+	TEXT-ALIGN: center
+}
+TABLE TD {
+	TEXT-ALIGN: left
+}
+TABLE {
+	MARGIN: auto
+}
+P.pagebreak {
+	PAGE-BREAK-BEFORE: always
+}
+P.nopagebreak {
+=09
+}
+P.shiftleft {
+	MARGIN-LEFT: -54pt
+}
+UL {
+	PADDING-LEFT: 20px
+}
+BR.pagebreak {
+	PAGE-BREAK-BEFORE: always
+}
+</STYLE>
+
+<SCRIPT language=3DJavaScript type=3Dtext/javascript>
+<!--
+function show(object) {
+if (document.layers && document.layers[object] !=3D null)
+    document.layers[object].visibility =3D 'visible';
+else if (document.all)
+    document.all[object].style.visibility =3D 'visible';
+else
+    document.getElementById(object).style.visibility =3D 'visible';
+}
+function hide(object) {
+if (document.layers && document.layers[object] !=3D null)
+    document.layers[object].visibility =3D 'hidden';
+else if (document.all)
+    document.all[object].style.visibility =3D 'hidden';
+else
+    document.getElementById(object).style.visibility =3D 'hidden';
+
+}//--></SCRIPT>
+
+<STYLE type=3Dtext/css>.exStyle {
+	WIDTH: 225px; POSITION: absolute; VISIBILITY: hidden
+}
+A.classone:link {
+	BACKGROUND: none transparent scroll repeat 0% 0%; COLOR: #18213c
+}
+A.classone:visited {
+	BACKGROUND: none transparent scroll repeat 0% 0%; COLOR: #18213c
+}
+A.classone:active {
+	BACKGROUND: none transparent scroll repeat 0% 0%; COLOR: #18213c
+}
+A.classone:hover {
+	BACKGROUND: none transparent scroll repeat 0% 0%; COLOR: red
+}
+</STYLE>
+
+<SCRIPT language=3DJavascript src=3D"">
+// -->
+</SCRIPT>
+
+<SCRIPT language=3DJavascript =
+src=3D"file:///C:/LDRA_Workarea/Tbwrkfls/imagejs.js">=20
+// -->
+</SCRIPT>
+
+<META name=3DGENERATOR content=3D"MSHTML 11.00.9600.18860"></HEAD>
+<BODY bgColor=3D#fffff2>
+<DIV class=3Dbreak=20
+style=3D"HEIGHT: 10px; WIDTH: 80%; MARGIN: 0px auto; DISPLAY: =
+block"></DIV><BR><A=20
+id=3Dtop_of_rep></A><BR>
+<STYLE type=3Dtext/css>A.set1:link {
+	TEXT-DECORATION: none; BACKGROUND: none transparent scroll repeat 0% =
+0%; COLOR: #fbfcc8
+}
+A.set1:visited {
+	TEXT-DECORATION: none; BACKGROUND: none transparent scroll repeat 0% =
+0%; COLOR: #fbfcc8
+}
+A.set1:active {
+	TEXT-DECORATION: none; BACKGROUND: none transparent scroll repeat 0% =
+0%; COLOR: #fbfcc8
+}
+A:link {
+	TEXT-DECORATION: none; BACKGROUND: none transparent scroll repeat 0% =
+0%; COLOR: blue
+}
+A:visited {
+	TEXT-DECORATION: none; BACKGROUND: none transparent scroll repeat 0% =
+0%; COLOR: blue
+}
+A:active {
+	TEXT-DECORATION: none; BACKGROUND: none transparent scroll repeat 0% =
+0%; COLOR: blue
+}
+</STYLE>
+
+<CENTER><FONT size=3D9><B>LDRA Testbed =AE Quality Review Report=20
+</FONT></B></CENTER>
+<CENTER><FONT size=3D9><B></FONT></B></CENTER>
+<CENTER>
+<H1>File : X:\LD_Sambot\Modules\MasterPart\movement.c =
+</H1></CENTER><BR><BR>
+<DIV class=3Dbreak-p=20
+style=3D"HEIGHT: 10px; WIDTH: 425px; MARGIN: 0px auto; DISPLAY: =
+block"></DIV><BR><BR>
+<CENTER>
+<TABLE width=3D"80%" bgColor=3D#d7eded border=3D1>
+  <TBODY>
+  <TR>
+    <TH>Report Production </TH>
+    <TH>Report Configuration </TH>
+    <TH colSpan=3D2>Analysis phases </TH></TR>
+  <TR>
+    <TD>
+      <UL>
+        <LI>C/C++ LDRA Testbed Version: 9.7.0
+        <LI>Report Produced On: Fri Mar 16 2018 at 17:17:27
+        <LI>Metrics Data File: =
+C:\LDRA_Toolsuite\metpen.dat</LI></UL></TD>
+    <TD>
+      <UL>
+        <LI>Report Format: By Metric
+        <LI>Procedures Reported: All Procedures
+        <LI>Show Metric Passes: Yes
+        <LI>Show Metric Fails: Yes
+        <LI>Reporting Scope: Source file and associated =
+header</LI></UL></TD>
+    <TD>
+      <UL>
+        <LI>Static: Yes
+        <LI>Complexity: Yes
+        <LI>Dataflow: No</LI></UL></TD>
+    <TD>&nbsp;</TD></TR></TBODY></TABLE></CENTER><BR><BR>
+<DIV class=3Dbreak-p=20
+style=3D"HEIGHT: 10px; WIDTH: 425px; MARGIN: 0px auto; DISPLAY: =
+block"></DIV><BR><BR>
+<HR align=3Dcenter width=3D"80%">
+
+<H4><A id=3Dcontents>Contents </A></H4><BR>Metrics <BR>
+<UL>
+  <LI><A=20
+  =
+href=3D"file:///C:/LDRA_Workarea/Tbwrkfls/movement_9.met.htm#metric_table=
+">List=20
+  of File and Procedure Metrics </A><BR><BR></LI></UL><A=20
+href=3D"file:///C:/LDRA_Workarea/Tbwrkfls/movement_9.met.htm#procedure_ta=
+ble">Procedure=20
+Table </A><BR><BR>Results <BR>
+<UL>
+  <LI><A=20
+  =
+href=3D"file:///C:/LDRA_Workarea/Tbwrkfls/movement_9.met.htm#results">Res=
+ults=20
+  for each Metric </A><BR></LI></UL><BR><BR>
+<HR align=3Dcenter width=3D"80%">
+<BR>
+<H4><A id=3Dmetric_table>List of Metrics to be Displayed </A></H4>
+<H4><A=20
+href=3D"file:///C:/LDRA_Workarea/Tbwrkfls/movement_9.met.htm#reformatted =
+code information for file">Reformatted=20
+Code Information for File </A></H4>
+<UL>
+  <LI>Total reformatted Lines, Total comments in ref. Code, Executable =
+ref.=20
+  Lines, Non-executable ref. Lines <BR>Number of Procedures, Total =
+source Lines,=20
+  Expansion Factor. <BR></LI></UL>
+<H4><A=20
+href=3D"file:///C:/LDRA_Workarea/Tbwrkfls/movement_9.met.htm#procedure =
+information">Procedure=20
+Information </A></H4>
+<UL>
+  <LI>Executable reformatted Lines, Number of Basic Blocks, Average =
+Length of=20
+  Basic Blocks, Procedure Entry Points <BR>Procedure Exit Points. =
+<BR></LI></UL>
+<H4><A=20
+href=3D"file:///C:/LDRA_Workarea/Tbwrkfls/movement_9.met.htm#comments =
+associated with procedures (% of total)">Comments=20
+Associated with Procedures (% of total) </A></H4>
+<UL>
+  <LI>Total Comments, Comments in Headers, Comments in Declarations, =
+Comments in=20
+  Executable Code <BR>Blank Lines. <BR></LI></UL>
+<H4><A=20
+href=3D"file:///C:/LDRA_Workarea/Tbwrkfls/movement_9.met.htm#ratio of =
+comments to executable lines (%)">Ratio=20
+of Comments to Executable lines (%) </A></H4>
+<UL>
+  <LI>Executable reformatted Lines, Total Comments/Exe. Lines, Header=20
+  Comments/Exe. Lines, Declaration Comments/Exe. Lines <BR>Code =
+Comments/Exe.=20
+  Lines. <BR></LI></UL>
+<H4><A=20
+href=3D"file:///C:/LDRA_Workarea/Tbwrkfls/movement_9.met.htm#complexity =
+metrics">Complexity=20
+Metrics </A></H4>
+<UL>
+  <LI>Knots, Cyclomatic Complexity, Essential Knots, Essential =
+Cyclomatic=20
+  Complexity <BR>Procedure Structured (SPV). <BR></LI></UL>
+<H4><A=20
+href=3D"file:///C:/LDRA_Workarea/Tbwrkfls/movement_9.met.htm#halsteads =
+metrics">Halsteads=20
+Metrics </A></H4>
+<UL>
+  <LI>Total Operators, Total Operands, Unique Operators, Unique Operands =
+
+  <BR>Vocabulary, Length, Volume. <BR></LI></UL>
+<H4><A=20
+href=3D"file:///C:/LDRA_Workarea/Tbwrkfls/movement_9.met.htm#loop/interva=
+l analysis">Loop/Interval=20
+Analysis </A></H4>
+<UL>
+  <LI>Number of Loops, Depth of Loop Nesting, Number of Order 1 =
+Intervals,=20
+  Maximum Interval Nesting <BR>Reducible (Intervals). <BR></LI></UL>
+<H4><A=20
+href=3D"file:///C:/LDRA_Workarea/Tbwrkfls/movement_9.met.htm#lcsaj and =
+unreachability">LCSAJ=20
+and Unreachability </A></H4>
+<UL>
+  <LI>Total LCSAJs, Reachable LCSAJs, Unreachable LCSAJs, Maximum LCSAJ =
+Density=20
+  <BR>Unreachable Lines, Unreachable Branches. <BR></LI></UL><BR><BR>
+<HR>
+<BR><A id=3Dmovement.c></A><BR>
+<CENTER>
+<TABLE width=3D"50%" border=3D1>
+  <TBODY>
+  <TR>
+    <TH bgColor=3D#2d2f93><FONT color=3D#fbfcc8 size=3D5>movement.c=20
+  </FONT></TH></TR></TBODY></TABLE></CENTER><A =
+id=3Dprocedure_table></A><BR>
+<CENTER>
+<H2>Overall Results - Percentage of metrics passing =
+</H2></CENTER><BR>Total=20
+Metrics: 45 <BR>Clarity Metrics: 14 (of which 4 are whole file only)=20
+<BR>Maintainability Metrics: 11 (of which 7 are whole file only) =
+<BR>Testability=20
+Metrics: 13 (of which 7 are whole file only) <BR><BR><BR>
+<CENTER>
+<TABLE width=3D"80%" bgColor=3D#ece2e2 border=3D1>
+  <TBODY>
+  <TR>
+    <TD>
+      <TABLE width=3D"100%" bgColor=3D#ece2e2>
+        <TBODY>
+        <TR>
+          <TH width=3D5></TH>
+          <TH width=3D5></TH>
+          <TH width=3D5></TH>
+          <TH width=3D5></TH>
+          <TH width=3D5></TH>
+          <TH width=3D5></TH>
+          <TH width=3D5></TH>
+          <TH width=3D5></TH>
+          <TH width=3D5></TH>
+          <TH width=3D5></TH>
+          <TH width=3D5></TH>
+          <TH width=3D5></TH>
+          <TH width=3D5></TH>
+          <TH width=3D5></TH>
+          <TH width=3D5></TH>
+          <TH width=3D5></TH>
+          <TH width=3D5></TH>
+          <TH width=3D5></TH>
+          <TH width=3D5></TH>
+          <TH width=3D5></TH>
+          <TH width=3D5></TH>
+          <TH width=3D5></TH>
+          <TH width=3D5></TH>
+          <TH width=3D5></TH>
+          <TH width=3D5></TH>
+          <TH width=3D5></TH>
+          <TH width=3D5></TH>
+          <TH width=3D5></TH>
+          <TH width=3D5></TH>
+          <TH width=3D5></TH>
+          <TH width=3D5></TH>
+          <TH width=3D5></TH>
+          <TH width=3D5></TH>
+          <TH width=3D5></TH>
+          <TH width=3D5></TH>
+          <TH width=3D5></TH>
+          <TH width=3D5></TH>
+          <TH width=3D5></TH>
+          <TH width=3D5></TH>
+          <TH width=3D5></TH>
+          <TH width=3D5></TH>
+          <TH width=3D5></TH>
+          <TH width=3D5></TH>
+          <TH width=3D5></TH>
+          <TH width=3D5></TH>
+          <TH width=3D5></TH>
+          <TH width=3D5></TH>
+          <TH width=3D5></TH>
+          <TH width=3D5></TH>
+          <TH width=3D5></TH>
+          <TH width=3D5></TH>
+          <TH width=3D5></TH>
+          <TH width=3D5></TH>
+          <TH width=3D5></TH>
+          <TH width=3D5></TH></TR>
+        <TR>
+          <TH colSpan=3D11><TT>Procedure </TT></TH>
+          <TH width=3D"1%">&nbsp;</TH>
+          <TH width=3D"19%" colSpan=3D11><TT>All Metrics </TT></TH>
+          <TH width=3D"1%">&nbsp;</TH>
+          <TH width=3D"19%" colSpan=3D11><TT><A=20
+            =
+href=3D"file:///C:/LDRA_Workarea/Tbwrkfls/movement_9.met.htm#clarity_metr=
+ics">Clarity</A>=20
+            </TT></TH>
+          <TH width=3D"1%">&nbsp;</TH>
+          <TH width=3D"19%" colSpan=3D11><TT><A=20
+            =
+href=3D"file:///C:/LDRA_Workarea/Tbwrkfls/movement_9.met.htm#maintainabil=
+ity_metrics">Maintainability</A>=20
+            </TT></TH>
+          <TH width=3D"1%">&nbsp;</TH>
+          <TH width=3D"19%" colSpan=3D11><TT><A=20
+            =
+href=3D"file:///C:/LDRA_Workarea/Tbwrkfls/movement_9.met.htm#testability_=
+metrics">Testability</A>=20
+            </TT></TH>
+          <TH width=3D"1%">&nbsp;</TH></TR>
+        <TR>
+          <TH width=3D"99%" colSpan=3D55><TT>&nbsp; </TT></TH>
+          <TH width=3D"1%">&nbsp;</TH>
+          <TH width=3D"1%">&nbsp;</TH>
+          <TH width=3D"1%">&nbsp;</TH>
+          <TH width=3D"1%">&nbsp;</TH>
+          <TH width=3D"1%">&nbsp;</TH></TR>
+        <TR>
+          <TD colSpan=3D11><A=20
+            =
+href=3D"ldra://editor/?File=3DX:\LD_Sambot\Modules\MasterPart\movement.c&=
+amp;Line=3D39">init_timer_A1=20
+            </A></TD>
+          <TD></TD>
+          <TD bgColor=3D#afe1ab colSpan=3D9><A =
+onmouseover=3D"show('myLayer0')"=20
+            onmouseout=3D"hide('myLayer0')" class=3Dclassone=20
+            =
+href=3D"file:///C:/LDRA_Workarea/Tbwrkfls/movement_9.met.htm#met_table">8=
+8=20
+            </A>
+            <DIV id=3DmyLayer0 class=3DexStyle>
+            <TABLE width=3D225 bgColor=3D#ffffb0>
+              <TBODY>
+              <TR>
+                <TD>1.&nbsp;Average Length of Basic=20
+                  Blocks<BR>2.&nbsp;Declaration Comments/Exe.=20
+                  Lines<BR>3.&nbsp;Total Comments/Exe.=20
+            Lines<BR></TD></TR></TBODY></TABLE></DIV></TD>
+          <TD bgColor=3D#e17b87 colSpan=3D2><FONT color=3D#e17b87>- =
+</FONT></TD>
+          <TD></TD>
+          <TD bgColor=3D#afe1ab colSpan=3D8><A =
+onmouseover=3D"show('myLayer1')"=20
+            onmouseout=3D"hide('myLayer1')" class=3Dclassone=20
+            =
+href=3D"file:///C:/LDRA_Workarea/Tbwrkfls/movement_9.met.htm#met_table">7=
+0=20
+            </A>
+            <DIV id=3DmyLayer1 class=3DexStyle>
+            <TABLE width=3D225 bgColor=3D#ffffb0>
+              <TBODY>
+              <TR>
+                <TD>1.&nbsp;Average Length of Basic=20
+                  Blocks<BR>2.&nbsp;Declaration Comments/Exe.=20
+                  Lines<BR>3.&nbsp;Total Comments/Exe.=20
+            Lines<BR></TD></TR></TBODY></TABLE></DIV></TD>
+          <TD bgColor=3D#e17b87 colSpan=3D3><FONT color=3D#e17b87>- =
+</FONT></TD>
+          <TD></TD>
+          <TD bgColor=3D#5fc05a colSpan=3D11><FONT color=3Dwhite>100 =
+</FONT></TD>
+          <TD></TD>
+          <TD bgColor=3D#5fc05a colSpan=3D11><FONT color=3Dwhite>100 =
+</FONT></TD>
+          <TD></TD></TR>
+        <TR>
+          <TD colSpan=3D11><A=20
+            =
+href=3D"ldra://editor/?File=3DX:\LD_Sambot\Modules\MasterPart\movement.c&=
+amp;Line=3D56">move_init=20
+            </A></TD>
+          <TD></TD>
+          <TD bgColor=3D#afe1ab colSpan=3D10><A =
+onmouseover=3D"show('myLayer2')"=20
+            onmouseout=3D"hide('myLayer2')" class=3Dclassone=20
+            =
+href=3D"file:///C:/LDRA_Workarea/Tbwrkfls/movement_9.met.htm#met_table">9=
+2=20
+            </A>
+            <DIV id=3DmyLayer2 class=3DexStyle>
+            <TABLE width=3D225 bgColor=3D#ffffb0>
+              <TBODY>
+              <TR>
+                <TD>1.&nbsp;Average Length of Basic=20
+                  Blocks<BR>2.&nbsp;Declaration Comments/Exe.=20
+              Lines<BR></TD></TR></TBODY></TABLE></DIV></TD>
+          <TD bgColor=3D#e17b87><FONT color=3D#e17b87>- </FONT></TD>
+          <TD></TD>
+          <TD bgColor=3D#afe1ab colSpan=3D9><A =
+onmouseover=3D"show('myLayer3')"=20
+            onmouseout=3D"hide('myLayer3')" class=3Dclassone=20
+            =
+href=3D"file:///C:/LDRA_Workarea/Tbwrkfls/movement_9.met.htm#met_table">8=
+0=20
+            </A>
+            <DIV id=3DmyLayer3 class=3DexStyle>
+            <TABLE width=3D225 bgColor=3D#ffffb0>
+              <TBODY>
+              <TR>
+                <TD>1.&nbsp;Average Length of Basic=20
+                  Blocks<BR>2.&nbsp;Declaration Comments/Exe.=20
+              Lines<BR></TD></TR></TBODY></TABLE></DIV></TD>
+          <TD bgColor=3D#e17b87 colSpan=3D2><FONT color=3D#e17b87>- =
+</FONT></TD>
+          <TD></TD>
+          <TD bgColor=3D#5fc05a colSpan=3D11><FONT color=3Dwhite>100 =
+</FONT></TD>
+          <TD></TD>
+          <TD bgColor=3D#5fc05a colSpan=3D11><FONT color=3Dwhite>100 =
+</FONT></TD>
+          <TD></TD></TR>
+        <TR>
+          <TD colSpan=3D11><A=20
+            =
+href=3D"ldra://editor/?File=3DX:\LD_Sambot\Modules\MasterPart\movement.c&=
+amp;Line=3D74">move=20
+            </A></TD>
+          <TD></TD>
+          <TD bgColor=3D#afe1ab colSpan=3D10><A =
+onmouseover=3D"show('myLayer4')"=20
+            onmouseout=3D"hide('myLayer4')" class=3Dclassone=20
+            =
+href=3D"file:///C:/LDRA_Workarea/Tbwrkfls/movement_9.met.htm#met_table">9=
+6=20
+            </A>
+            <DIV id=3DmyLayer4 class=3DexStyle>
+            <TABLE width=3D225 bgColor=3D#ffffb0>
+              <TBODY>
+              <TR>
+                =
+<TD>1.&nbsp;Knots<BR></TD></TR></TBODY></TABLE></DIV></TD>
+          <TD bgColor=3D#e17b87><FONT color=3D#e17b87>- </FONT></TD>
+          <TD></TD>
+          <TD bgColor=3D#5fc05a colSpan=3D11><FONT color=3Dwhite>100 =
+</FONT></TD>
+          <TD></TD>
+          <TD bgColor=3D#afe1ab colSpan=3D8><A =
+onmouseover=3D"show('myLayer5')"=20
+            onmouseout=3D"hide('myLayer5')" class=3Dclassone=20
+            =
+href=3D"file:///C:/LDRA_Workarea/Tbwrkfls/movement_9.met.htm#met_table">7=
+5=20
+            </A>
+            <DIV id=3DmyLayer5 class=3DexStyle>
+            <TABLE width=3D225 bgColor=3D#ffffb0>
+              <TBODY>
+              <TR>
+                =
+<TD>1.&nbsp;Knots<BR></TD></TR></TBODY></TABLE></DIV></TD>
+          <TD bgColor=3D#e17b87 colSpan=3D3><FONT color=3D#e17b87>- =
+</FONT></TD>
+          <TD></TD>
+          <TD bgColor=3D#afe1ab colSpan=3D9><A =
+onmouseover=3D"show('myLayer6')"=20
+            onmouseout=3D"hide('myLayer6')" class=3Dclassone=20
+            =
+href=3D"file:///C:/LDRA_Workarea/Tbwrkfls/movement_9.met.htm#met_table">8=
+3=20
+            </A>
+            <DIV id=3DmyLayer6 class=3DexStyle>
+            <TABLE width=3D225 bgColor=3D#ffffb0>
+              <TBODY>
+              <TR>
+                =
+<TD>1.&nbsp;Knots<BR></TD></TR></TBODY></TABLE></DIV></TD>
+          <TD bgColor=3D#e17b87 colSpan=3D2><FONT color=3D#e17b87>- =
+</FONT></TD>
+          <TD></TD></TR>
+        <TR>
+          <TD colSpan=3D11><A=20
+            =
+href=3D"ldra://editor/?File=3DX:\LD_Sambot\Modules\MasterPart\movement.c&=
+amp;Line=3D140">stop=20
+            </A></TD>
+          <TD></TD>
+          <TD bgColor=3D#afe1ab colSpan=3D10><A =
+onmouseover=3D"show('myLayer7')"=20
+            onmouseout=3D"hide('myLayer7')" class=3Dclassone=20
+            =
+href=3D"file:///C:/LDRA_Workarea/Tbwrkfls/movement_9.met.htm#met_table">9=
+2=20
+            </A>
+            <DIV id=3DmyLayer7 class=3DexStyle>
+            <TABLE width=3D225 bgColor=3D#ffffb0>
+              <TBODY>
+              <TR>
+                <TD>1.&nbsp;Declaration Comments/Exe. =
+Lines<BR>2.&nbsp;Total=20
+                  Comments<BR></TD></TR></TBODY></TABLE></DIV></TD>
+          <TD bgColor=3D#e17b87><FONT color=3D#e17b87>- </FONT></TD>
+          <TD></TD>
+          <TD bgColor=3D#afe1ab colSpan=3D9><A =
+onmouseover=3D"show('myLayer8')"=20
+            onmouseout=3D"hide('myLayer8')" class=3Dclassone=20
+            =
+href=3D"file:///C:/LDRA_Workarea/Tbwrkfls/movement_9.met.htm#met_table">8=
+0=20
+            </A>
+            <DIV id=3DmyLayer8 class=3DexStyle>
+            <TABLE width=3D225 bgColor=3D#ffffb0>
+              <TBODY>
+              <TR>
+                <TD>1.&nbsp;Declaration Comments/Exe. =
+Lines<BR>2.&nbsp;Total=20
+                  Comments<BR></TD></TR></TBODY></TABLE></DIV></TD>
+          <TD bgColor=3D#e17b87 colSpan=3D2><FONT color=3D#e17b87>- =
+</FONT></TD>
+          <TD></TD>
+          <TD bgColor=3D#5fc05a colSpan=3D11><FONT color=3Dwhite>100 =
+</FONT></TD>
+          <TD></TD>
+          <TD bgColor=3D#5fc05a colSpan=3D11><FONT color=3Dwhite>100 =
+</FONT></TD>
+          <TD></TD></TR>
+        <TR>
+          <TD colSpan=3D11>&nbsp; </TD>
+          <TD></TD></TR>
+        <TR>
+          <TD colSpan=3D11><A=20
+            =
+href=3D"ldra://editor/?File=3DX:\LD_Sambot\Modules\MasterPart\movement.c&=
+amp;Line=3D1">Total=20
+            for movement.c </A></TD>
+          <TD></TD>
+          <TD bgColor=3D#afe1ab colSpan=3D10><A =
+onmouseover=3D"show('myLayer9')"=20
+            onmouseout=3D"hide('myLayer9')" class=3Dclassone=20
+            =
+href=3D"file:///C:/LDRA_Workarea/Tbwrkfls/movement_9.met.htm#met_table">9=
+8=20
+            </A>
+            <DIV id=3DmyLayer9 class=3DexStyle>
+            <TABLE width=3D225 bgColor=3D#ffffb0>
+              <TBODY>
+              <TR>
+                <TD>1.&nbsp;Non-executable ref.=20
+            Lines<BR></TD></TR></TBODY></TABLE></DIV></TD>
+          <TD bgColor=3D#e17b87><FONT color=3D#e17b87>- </FONT></TD>
+          <TD></TD>
+          <TD bgColor=3D#5fc05a colSpan=3D11><FONT color=3Dwhite>100 =
+</FONT></TD>
+          <TD></TD>
+          <TD bgColor=3D#5fc05a colSpan=3D11><FONT color=3Dwhite>100 =
+</FONT></TD>
+          <TD></TD>
+          <TD bgColor=3D#5fc05a colSpan=3D11><FONT color=3Dwhite>100 =
+</FONT></TD>
+          =
+<TD></TD></TR></TD></TR></TBODY></TABLE></TR></TBODY></TABLE></CENTER><BR=
+><BR><BR>
+<HR align=3Dcenter width=3D"80%">
+<BR><A id=3Dresults></A><BR>
+<CENTER>
+<H2>File and Procedure Results, Metric by Metric =
+</H2></CENTER><BR><BR><BR>
+<H4><A id=3D"reformatted code information for file">Reformatted Code =
+Information=20
+for File (movement.c)</A></H4><BR>
+<CENTER>
+<TABLE width=3D"80%" bgColor=3D#ece2e2 border=3D1>
+  <TBODY>
+  <TR>
+    <TD>
+      <TABLE width=3D"100%" bgColor=3D#ece2e2>
+        <TBODY>
+        <TR align=3Dleft>
+          <TH>File </TH>
+          <TH>Total Ref. </TH>
+          <TH>Total </TH>
+          <TH>Executable </TH>
+          <TH>Non-Executable </TH>
+          <TH>Number of </TH>
+          <TH>Total </TH>
+          <TH>Expansion </TH></TR>
+        <TR align=3Dleft>
+          <TH>&nbsp; </TH>
+          <TH><U>Lines </U></TH>
+          <TH><U>Comments </U></TH>
+          <TH><U>Ref. Lines </U></TH>
+          <TH><U>Ref. Lines </U></TH>
+          <TH><U>Procedures </U></TH>
+          <TH><U>Src. Lines </U></TH>
+          <TH><U>Factor </U></TH></TR>
+        <TR align=3Dleft>
+          <TH colSpan=3D8>&nbsp; </TH></TR>
+        <TR align=3Dleft>
+          <TD>Total for movement.c </TD>
+          <TD><FONT color=3D#008000>175 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>85 (P) (49%) </FONT></TD>
+          <TD><FONT color=3D#008000>90 (P) (51%) </FONT></TD>
+          <TD><FONT color=3D#ff0000>0 (F) (0%) </FONT></TD>
+          <TD><FONT color=3D#008000>4 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>145 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>1.21 (P)=20
+      =
+</FONT></TD></TR></TD></TR></TBODY></TABLE></TR></TBODY></TABLE></CENTER>=
+<BR>
+<CENTER>
+<TABLE bgColor=3D#fffff2>
+  <TBODY>
+  <TR>
+    <TH>[ </TH>
+    <TD><A=20
+      =
+href=3D"file:///C:/LDRA_Workarea/Tbwrkfls/movement_9.met.htm#top_of_rep">=
+Top=20
+      of Report</A> </TD>
+    <TH>| </TH>
+    <TD><A=20
+      =
+href=3D"file:///C:/LDRA_Workarea/Tbwrkfls/movement_9.met.htm#key_to_terms=
+">Key=20
+      to Terms</A> </TD>
+    <TH>| </TH>
+    <TD><A=20
+      =
+href=3D"file:///C:/LDRA_Workarea/Tbwrkfls/movement_9.met.htm#metric_table=
+">Metric=20
+      Table</A> </TD>
+    <TH>| </TH>
+    <TD><A=20
+      =
+href=3D"file:///C:/LDRA_Workarea/Tbwrkfls/movement_9.met.htm#contents">Co=
+ntents</A>=20
+    </TD>
+    <TH>] </TH></TR></TBODY></TABLE></CENTER><BR>
+<DIV class=3Dbreak-p=20
+style=3D"HEIGHT: 10px; WIDTH: 425px; MARGIN: 0px auto; DISPLAY: =
+block"></DIV><BR><BR>
+<H4><A id=3D"procedure information">Procedure Information=20
+(movement.c)</A></H4><BR>
+<CENTER>
+<TABLE width=3D"80%" bgColor=3D#ece2e2 border=3D1>
+  <TBODY>
+  <TR>
+    <TD>
+      <TABLE width=3D"100%" bgColor=3D#ece2e2>
+        <TBODY>
+        <TR align=3Dleft>
+          <TH>Procedure </TH>
+          <TH>Executable </TH>
+          <TH>Basic </TH>
+          <TH>Ave. Block </TH>
+          <TH>Procedure </TH>
+          <TH>Procedure </TH></TR>
+        <TR align=3Dleft>
+          <TH>&nbsp; </TH>
+          <TH><U>Lines </U></TH>
+          <TH><U>Blocks </U></TH>
+          <TH><U>Length </U></TH>
+          <TH><U>Entries </U></TH>
+          <TH><U>Exits </U></TH></TR>
+        <TR align=3Dleft>
+          <TH colSpan=3D6>&nbsp; </TH></TR>
+        <TR align=3Dleft>
+          <TD>init_timer_A1 </TD>
+          <TD><FONT color=3D#008000>7 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>1 (P) </FONT></TD>
+          <TD><FONT color=3D#ff0000>7.00 (F) </FONT></TD>
+          <TD><FONT color=3D#008000>1 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>1 (P) </FONT></TD></TR>
+        <TR align=3Dleft>
+          <TD>move_init </TD>
+          <TD><FONT color=3D#008000>9 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>1 (P) </FONT></TD>
+          <TD><FONT color=3D#ff0000>9.00 (F) </FONT></TD>
+          <TD><FONT color=3D#008000>1 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>1 (P) </FONT></TD></TR>
+        <TR align=3Dleft>
+          <TD>move </TD>
+          <TD><FONT color=3D#008000>69 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>21 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>3.29 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>1 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>1 (P) </FONT></TD></TR>
+        <TR align=3Dleft>
+          <TD>stop </TD>
+          <TD><FONT color=3D#008000>5 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>1 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>5.00 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>1 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>1 (P) </FONT></TD></TR>
+        <TR align=3Dleft>
+          <TD>&nbsp; </TD>
+          <TD>&nbsp;</TD>
+          <TD>&nbsp;</TD>
+          <TD>&nbsp;</TD>
+          <TD>&nbsp;</TD>
+          <TD>&nbsp;</TD></TR>
+        <TR align=3Dleft>
+          <TD>Total for movement.c </TD>
+          <TD><FONT color=3D#008000>90 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>24 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>3.75 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>1 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>1 (P)=20
+  =
+</FONT></TD></TR></TD></TR></TBODY></TABLE></TR></TBODY></TABLE></CENTER>=
+<BR>
+<CENTER>
+<TABLE bgColor=3D#fffff2>
+  <TBODY>
+  <TR>
+    <TH>[ </TH>
+    <TD><A=20
+      =
+href=3D"file:///C:/LDRA_Workarea/Tbwrkfls/movement_9.met.htm#top_of_rep">=
+Top=20
+      of Report</A> </TD>
+    <TH>| </TH>
+    <TD><A=20
+      =
+href=3D"file:///C:/LDRA_Workarea/Tbwrkfls/movement_9.met.htm#key_to_terms=
+">Key=20
+      to Terms</A> </TD>
+    <TH>| </TH>
+    <TD><A=20
+      =
+href=3D"file:///C:/LDRA_Workarea/Tbwrkfls/movement_9.met.htm#metric_table=
+">Metric=20
+      Table</A> </TD>
+    <TH>| </TH>
+    <TD><A=20
+      =
+href=3D"file:///C:/LDRA_Workarea/Tbwrkfls/movement_9.met.htm#contents">Co=
+ntents</A>=20
+    </TD>
+    <TH>] </TH></TR></TBODY></TABLE></CENTER><BR>
+<DIV class=3Dbreak-p=20
+style=3D"HEIGHT: 10px; WIDTH: 425px; MARGIN: 0px auto; DISPLAY: =
+block"></DIV><BR><BR>
+<H4><A id=3D"comments associated with procedures (% of total)">Comments =
+Associated=20
+with Procedures (% of total) (movement.c)</A></H4><BR>
+<CENTER>
+<TABLE width=3D"80%" bgColor=3D#ece2e2 border=3D1>
+  <TBODY>
+  <TR>
+    <TD>
+      <TABLE width=3D"100%" bgColor=3D#ece2e2>
+        <TBODY>
+        <TR align=3Dleft>
+          <TH>Procedure </TH>
+          <TH>Total </TH>
+          <TH>In </TH>
+          <TH>In </TH>
+          <TH>In </TH>
+          <TH>Blank </TH></TR>
+        <TR align=3Dleft>
+          <TH>&nbsp; </TH>
+          <TH><U>Comments </U></TH>
+          <TH><U>Headers </U></TH>
+          <TH><U>Declarations </U></TH>
+          <TH><U>Executable Code </U></TH>
+          <TH><U>Comments </U></TH></TR>
+        <TR align=3Dleft>
+          <TH colSpan=3D6>&nbsp; </TH></TR>
+        <TR align=3Dleft>
+          <TD>init_timer_A1 </TD>
+          <TD><FONT color=3D#008000>35 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>32 (P) (91%) </FONT></TD>
+          <TD><FONT color=3D#008000>0 (P) (0%) </FONT></TD>
+          <TD><FONT color=3D#008000>3 (P) (9%) </FONT></TD>
+          <TD><FONT color=3D#008000>4 (P) </FONT></TD></TR>
+        <TR align=3Dleft>
+          <TD>move_init </TD>
+          <TD><FONT color=3D#008000>10 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>6 (P) (60%) </FONT></TD>
+          <TD><FONT color=3D#008000>0 (P) (0%) </FONT></TD>
+          <TD><FONT color=3D#008000>4 (P) (40%) </FONT></TD>
+          <TD><FONT color=3D#008000>0 (P) </FONT></TD></TR>
+        <TR align=3Dleft>
+          <TD>move </TD>
+          <TD><FONT color=3D#008000>32 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>6 (P) (19%) </FONT></TD>
+          <TD><FONT color=3D#008000>1 (P) (3%) </FONT></TD>
+          <TD><FONT color=3D#008000>25 (P) (78%) </FONT></TD>
+          <TD><FONT color=3D#008000>0 (P) </FONT></TD></TR>
+        <TR align=3Dleft>
+          <TD>stop </TD>
+          <TD><FONT color=3D#ff0000>8 (F) </FONT></TD>
+          <TD><FONT color=3D#008000>6 (P) (75%) </FONT></TD>
+          <TD><FONT color=3D#008000>0 (P) (0%) </FONT></TD>
+          <TD><FONT color=3D#008000>2 (P) (25%) </FONT></TD>
+          <TD><FONT color=3D#008000>0 (P) </FONT></TD></TR>
+        <TR align=3Dleft>
+          <TD>&nbsp; </TD>
+          <TD>&nbsp;</TD>
+          <TD>&nbsp;</TD>
+          <TD>&nbsp;</TD>
+          <TD>&nbsp;</TD>
+          <TD>&nbsp;</TD></TR>
+        <TR align=3Dleft>
+          <TD>Total for movement.c </TD>
+          <TD><FONT color=3D#008000>85 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>50 (P) (59%) </FONT></TD>
+          <TD><FONT color=3D#008000>1 (P) (1%) </FONT></TD>
+          <TD><FONT color=3D#008000>34 (P) (40%) </FONT></TD>
+          <TD><FONT color=3D#008000>4 (P)=20
+  =
+</FONT></TD></TR></TD></TR></TBODY></TABLE></TR></TBODY></TABLE></CENTER>=
+<BR>
+<CENTER>
+<TABLE bgColor=3D#fffff2>
+  <TBODY>
+  <TR>
+    <TH>[ </TH>
+    <TD><A=20
+      =
+href=3D"file:///C:/LDRA_Workarea/Tbwrkfls/movement_9.met.htm#top_of_rep">=
+Top=20
+      of Report</A> </TD>
+    <TH>| </TH>
+    <TD><A=20
+      =
+href=3D"file:///C:/LDRA_Workarea/Tbwrkfls/movement_9.met.htm#key_to_terms=
+">Key=20
+      to Terms</A> </TD>
+    <TH>| </TH>
+    <TD><A=20
+      =
+href=3D"file:///C:/LDRA_Workarea/Tbwrkfls/movement_9.met.htm#metric_table=
+">Metric=20
+      Table</A> </TD>
+    <TH>| </TH>
+    <TD><A=20
+      =
+href=3D"file:///C:/LDRA_Workarea/Tbwrkfls/movement_9.met.htm#contents">Co=
+ntents</A>=20
+    </TD>
+    <TH>] </TH></TR></TBODY></TABLE></CENTER><BR>
+<DIV class=3Dbreak-p=20
+style=3D"HEIGHT: 10px; WIDTH: 425px; MARGIN: 0px auto; DISPLAY: =
+block"></DIV><BR><BR>
+<H4><A id=3D"ratio of comments to executable lines (%)">Ratio of =
+Comments to=20
+Executable lines (%) (movement.c)</A></H4><BR>
+<CENTER>
+<TABLE width=3D"80%" bgColor=3D#ece2e2 border=3D1>
+  <TBODY>
+  <TR>
+    <TD>
+      <TABLE width=3D"100%" bgColor=3D#ece2e2>
+        <TBODY>
+        <TR align=3Dleft>
+          <TH>Procedure </TH>
+          <TH>Executable </TH>
+          <TH>Total </TH>
+          <TH>In </TH>
+          <TH>In </TH>
+          <TH>In </TH></TR>
+        <TR align=3Dleft>
+          <TH>&nbsp; </TH>
+          <TH><U>Lines </U></TH>
+          <TH><U>Comments(%) </U></TH>
+          <TH><U>Headers(%) </U></TH>
+          <TH><U>Decl.(%) </U></TH>
+          <TH><U>Code(%) </U></TH></TR>
+        <TR align=3Dleft>
+          <TH colSpan=3D6>&nbsp; </TH></TR>
+        <TR align=3Dleft>
+          <TD>init_timer_A1 </TD>
+          <TD><FONT color=3D#008000>7 (P) </FONT></TD>
+          <TD><FONT color=3D#ff0000>500 (F) </FONT></TD>
+          <TD><FONT color=3D#008000>457 (P) </FONT></TD>
+          <TD><FONT color=3D#ff0000>0 (F) </FONT></TD>
+          <TD><FONT color=3D#008000>43 (P) </FONT></TD></TR>
+        <TR align=3Dleft>
+          <TD>move_init </TD>
+          <TD><FONT color=3D#008000>9 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>111 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>67 (P) </FONT></TD>
+          <TD><FONT color=3D#ff0000>0 (F) </FONT></TD>
+          <TD><FONT color=3D#008000>44 (P) </FONT></TD></TR>
+        <TR align=3Dleft>
+          <TD>move </TD>
+          <TD><FONT color=3D#008000>69 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>46 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>9 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>1 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>36 (P) </FONT></TD></TR>
+        <TR align=3Dleft>
+          <TD>stop </TD>
+          <TD><FONT color=3D#008000>5 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>160 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>120 (P) </FONT></TD>
+          <TD><FONT color=3D#ff0000>0 (F) </FONT></TD>
+          <TD><FONT color=3D#008000>40 (P) </FONT></TD></TR>
+        <TR align=3Dleft>
+          <TD>&nbsp; </TD>
+          <TD>&nbsp;</TD>
+          <TD>&nbsp;</TD>
+          <TD>&nbsp;</TD>
+          <TD>&nbsp;</TD>
+          <TD>&nbsp;</TD></TR>
+        <TR align=3Dleft>
+          <TD>Total for movement.c </TD>
+          <TD><FONT color=3D#008000>90 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>94 (P) </FONT></TD>
+          <TD>56 </TD>
+          <TD><FONT color=3D#008000>1 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>38 (P)=20
+  =
+</FONT></TD></TR></TD></TR></TBODY></TABLE></TR></TBODY></TABLE></CENTER>=
+<BR>
+<CENTER>
+<TABLE bgColor=3D#fffff2>
+  <TBODY>
+  <TR>
+    <TH>[ </TH>
+    <TD><A=20
+      =
+href=3D"file:///C:/LDRA_Workarea/Tbwrkfls/movement_9.met.htm#top_of_rep">=
+Top=20
+      of Report</A> </TD>
+    <TH>| </TH>
+    <TD><A=20
+      =
+href=3D"file:///C:/LDRA_Workarea/Tbwrkfls/movement_9.met.htm#key_to_terms=
+">Key=20
+      to Terms</A> </TD>
+    <TH>| </TH>
+    <TD><A=20
+      =
+href=3D"file:///C:/LDRA_Workarea/Tbwrkfls/movement_9.met.htm#metric_table=
+">Metric=20
+      Table</A> </TD>
+    <TH>| </TH>
+    <TD><A=20
+      =
+href=3D"file:///C:/LDRA_Workarea/Tbwrkfls/movement_9.met.htm#contents">Co=
+ntents</A>=20
+    </TD>
+    <TH>] </TH></TR></TBODY></TABLE></CENTER><BR>
+<DIV class=3Dbreak-p=20
+style=3D"HEIGHT: 10px; WIDTH: 425px; MARGIN: 0px auto; DISPLAY: =
+block"></DIV><BR><BR>
+<H4><A id=3D"complexity metrics">Complexity Metrics =
+(movement.c)</A></H4><BR>
+<CENTER>
+<TABLE width=3D"80%" bgColor=3D#ece2e2 border=3D1>
+  <TBODY>
+  <TR>
+    <TD>
+      <TABLE width=3D"100%" bgColor=3D#ece2e2>
+        <TBODY>
+        <TR align=3Dleft>
+          <TH>Procedure </TH>
+          <TH>&nbsp; </TH>
+          <TH>Cyclomatic </TH>
+          <TH>Essential </TH>
+          <TH>Ess. Cycl. </TH>
+          <TH>Structured </TH></TR>
+        <TR align=3Dleft>
+          <TH>&nbsp; </TH>
+          <TH><U>Knots </U></TH>
+          <TH><U>Complexity </U></TH>
+          <TH><U>Knots </U></TH>
+          <TH><U>Complexity </U></TH>
+          <TH><U>Proc (SPV) </U></TH></TR>
+        <TR align=3Dleft>
+          <TH colSpan=3D6>&nbsp; </TH></TR>
+        <TR align=3Dleft>
+          <TD>init_timer_A1 </TD>
+          <TD><FONT color=3D#008000>0 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>1 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>0 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>1 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>Yes (P) </FONT></TD></TR>
+        <TR align=3Dleft>
+          <TD>move_init </TD>
+          <TD><FONT color=3D#008000>0 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>1 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>0 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>1 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>Yes (P) </FONT></TD></TR>
+        <TR align=3Dleft>
+          <TD>move </TD>
+          <TD><FONT color=3D#ff0000>11 (F) </FONT></TD>
+          <TD><FONT color=3D#008000>9 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>0 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>1 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>Yes (P) </FONT></TD></TR>
+        <TR align=3Dleft>
+          <TD>stop </TD>
+          <TD><FONT color=3D#008000>0 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>1 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>0 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>1 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>Yes (P) </FONT></TD></TR>
+        <TR align=3Dleft>
+          <TD>&nbsp; </TD>
+          <TD>&nbsp;</TD>
+          <TD>&nbsp;</TD>
+          <TD>&nbsp;</TD>
+          <TD>&nbsp;</TD>
+          <TD>&nbsp;</TD></TR>
+        <TR align=3Dleft>
+          <TD>Total for movement.c </TD>
+          <TD><FONT color=3D#008000>11 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>9 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>0 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>1 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>Yes (P)=20
+  =
+</FONT></TD></TR></TD></TR></TBODY></TABLE></TR></TBODY></TABLE></CENTER>=
+<BR>
+<CENTER>
+<TABLE bgColor=3D#fffff2>
+  <TBODY>
+  <TR>
+    <TH>[ </TH>
+    <TD><A=20
+      =
+href=3D"file:///C:/LDRA_Workarea/Tbwrkfls/movement_9.met.htm#top_of_rep">=
+Top=20
+      of Report</A> </TD>
+    <TH>| </TH>
+    <TD><A=20
+      =
+href=3D"file:///C:/LDRA_Workarea/Tbwrkfls/movement_9.met.htm#key_to_terms=
+">Key=20
+      to Terms</A> </TD>
+    <TH>| </TH>
+    <TD><A=20
+      =
+href=3D"file:///C:/LDRA_Workarea/Tbwrkfls/movement_9.met.htm#metric_table=
+">Metric=20
+      Table</A> </TD>
+    <TH>| </TH>
+    <TD><A=20
+      =
+href=3D"file:///C:/LDRA_Workarea/Tbwrkfls/movement_9.met.htm#contents">Co=
+ntents</A>=20
+    </TD>
+    <TH>] </TH></TR></TBODY></TABLE></CENTER><BR>
+<DIV class=3Dbreak-p=20
+style=3D"HEIGHT: 10px; WIDTH: 425px; MARGIN: 0px auto; DISPLAY: =
+block"></DIV><BR><BR>
+<H4><A id=3D"halsteads metrics">Halsteads Metrics =
+(movement.c)</A></H4><BR>
+<CENTER>
+<TABLE width=3D"80%" bgColor=3D#ece2e2 border=3D1>
+  <TBODY>
+  <TR>
+    <TD>
+      <TABLE width=3D"100%" bgColor=3D#ece2e2>
+        <TBODY>
+        <TR align=3Dleft>
+          <TH>File </TH>
+          <TH>Total </TH>
+          <TH>Total </TH>
+          <TH>Unique </TH>
+          <TH>Unique </TH>
+          <TH>&nbsp; </TH>
+          <TH>&nbsp; </TH>
+          <TH>&nbsp; </TH></TR>
+        <TR align=3Dleft>
+          <TH>&nbsp; </TH>
+          <TH><U>Operators </U></TH>
+          <TH><U>Operands </U></TH>
+          <TH><U>Operators </U></TH>
+          <TH><U>Operands </U></TH>
+          <TH><U>Vocabulary </U></TH>
+          <TH><U>Length </U></TH>
+          <TH><U>Volume </U></TH></TR>
+        <TR align=3Dleft>
+          <TH colSpan=3D8>&nbsp; </TH></TR>
+        <TR align=3Dleft>
+          <TD>Total for movement.c </TD>
+          <TD><FONT color=3D#008000>71 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>81 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>13 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>50 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>63 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>152 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>908 (P)=20
+  =
+</FONT></TD></TR></TD></TR></TBODY></TABLE></TR></TBODY></TABLE></CENTER>=
+<BR>
+<CENTER>
+<TABLE bgColor=3D#fffff2>
+  <TBODY>
+  <TR>
+    <TH>[ </TH>
+    <TD><A=20
+      =
+href=3D"file:///C:/LDRA_Workarea/Tbwrkfls/movement_9.met.htm#top_of_rep">=
+Top=20
+      of Report</A> </TD>
+    <TH>| </TH>
+    <TD><A=20
+      =
+href=3D"file:///C:/LDRA_Workarea/Tbwrkfls/movement_9.met.htm#key_to_terms=
+">Key=20
+      to Terms</A> </TD>
+    <TH>| </TH>
+    <TD><A=20
+      =
+href=3D"file:///C:/LDRA_Workarea/Tbwrkfls/movement_9.met.htm#metric_table=
+">Metric=20
+      Table</A> </TD>
+    <TH>| </TH>
+    <TD><A=20
+      =
+href=3D"file:///C:/LDRA_Workarea/Tbwrkfls/movement_9.met.htm#contents">Co=
+ntents</A>=20
+    </TD>
+    <TH>] </TH></TR></TBODY></TABLE></CENTER><BR>
+<DIV class=3Dbreak-p=20
+style=3D"HEIGHT: 10px; WIDTH: 425px; MARGIN: 0px auto; DISPLAY: =
+block"></DIV><BR><BR>
+<H4><A id=3D"loop/interval analysis">Loop/Interval Analysis=20
+(movement.c)</A></H4><BR>
+<CENTER>
+<TABLE width=3D"80%" bgColor=3D#ece2e2 border=3D1>
+  <TBODY>
+  <TR>
+    <TD>
+      <TABLE width=3D"100%" bgColor=3D#ece2e2>
+        <TBODY>
+        <TR align=3Dleft>
+          <TH>Procedure </TH>
+          <TH>Number of </TH>
+          <TH>Nesting </TH>
+          <TH>Order 1 </TH>
+          <TH>Max. Int. </TH>
+          <TH>Reducible </TH></TR>
+        <TR align=3Dleft>
+          <TH>&nbsp; </TH>
+          <TH><U>Loops </U></TH>
+          <TH><U>Depth </U></TH>
+          <TH><U>Intervals </U></TH>
+          <TH><U>Nesting </U></TH>
+          <TH><U>(Intervals) </U></TH></TR>
+        <TR align=3Dleft>
+          <TH colSpan=3D6>&nbsp; </TH></TR>
+        <TR align=3Dleft>
+          <TD>init_timer_A1 </TD>
+          <TD><FONT color=3D#008000>0 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>0 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>1 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>1 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>Yes (P) </FONT></TD></TR>
+        <TR align=3Dleft>
+          <TD>move_init </TD>
+          <TD><FONT color=3D#008000>0 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>0 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>1 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>1 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>Yes (P) </FONT></TD></TR>
+        <TR align=3Dleft>
+          <TD>move </TD>
+          <TD><FONT color=3D#008000>0 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>0 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>1 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>1 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>Yes (P) </FONT></TD></TR>
+        <TR align=3Dleft>
+          <TD>stop </TD>
+          <TD><FONT color=3D#008000>0 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>0 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>1 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>1 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>Yes (P) </FONT></TD></TR>
+        <TR align=3Dleft>
+          <TD>&nbsp; </TD>
+          <TD>&nbsp;</TD>
+          <TD>&nbsp;</TD>
+          <TD>&nbsp;</TD>
+          <TD>&nbsp;</TD>
+          <TD>&nbsp;</TD></TR>
+        <TR align=3Dleft>
+          <TD>Total for movement.c </TD>
+          <TD><FONT color=3D#008000>0 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>0 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>1 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>1 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>Yes (P)=20
+  =
+</FONT></TD></TR></TD></TR></TBODY></TABLE></TR></TBODY></TABLE></CENTER>=
+<BR>
+<CENTER>
+<TABLE bgColor=3D#fffff2>
+  <TBODY>
+  <TR>
+    <TH>[ </TH>
+    <TD><A=20
+      =
+href=3D"file:///C:/LDRA_Workarea/Tbwrkfls/movement_9.met.htm#top_of_rep">=
+Top=20
+      of Report</A> </TD>
+    <TH>| </TH>
+    <TD><A=20
+      =
+href=3D"file:///C:/LDRA_Workarea/Tbwrkfls/movement_9.met.htm#key_to_terms=
+">Key=20
+      to Terms</A> </TD>
+    <TH>| </TH>
+    <TD><A=20
+      =
+href=3D"file:///C:/LDRA_Workarea/Tbwrkfls/movement_9.met.htm#metric_table=
+">Metric=20
+      Table</A> </TD>
+    <TH>| </TH>
+    <TD><A=20
+      =
+href=3D"file:///C:/LDRA_Workarea/Tbwrkfls/movement_9.met.htm#contents">Co=
+ntents</A>=20
+    </TD>
+    <TH>] </TH></TR></TBODY></TABLE></CENTER><BR>
+<DIV class=3Dbreak-p=20
+style=3D"HEIGHT: 10px; WIDTH: 425px; MARGIN: 0px auto; DISPLAY: =
+block"></DIV><BR><BR>
+<H4><A id=3D"lcsaj and unreachability">LCSAJ and Unreachability=20
+(movement.c)</A></H4><BR>
+<CENTER>
+<TABLE width=3D"80%" bgColor=3D#ece2e2 border=3D1>
+  <TBODY>
+  <TR>
+    <TD>
+      <TABLE width=3D"100%" bgColor=3D#ece2e2>
+        <TBODY>
+        <TR align=3Dleft>
+          <TH>File </TH>
+          <TH>Total </TH>
+          <TH>Reachable </TH>
+          <TH>Unreachable </TH>
+          <TH>Max. LCSAJ </TH>
+          <TH>Unreachable </TH>
+          <TH>Unreachable </TH></TR>
+        <TR align=3Dleft>
+          <TH>&nbsp; </TH>
+          <TH><U>LCSAJs </U></TH>
+          <TH><U>LCSAJs </U></TH>
+          <TH><U>LCSAJs </U></TH>
+          <TH><U>Density </U></TH>
+          <TH><U>Lines </U></TH>
+          <TH><U>Branches </U></TH></TR>
+        <TR align=3Dleft>
+          <TH colSpan=3D7>&nbsp; </TH></TR>
+        <TR align=3Dleft>
+          <TD>Total for movement.c </TD>
+          <TD><FONT color=3D#008000>27 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>27 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>0 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>8 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>0 (P) </FONT></TD>
+          <TD><FONT color=3D#008000>0 (P)=20
+  =
+</FONT></TD></TR></TD></TR></TBODY></TABLE></TR></TBODY></TABLE></CENTER>=
+<BR>
+<CENTER>
+<TABLE bgColor=3D#fffff2>
+  <TBODY>
+  <TR>
+    <TH>[ </TH>
+    <TD><A=20
+      =
+href=3D"file:///C:/LDRA_Workarea/Tbwrkfls/movement_9.met.htm#top_of_rep">=
+Top=20
+      of Report</A> </TD>
+    <TH>| </TH>
+    <TD><A=20
+      =
+href=3D"file:///C:/LDRA_Workarea/Tbwrkfls/movement_9.met.htm#key_to_terms=
+">Key=20
+      to Terms</A> </TD>
+    <TH>| </TH>
+    <TD><A=20
+      =
+href=3D"file:///C:/LDRA_Workarea/Tbwrkfls/movement_9.met.htm#metric_table=
+">Metric=20
+      Table</A> </TD>
+    <TH>| </TH>
+    <TD><A=20
+      =
+href=3D"file:///C:/LDRA_Workarea/Tbwrkfls/movement_9.met.htm#contents">Co=
+ntents</A>=20
+    </TD>
+    <TH>] </TH></TR></TBODY></TABLE></CENTER><BR>
+<DIV class=3Dbreak-p=20
+style=3D"HEIGHT: 10px; WIDTH: 425px; MARGIN: 0px auto; DISPLAY: =
+block"></DIV><BR><BR><A=20
+id=3Dkey_to_terms></A><BR>
+<CENTER>
+<H2>Key to Terms </H2></CENTER><BR><A id=3Dclarity_metrics></A><BR>
+<H4>Clarity </H4>Metrics that indicate how easy it is likely to be =
+<BR>to read=20
+and understand the purpose of a source code module or procedure: =
+<BR><BR>
+<UL>
+  <LI>Executable ref. Lines <BR>
+  <LI>Total Comments <BR>
+  <LI>Comments in Headers <BR>
+  <LI>Comments in Declarations <BR>
+  <LI>Comments in Executable Code <BR>
+  <LI>Blank Lines <BR>
+  <LI>Total Comments/Exe. Lines <BR>
+  <LI>Declaration Comments/Exe. Lines <BR>
+  <LI>Code Comments/Exe. Lines <BR>
+  <LI>Average Length of Basic Blocks <BR>
+  <LI>Unique Operands <BR>
+  <LI>Total LCSAJs <BR>
+  <LI>Depth of Loop Nesting <BR>
+  <LI>Expansion Factor <BR><BR></LI></UL><A =
+id=3Dtestability_metrics></A><BR>
+<H4>Testability </H4>Metrics that indicate the amount testing that will =
+be=20
+required, <BR>particularly with respect to achieving high Dynamic =
+Coverage :=20
+<BR><BR>
+<UL>
+  <LI>Knots <BR>
+  <LI>Cyclomatic Complexity <BR>
+  <LI>Executable reformatted Lines <BR>
+  <LI>Number of Basic Blocks <BR>
+  <LI>Total Operands <BR>
+  <LI>Number of Loops <BR>
+  <LI>Procedure Exit Points <BR>
+  <LI>Number of Procedures <BR>
+  <LI>Total LCSAJs <BR>
+  <LI>Unreachable LCSAJs <BR>
+  <LI>Maximum LCSAJ Density <BR>
+  <LI>Unreachable Lines <BR>
+  <LI>Unreachable Branches <BR>
+  <LI>File Fan in <BR>
+  <LI>Fan Out <BR><BR></LI></UL><A id=3Dmaintainability_metrics></A><BR>
+<H4>Maintainability </H4>Metrics that indicate the level of =
+consideration that=20
+must be given <BR>to modifying a source code module or procedure: =
+<BR><BR>
+<UL>
+  <LI>Essential Knots <BR>
+  <LI>Essential Cyclomatic Complexity <BR>
+  <LI>Knots <BR>
+  <LI>Cyclomatic Complexity <BR>
+  <LI>Vocabulary <BR>
+  <LI>Number of Procedures <BR>
+  <LI>Total LCSAJs <BR>
+  <LI>Unreachable LCSAJs <BR>
+  <LI>Maximum LCSAJ Density <BR>
+  <LI>Unreachable Lines <BR>
+  <LI>Unreachable Branches <BR><BR><BR></LI></UL>
+<H4>Metric results Pass/Fail indicators. </H4>The display of Pass and =
+Fail=20
+indicators is controlled by two environment variables: <BR><BR>
+<CENTER>
+<TABLE width=3D"60%" bgColor=3D#d7eded border=3D1>
+  <TBODY>
+  <TR align=3Dcenter>
+    <TH>Result </TH>
+    <TH>Environment Flag </TH>
+    <TH>Indicator </TH></TR>
+  <TR align=3Dcenter>
+    <TD>Pass </TD>
+    <TD>SHOW_METRIC_PASS </TD>
+    <TD><FONT color=3D#008000>(P) </FONT></TD></TR>
+  <TR align=3Dcenter>
+    <TD>Fail </TD>
+    <TD>SHOW_METRIC_FAIL </TD>
+    <TD><FONT color=3D#ff0000>(F)=20
+</FONT></TD></TR></TBODY></TABLE></CENTER><BR><BR>Upper and lower limits =
+for a=20
+"Total for &lt;file&gt;" metric can be derived from the <BR>upper and =
+lower=20
+limits for a procedure where appropriate. <BR>This is achieved using the =
+'c'=20
+marker in the Metrics Data File. <BR><BR>The base for this calculation =
+is=20
+currently variable between files: (Number of procedures in each source =
+file)=20
+<BR><BR><BR><BR>
+<HR>
+
+<CENTER>
+<TABLE bgColor=3D#fffff2>
+  <TBODY>
+  <TR>
+    <TH>[ </TH>
+    <TD><A=20
+      =
+href=3D"file:///C:/LDRA_Workarea/Tbwrkfls/movement_9.met.htm#top_of_rep">=
+Top=20
+      of Report</A> </TD>
+    <TH>| </TH>
+    <TD><A=20
+      =
+href=3D"file:///C:/LDRA_Workarea/Tbwrkfls/movement_9.met.htm#metric_table=
+">Metric=20
+      Table</A> </TD>
+    <TH>| </TH>
+    <TD><A=20
+      =
+href=3D"file:///C:/LDRA_Workarea/Tbwrkfls/movement_9.met.htm#contents">Co=
+ntents</A>=20
+    </TD>
+    <TH>] </TH></TR></TBODY></TABLE></CENTER><BR>
+<DIV class=3Dbreak-p=20
+style=3D"HEIGHT: 10px; WIDTH: 425px; MARGIN: 0px auto; DISPLAY: =
+block"></DIV><BR>
+<CENTER>
+<H3>End of Quality Review Report </H3></CENTER>
+<CENTER>
+<H3></H3></CENTER>
+<CENTER>
+<H3>Copyright =A9 2017 Liverpool Data Research Associates </H3></CENTER>
+<DIV class=3Dbreak-p=20
+style=3D"HEIGHT: 10px; WIDTH: 80%; MARGIN: 0px auto; DISPLAY: =
+block"></DIV></BODY></HTML>
+
+------=_NextPart_000_0000_01D3BD4A.EF6D65B0
+Content-Type: application/javascript
+Content-Transfer-Encoding: 7bit
+Content-Location: file:///C:/LDRA_Workarea/Tbwrkfls/imagejs.js
+
+var temp_str ='<img src="file:C:\\LDRA_Toolsuite\\images/';
+var base_str ='<a href="file:./';
+var ie_ver = getIE_ver();
+function getIE_ver()
+{
+var ret = -1;
+if (navigator.appName == 'Microsoft Internet Explorer')
+{
+var ua = navigator.userAgent;
+var re = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
+if (re.exec(ua) != null)
+{
+ret = parseFloat( RegExp.$1 );
+}
+}
+return ret;
+}
+
+------=_NextPart_000_0000_01D3BD4A.EF6D65B0--
