@@ -25,7 +25,7 @@
 
 
 #include "servomotor.h"
-#include "SPIS.h"
+
 
 //------------------------------------------------------------------------------
 // servomotor_Init :  called to initialize the servomotor configuration
@@ -44,7 +44,6 @@ void servomotor_init(void)
 
 	TACCR1 = servomotor_set_deg(0);   // initialization to 0 deg
 	__delay_cycles(TIME_TO_CHECK*4);
-
 }
 
 //------------------------------------------------------------------------------
@@ -79,7 +78,7 @@ void servomotor_stop(void)
 }
 
 //------------------------------------------------------------------------------
-// servomotor_Set_Deg :  realize the rotation to the degree in parameter
+// servomotor_set_deg :  realize the rotation to the degree in parameter
 // IN:        deg (int) degree of rotation.
 // OUT:       none.
 // return:    int value of TACCR1 to set the rotation.
@@ -117,8 +116,13 @@ int servomotor_set_deg(int deg)
 //------------------------------------------------------------------------------
 void servomotor_sweeping(void)
 {
+	/*servomotor_init();                      // Set pwm for ir motor
+
+	TACCR1 = servomotor_set_deg(0);   // initialization to 0 deg
+	__delay_cycles(TIME_TO_CHECK*4);*/
+
 	TACCR1 = servomotor_set_deg(0);   // set to 0 deg
-	SPIS_Tx('0');
+	//SPIS_Tx('0');
 	__delay_cycles(TIME_TO_CHECK);
 	TACCR1 = servomotor_set_deg(45);  // set to 45 deg
 	//SPIS_Tx('45');

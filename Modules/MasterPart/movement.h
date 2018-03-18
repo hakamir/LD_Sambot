@@ -25,10 +25,10 @@
 //   March 2018
 //******************************************************************************
 
-#define 1 FORWARD
+/*#define 1 FORWARD
 #define 2 BACKWARD
 #define 3 LEFT
-#define 4 RIGHT
+#define 4 RIGHT*/
 
 //******************************************************************************
 //	 	move_init :	This function initializes the ports of the device connected on
@@ -56,3 +56,13 @@ void move();
 void stop();
 
 void init_timer_A1();
+
+
+//------------------------------------------------------------------------------
+// automode :  function of automatic mode
+// IN:        integer mes.
+// OUT:       none.
+// return:    none.
+//------------------------------------------------------------------------------
+
+void automode(int,unsigned char);

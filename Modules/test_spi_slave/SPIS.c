@@ -19,46 +19,16 @@
 //------------------------------------------------------------------------------
 void SPIS_init(void)
 {
-    // Initialisation des ports
-    //P1DIR &=~BIT4;
-    P1SEL |= BIT6 + BIT7 + BIT5;
-    //P1SEL2 = BIT6 + BIT7 + BIT5;
-
-    USICTL0 |= USIPE7 + USIPE6 + USIPE5 + USIOE; // Port, SPI slave
-    USICTL1 |= USIIE;                     // Counter interrupt, flag remains set
-    USICTL0 &= ~USISWRST;                 // USI released for operation
-    USISRL = 0x23;                        // init-load data
-    USICNT = 8;                           // init-load counter
+	WDTCTL = WDTPW + WDTHOLD;             // Stop watchdog timer
+	P1OUT =  BIT4;                        // P1.4 set, else reset
+	P1REN |= BIT4;                        // P1.4 pullup
+	P1DIR = BIT0;                         // P1.0 output, else input
+	USICTL0 |= USIPE7 + USIPE6 + USIPE5 + USIOE; // Port, SPI slave
+	USICTL1 |= USIIE;           // Counter interrupt, flag remains set
+	USICTL0 &= ~USISWRST;                 // USI released for operation
+	USISRL = P1IN;                        // init-load data
+	USICNT = 8;
 }
-
-/*void SPIS_init(void)
-{
-    // USI Config. for SPI 3 wires Slave Op.
-    // P1SEL Ref. p41,42 SLAS694J used by USIPEx
-    USICTL0 |= USISWRST;
-    USICTL1 = 0;
-
-    // 3 wire, mode Clk&Ph / 14.2.3 p400
-    // SDI-SDO-SCLK - LSB First - Output Enable - Transp. Latch
-    USICTL0 |= (USIPE7 | USIPE6 | USIPE5 | USILSB | USIOE | USIGE );
-    // Slave Mode SLAU144J 14.2.3.2 p400
-    USICTL0 &= ~(USIMST);
-    USICTL1 |= USIIE;
-    USICTL1 &= ~(USICKPH | USII2C);
-
-    USICKCTL = 0;           // No Clk Src in slave mode
-    USICKCTL &= ~(USICKPL | USISWCLK);  // Polarity - Input ClkLow
-
-    USICNT = 0;
-    USICNT &= ~(USI16B | USIIFGCC ); // Only lower 8 bits used 14.2.3.3 p 401 slau144j
-    USISRL = 0x23;  // hash, just mean ready; USISRL Vs USIR by ~USI16B set to 0
-    USICNT = 0x08;
-
-    // Wait for the SPI clock to be idle (low).
-    while ((P1IN & BIT5)) ;
-
-    USICTL0 &= ~USISWRST;
-}*/
 
 //------------------------------------------------------------------------------
 // SPIS_Tx :  slave sends a char to master
@@ -66,10 +36,10 @@ void SPIS_init(void)
 // OUT:       none.
 // return:    none.
 //------------------------------------------------------------------------------
-void SPIS_Tx(unsigned char c)
+void SPIS_Tx(unsigned char deg)
 {
-    USISRL = c;
-    USICNT = 8;
+	USISRL = deg;
+	USICNT = 8;
 }
 
 
@@ -81,8 +51,7 @@ void SPIS_Tx(unsigned char c)
 //------------------------------------------------------------------------------
 unsigned char SPIS_Rx(void)
 {
-    while (!(USICTL1 & USIIFG));
-    return USISRL;
+	return USISRL;
 }
 
 /*// USI interrupt service routine
@@ -102,4 +71,4 @@ __interrupt void universal_serial_interface(void)
 	USISRL = P1IN;
 	USICNT = 8;                           // re-load counter
 }
- */
+*/

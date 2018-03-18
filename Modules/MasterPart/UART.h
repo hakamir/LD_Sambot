@@ -57,4 +57,12 @@ void UART_Tx ( unsigned char c);
 unsigned char UART_Rx (void);
 
 
+//------------------------------------------------------------------------------
+// envoi_msg_UART :  transmit an UART message
+// IN:
+// OUT:
+// return:
+//------------------------------------------------------------------------------
+void envoi_msg_UART(unsigned char *);
+
 #endif /* UART_H_ */

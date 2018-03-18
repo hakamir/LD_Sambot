@@ -35,7 +35,7 @@ typedef signed int		SINT_32;
 // OUT:       none.
 // return:    none.
 //------------------------------------------------------------------------------
-	
+
 void init_timer_A1(void)
 {
 
@@ -74,7 +74,7 @@ void move_init(void)
 void move(SINT_32 direction, SINT_32 speed_l, SINT_32 speed_r)
 {
 
-    
+
     /*direction =  {FORWARD, BACKWARD, LEFT, RIGHT};*/
     switch (direction)
     {
@@ -117,16 +117,16 @@ void move(SINT_32 direction, SINT_32 speed_l, SINT_32 speed_r)
 
 
     /*** speed_l is a percentage of the TA1CCR0 set in the A1 timer function and act on the TA1CCR1 ***/
-	/*** speed_r is a percentage of the TA1CCR0 set in the A1 timer function and act on the TA1CCR2 ***/
+    /*** speed_r is a percentage of the TA1CCR0 set in the A1 timer function and act on the TA1CCR2 ***/
     if(((speed_l >= 0) && (speed_l <= 100)) && ((speed_r >= 0) && (speed_r <= 100)))	//The value taken have to be between 0% and 100%
     {
         TA1CCR1 = speed_l;		/*The value taken is assigned to the Left motor*/
-		TA1CCR2 = speed_r;		/*The value taken is assigned to the Right motor*/
+        TA1CCR2 = speed_r;		/*The value taken is assigned to the Right motor*/
     }
     else
     {
         TA1CCR1 = 0;
-		TA1CCR2 = 0;
+        TA1CCR2 = 0;
     }
 }
 
@@ -142,4 +142,61 @@ void stop(void)
     P2OUT &= ~BIT2;					/* Left motor is switched off */
     P2OUT &= ~BIT4;					/* Right motor is switched off */
     return;
+}
+
+
+//------------------------------------------------------------------------------
+// automode :  function of automatic mode
+// IN:        integer mes.
+// OUT:       none.
+// return:    none.
+//------------------------------------------------------------------------------
+
+void automode(int mes,unsigned char direction)
+{
+    if (mes<300)
+    {
+        switch (direction)
+        {
+        case '0':
+        {
+            move("RIGHT",80,80);
+            __delay_cycles(15000);
+            move("FORWARD",80,80);
+            break;
+        }
+        case '45':
+        {
+            move('RIGHT',80,80);
+            __delay_cycles(30000);
+            move("FORWARD",80,80);
+            break;
+        }
+        case '90':
+        {
+            move('RIGHT',80,80);
+            __delay_cycles(60000);
+            move("FORWARD",80,80);
+            break;
+        }
+        case '135':
+        {
+            move('LEFT',80,80);
+            __delay_cycles(30000);
+            move("FORWARD",80,80);
+            break;
+        }
+        case '180':
+        {
+            move("LEFT",80,80);
+            __delay_cycles(15000);
+            move("FORWARD",80,80);
+            break;
+        }
+        default :
+        {
+            break;
+        }
+        }
+    }
 }

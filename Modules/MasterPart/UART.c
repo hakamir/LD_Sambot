@@ -51,20 +51,20 @@ void UART_init(void)
 
 
 //------------------------------------------------------------------------------
-// UART_Tx :  UART_Tx is for send charactere in the buffer (UART fonction)
+// UART_Tx :  UART_Tx is for send character in the buffer (UART fonction)
 // IN:        c (unsigned char) character to send in the buffer.
 // OUT:
 // return:
 //------------------------------------------------------------------------------
 void UART_Tx ( unsigned char c)
 {
-    while (!(IFG2&UCA0TXIFG)); 	// USCI_A0 TX buffer ready?
+    while (!(IFG2 & UCA0TXIFG)); 	// USCI_A0 TX buffer ready?
     UCA0TXBUF = c; 				// TX -> RXed character
 }
 
 
 //------------------------------------------------------------------------------
-// UART_Rx :  UART_Rx is for receive charactere from the buffer (UART fonction)
+// UART_Rx :  UART_Rx is for receive character from the buffer (UART fonction)
 // IN:
 // OUT:
 // return:    UCA0RXBUF (unsigned char) buffer receive the character.
@@ -73,4 +73,20 @@ unsigned char UART_Rx (void)
 {
     while(!(UCA0RXIFG));
     return UCA0RXBUF;
+}
+
+
+//------------------------------------------------------------------------------
+// envoi_msg_UART :  transmit an UART message
+// IN:
+// OUT:
+// return:
+//------------------------------------------------------------------------------
+void envoi_msg_UART(unsigned char *msg)
+{
+    unsigned int i = 0;
+    for(i=0 ; msg[i] != 0x00 ; i++)
+    {
+        UART_Tx(msg[i]);
+    }
 }

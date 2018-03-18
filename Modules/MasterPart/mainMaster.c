@@ -9,9 +9,14 @@
 //------------------------------------------------------------------------------
 
 #include <msp430.h>
-#include "measure.h"
+#include "movement.h"
 #include "UART.h"
+#include "measure.h"
+#include "SPIM.h"
 
+#define TIME_TO_CHECK 300000
+
+int mode = 0;   // Mode manuel au départ
 
 void main(void)
 {
@@ -19,28 +24,104 @@ void main(void)
 
     measure_init();
     init_timer_A1();
-    init_move();
+    move_init();
     SPIM_init();
-    init_UART();
+    UART_init();
 
+    int mes;
+    char direction[8] = {'0','1','2','3','4','3','2','1'};
+
+    stop(); // Arrêt du robot
+
+    __enable_interrupt();
     while(1)
     {
-
-        move("FORWARD",80,80);
-        scan_IR();
+        if (mode == 1)
+        {
+            unsigned int i = 0;
+            for(i=0;i<8;i++)
+            {
+                SPIM_Tx(direction[i]);
+                __delay_cycles(TIME_TO_CHECK);
+                mes = measure();
+                automode(mes,direction[i]);
+            }
+        }
+        else if (mode == 0)
+        {
+            unsigned int i = 0;
+            for (i=0;i<8;i++)
+            {
+                SPIM_Tx(direction[i]);
+                __delay_cycles(TIME_TO_CHECK);
+                mes = measure();
+                if (mes < 300)
+                {
+                    envoi_msg_UART("Evitez l'objet !");
+                }
+            }
+        }
 
         /*move("FORWARD",80,80);
 		dir = scan();
 		move(dir,80,80);
 		__delay_cycles(30000);
 		move("FORWARD",80,80);*/
-
     }
 }
 
+// Echo back RXed character, confirm TX buffer is ready first
+#pragma vector=USCIAB0RX_VECTOR
+__interrupt void USCI0RX_ISR(void)
+{
+    unsigned char c = UART_Rx();
+    switch (c)
+    {
+    case '8' :
+        move(1,100,100);
+        envoi_msg_UART("Le robot avance");
+        mode = 0; // manuel mode
+        break;
 
+    case '2' :
+        move(2,100,100);
+        envoi_msg_UART("Le robot recule");
+        mode = 0; // manuel mode
+        break;
 
+    case '4' :
+        move(3,100,100);
+        envoi_msg_UART("Le robot tourne a gauche");
+        mode = 0; // manuel mode
+        break;
 
+    case '6' :
+        move(4,100,100);
+        envoi_msg_UART("Le robot tourne a droite");
+        mode = 0; // manuel mode
+        break;
+
+    case '5' :
+        stop();
+        envoi_msg_UART("Le robot s'arrete");
+        mode = 0; // manuel mode
+        break;
+
+    case '1' :
+        mode = 1; // automatic mode
+        envoi_msg_UART("Mode automatique");
+        break;
+
+    case '0' :
+        mode = 0; // manuel mode
+        envoi_msg_UART("Mode manuel");
+        break;
+
+    case 'h' :
+        envoi_msg_UART("h : Aide");
+        break;
+    }
+}
 
 
 /*	char scan(void)
