@@ -80,24 +80,28 @@ __interrupt void USCI0RX_ISR(void)
     case '8' :
         move(1,100,100);
         envoi_msg_UART("Le robot avance");
-        mode = 0; // manuel mode
+        mode = 0; // manual mode
         break;
 
     case '2' :
         move(2,100,100);
         envoi_msg_UART("Le robot recule");
-        mode = 0; // manuel mode
+        mode = 0; // manual mode
         break;
 
     case '4' :
         move(3,100,100);
-        envoi_msg_UART("Le robot tourne a gauche");
+        __delay_cycles(19000);
+        move(1,100,100);
+        envoi_msg_UART("Le robot tourne a gauche a 45 degres");
         mode = 0; // manuel mode
         break;
 
     case '6' :
         move(4,100,100);
-        envoi_msg_UART("Le robot tourne a droite");
+        __delay_cycles(18500);
+        move(1,100,100);
+        envoi_msg_UART("Le robot tourne a droite a 45 degres");
         mode = 0; // manuel mode
         break;
 

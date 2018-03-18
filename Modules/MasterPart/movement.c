@@ -158,39 +158,39 @@ void automode(int mes,unsigned char direction)
     {
         switch (direction)
         {
-        case '0':
+        case '0':   // Object to left
         {
-            move("RIGHT",80,80);
-            __delay_cycles(15000);
-            move("FORWARD",80,80);
+            move(4,100,100);  // Turn of right of 45 deg
+            __delay_cycles(18500);
+            move(1,100,100);
             break;
         }
-        case '45':
+        case '1':  // Object to left
         {
-            move('RIGHT',80,80);
-            __delay_cycles(30000);
-            move("FORWARD",80,80);
+            move(4,100,100);    // Turn of right of 90 deg
+            __delay_cycles(37000);
+            move(1,100,100);
             break;
         }
-        case '90':
+        case '2':      // Object to forward
         {
-            move('RIGHT',80,80);
-            __delay_cycles(60000);
-            move("FORWARD",80,80);
+            move(4,100,100);        // Turn of right of 180 deg
+            __delay_cycles(74000);
+            move(1,100,100);
             break;
         }
-        case '135':
+        case '3':     // Object to right
         {
-            move('LEFT',80,80);
-            __delay_cycles(30000);
-            move("FORWARD",80,80);
+            move(3,100,100);    // Turn of left of 90 deg
+            __delay_cycles(38000);
+            move(1,100,100);
             break;
         }
-        case '180':
+        case '4':         // Object to right
         {
-            move("LEFT",80,80);
-            __delay_cycles(15000);
-            move("FORWARD",80,80);
+            move(3,100,100);    // Turn of left of 45 deg
+            __delay_cycles(19000);
+            move(1,100,100);
             break;
         }
         default :
