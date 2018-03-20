@@ -25,10 +25,11 @@
 //   March 2018
 //******************************************************************************
 
-/*#define 1 FORWARD
-#define 2 BACKWARD
-#define 3 LEFT
-#define 4 RIGHT*/
+#define FORWARD 1
+#define BACKWARD 2
+#define LEFT 3
+#define RIGHT 4
+#define TIME_TO_TURN 180000
 
 //******************************************************************************
 //	 	move_init :	This function initializes the ports of the device connected on

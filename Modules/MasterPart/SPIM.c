@@ -21,34 +21,6 @@
 // OUT:    	none.
 // return:  none.
 //------------------------------------------------------------------------------
-/*void SPIM_init(void)
-{
-    //initialisation des ports
-    P1DIR |= BIT0;
-    P1DIR |=BIT4;
-    P1SEL |= (BIT6 + BIT7 + BIT5);
-    P1SEL2 |= (BIT6 + BIT7 + BIT5);
-
-    //*****************************
-    // initialisation des registres
-    // la polarité et la phase est configuré par le registre UCCKPL
-    // Initialalisation des registres à 1
-    // UCMSB on configure le sens de direction de l'envoie ici MSB en premier
-    //UCMST : on selectionne le mode maitre à 1, 0 pour le l'esclave.
-    //UCSYNC synchronous mode
-
-    UCB0CTL0 |= UCCKPL + UCMSB + UCMST + UCSYNC;  // 3-pin, 8-bit SPI master
-
-
-    UCB0CTL1 |= UCSSEL_2;                     // Mode SMCLK
-    UCB0BR0 |= 0x02;                          // diviser par 2
-    UCB0BR1 = 0;                              //
-    //UCB0MCTL = 0;                             // No modulation
-    UCB0CTL1 &= ~UCSWRST;                     // **Initialize USCI state machine**
-    IE2 |= UCB0RXIE;                          // Enable USCI0 RX interrupt
-
-}*/
-
 void SPIM_init(void)
 {
     // Waste Time, waiting Slave SYNC
@@ -75,7 +47,7 @@ void SPIM_init(void)
     // UCMODE_x  x=0 -> 3-pin SPI,
     //           x=1 -> 4-pin SPI UC0STE active high,
     //           x=2 -> 4-pin SPI UC0STE active low,
-    //           x=3 -> i²c.
+    //           x=3 -> iÂ²c.
     // UCSYNC = 1 -> Mode synchrone (SPI)
     UCB0CTL0 |= ( UCMST | UCMODE_0 | UCSYNC );
     UCB0CTL0 &= ~( UCCKPH | UCCKPL | UCMSB | UC7BIT );
@@ -101,8 +73,9 @@ void SPIM_init(void)
 //------------------------------------------------------------------------------
 void SPIM_Tx(unsigned char c)
 {
-    while (!(IFG2 & UCB0TXIFG)); // USCI_B0 TX buffer ready?
-    UCB0TXBUF = c;
+    while ((UCB0STAT & UCBUSY));   // attend que USCI_SPI soit dispo.
+    while(!(IFG2 & UCB0TXIFG)); // p442
+    UCB0TXBUF = c;              // Put character in transmit buffer
 }
 
 
