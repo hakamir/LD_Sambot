@@ -17,19 +17,6 @@
 // OUT:    	none.
 // return:  none.
 //------------------------------------------------------------------------------
-/*void SPIS_init(void)
-{
-    WDTCTL = WDTPW + WDTHOLD;             // Stop watchdog timer
-    P1OUT =  BIT4;                        // P1.4 set, else reset
-    P1REN |= BIT4;                        // P1.4 pullup
-    P1DIR = BIT0;                         // P1.0 output, else input
-    USICTL0 |= USIPE7 + USIPE6 + USIPE5 + USIOE; // Port, SPI slave
-    USICTL1 |= USIIE;           // Counter interrupt, flag remains set
-    USICTL0 &= ~USISWRST;                 // USI released for operation
-    USISRL = P1IN;                        // init-load data
-    USICNT = 8;
-}*/
-
 void SPIS_init(void)
 {
     if(CALBC1_1MHZ==0xFF || CALDCO_1MHZ==0xFF)
@@ -43,6 +30,10 @@ void SPIS_init(void)
         BCSCTL1 = CALBC1_1MHZ;
         DCOCTL = (0 | CALDCO_1MHZ);
     }
+
+    //--------------- Secure mode
+    P1SEL = 0x00;        // GPIO
+    P1DIR = 0x00;         // IN
 
     // USI Config. for SPI 3 wires Slave Op.
     // P1SEL Ref. p41,42 SLAS694J used by USIPEx
@@ -70,6 +61,7 @@ void SPIS_init(void)
 
     USICTL0 &= ~USISWRST;
 }
+
 //------------------------------------------------------------------------------
 // SPIS_Tx :  slave sends a char to master
 // IN:        char sent to master (unsigned char).
@@ -91,25 +83,10 @@ void SPIS_init(void)
 //------------------------------------------------------------------------------
 unsigned char SPIS_Rx(void)
 {
-    return USISRL;
+	while( !(USICTL1 & USIIFG) );   // waiting char by USI counter flag
+	unsigned char c = USISRL;
+    USICNT &= ~USI16B;  // re-load counter & ignore USISRH
     USICNT = 0x08;      // 8 bits count, that re-enable USI for next transfert
+    return c;
 }
 
-/*// USI interrupt service routine
-#pragma vector=USI_VECTOR
-__interrupt void universal_serial_interface(void)
-{
-	switch(USISRL)
-	{
-	case '1' :
-		servomotor_sweeping();
-		break;
-
-	case '3' :
-		Servomotor_Stop();
-		break;
-	}
-	USISRL = P1IN;
-	USICNT = 8;                           // re-load counter
-}
- */

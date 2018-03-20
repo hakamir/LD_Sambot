@@ -16,9 +16,10 @@ void main(void)
 {
     WDTCTL = WDTPW | WDTHOLD; // Stop watchdog timer
 
-    servomotor_init();
     SPIS_init();
+    servomotor_init();
     
+
     __bis_SR_register(LPM4_bits | GIE);
     while(1);
 }
@@ -30,27 +31,27 @@ __interrupt void USCI0RX_ISR(void)
     unsigned char c = SPIS_Rx();
     switch (c)
     {
-    case '0' :
+    case 0x30 :
         servomotor_set_deg(0);
         __delay_cycles(TIME_TO_CHECK);
         break;
 
-    case '1' :
+    case 0x31 :
         servomotor_set_deg(45);
         __delay_cycles(TIME_TO_CHECK);
         break;
 
-    case '2' :
+    case 0x32 :
         servomotor_set_deg(90);
         __delay_cycles(TIME_TO_CHECK);
         break;
 
-    case '3' :
+    case 0x33 :
         servomotor_set_deg(135);
         __delay_cycles(TIME_TO_CHECK);
         break;
         
-    case '4' :
+    case 0x34 :
         servomotor_set_deg(180);
         __delay_cycles(TIME_TO_CHECK);
         break;
