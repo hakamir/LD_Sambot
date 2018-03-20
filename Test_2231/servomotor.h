@@ -30,8 +30,8 @@
 #include <msp430.h>
 
 #define SERVOMOTOR BIT2
-#define SERVOMOTOR_INIT 500
-#define SERVOMOTOR_MAX 2500
+#define SERVOMOTOR_INIT 500//490        // 500
+#define SERVOMOTOR_MAX 2500//2448         // 2500
 #define TIME_TO_CHECK 300000
 //------------------------------------------------------------------------------
 // Servomotor_Init :  called to initialize the ir motor configuration

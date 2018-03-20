@@ -58,7 +58,7 @@ void servomotor_PWM_init(void)
 	DCOCTL  = CALDCO_1MHZ;              // Clock frequency 1MHz
 	TACTL   = (TASSEL_2 | MC_1 | ID_0);
 	TACCTL1 = OUTMOD_7;
-	TACCR0  = 20000;					// 20ms, 50Hz
+	TACCR0  = 20000;//33333;	    // 20000				// 20ms, 50Hz
 	TACCR1  = SERVOMOTOR_INIT; 			// 500
 
 
@@ -89,18 +89,18 @@ int servomotor_set_deg(int deg)
 
 	// < 45
 	if(deg == 0){
-		taccr = SERVOMOTOR_MAX / 5;
+		taccr = SERVOMOTOR_INIT;//SERVOMOTOR_MAX / 5;  //504    //500=2500 / 5       504 -> 2448    486 par palier
 		// > 0 & < 45
 	}else if(deg > 0 && deg <= 45){
-		taccr = (2 * SERVOMOTOR_MAX) / 5;
+		taccr = (2 * SERVOMOTOR_MAX) / 5;      //990 // 1000
 		// > 45 & < 90
 	}else if(deg > 45 && deg <= 90){
-		taccr = (3 * SERVOMOTOR_MAX) / 5;
+		taccr = (3 * SERVOMOTOR_MAX) / 5;   //1476    // 1500
 		// > 90 & < 135
 	}else if(deg > 90 && deg <= 135){
-		taccr = (4 * SERVOMOTOR_MAX) / 5;
+		taccr = (4 * SERVOMOTOR_MAX) / 5;    //1962   //2000
 		// > 135 & 180
-	}else if(deg > 135 && deg <= 180){
+	}else if(deg > 135 && deg <= 180){          //2500
 		taccr = SERVOMOTOR_MAX;
 	}
 

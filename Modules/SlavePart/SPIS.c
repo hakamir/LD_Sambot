@@ -17,22 +17,33 @@
 // OUT:    	none.
 // return:  none.
 //------------------------------------------------------------------------------
-void SPIS_init(void)
-{
-    // Initialisation des ports
-    //P1DIR &=~BIT4;
-    P1SEL |= BIT6 + BIT7 + BIT5;
-    //P1SEL2 = BIT6 + BIT7 + BIT5;
-
-    USICTL0 |= USIPE7 + USIPE6 + USIPE5 + USIOE; // Port, SPI slave
-    USICTL1 |= USIIE;                     // Counter interrupt, flag remains set
-    USICTL0 &= ~USISWRST;                 // USI released for operation
-    USISRL = 0x23;                        // init-load data
-    USICNT = 8;                           // init-load counter
-}
-
 /*void SPIS_init(void)
 {
+    WDTCTL = WDTPW + WDTHOLD;             // Stop watchdog timer
+    P1OUT =  BIT4;                        // P1.4 set, else reset
+    P1REN |= BIT4;                        // P1.4 pullup
+    P1DIR = BIT0;                         // P1.0 output, else input
+    USICTL0 |= USIPE7 + USIPE6 + USIPE5 + USIOE; // Port, SPI slave
+    USICTL1 |= USIIE;           // Counter interrupt, flag remains set
+    USICTL0 &= ~USISWRST;                 // USI released for operation
+    USISRL = P1IN;                        // init-load data
+    USICNT = 8;
+}*/
+
+void SPIS_init(void)
+{
+    if(CALBC1_1MHZ==0xFF || CALDCO_1MHZ==0xFF)
+    {
+        __bis_SR_register(LPM4_bits);
+    }
+    else
+    {
+        // Factory Set.
+        DCOCTL = 0;
+        BCSCTL1 = CALBC1_1MHZ;
+        DCOCTL = (0 | CALDCO_1MHZ);
+    }
+
     // USI Config. for SPI 3 wires Slave Op.
     // P1SEL Ref. p41,42 SLAS694J used by USIPEx
     USICTL0 |= USISWRST;
@@ -58,19 +69,18 @@ void SPIS_init(void)
     while ((P1IN & BIT5)) ;
 
     USICTL0 &= ~USISWRST;
-}*/
-
+}
 //------------------------------------------------------------------------------
 // SPIS_Tx :  slave sends a char to master
 // IN:        char sent to master (unsigned char).
 // OUT:       none.
 // return:    none.
 //------------------------------------------------------------------------------
-void SPIS_Tx(unsigned char c)
+/*void SPIS_Tx(unsigned char deg)
 {
-    USISRL = c;
-    USICNT = 8;
-}
+	USISRL = deg;
+	USICNT = 8;
+}*/
 
 
 //------------------------------------------------------------------------------
@@ -81,8 +91,8 @@ void SPIS_Tx(unsigned char c)
 //------------------------------------------------------------------------------
 unsigned char SPIS_Rx(void)
 {
-    while (!(USICTL1 & USIIFG));
     return USISRL;
+    USICNT = 0x08;      // 8 bits count, that re-enable USI for next transfert
 }
 
 /*// USI interrupt service routine

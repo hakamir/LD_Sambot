@@ -21,7 +21,7 @@
 // OUT:    	none.
 // return:  none.
 //------------------------------------------------------------------------------
-void SPIM_init(void)
+/*void SPIM_init(void)
 {
     //initialisation des ports
     P1DIR |= BIT0;
@@ -47,9 +47,9 @@ void SPIM_init(void)
     UCB0CTL1 &= ~UCSWRST;                     // **Initialize USCI state machine**
     IE2 |= UCB0RXIE;                          // Enable USCI0 RX interrupt
 
-}
+}*/
 
-/*void SPIM_init(void)
+void SPIM_init(void)
 {
     // Waste Time, waiting Slave SYNC
     __delay_cycles(250);
@@ -91,7 +91,7 @@ void SPIM_init(void)
     P1SEL2 |= ( SCK | DATA_OUT | DATA_IN);
 
     UCB0CTL1 &= ~UCSWRST;                                // activation USCI
-}*/
+}
 
 //------------------------------------------------------------------------------
 // SPIM_Tx :  master sends a char to slave
@@ -112,9 +112,9 @@ void SPIM_Tx(unsigned char c)
 // OUT:    	char sent to slave (unsigned char)
 // return:  none.
 //------------------------------------------------------------------------------
-unsigned char SPIM_Rx(void)
+/*unsigned char SPIM_Rx(void)
 {
     while(!(IFG2 & UCA0RXIFG));
     return UCA0RXBUF;
-}
+}*/
 
