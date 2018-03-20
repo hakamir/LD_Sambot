@@ -22,8 +22,11 @@ typedef unsigned char UCHAR;
 // OUT:    	none.
 // return:  none.
 //------------------------------------------------------------------------------
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 2e7a96a1c197c8b25fe272d1cd31108bad28d3ff
 void SPIM_init(void)
 {
     /* Waste Time, waiting Slave SYNC */
@@ -37,6 +40,7 @@ void SPIM_init(void)
      set by setting UCSWRST just before */
     IFG2 &= ~(UCB0TXIFG | UCB0RXIFG);
 
+<<<<<<< HEAD
     /* Configuration SPI (voir slau144 p.445)
      UCCKPH = 0 -> Data changed on leading clock edges and sampled on trailing edges.
      UCCKPL = 0 -> Clock inactive state is low.
@@ -52,6 +56,23 @@ void SPIM_init(void)
                x=2 -> 4-pin SPI UC0STE active low,
                x=3 -> i²c.
      UCSYNC = 1 -> Mode synchrone (SPI)*/
+=======
+    // Configuration SPI (voir slau144 p.445)
+    // UCCKPH = 0 -> Data changed on leading clock edges and sampled on trailing edges.
+    // UCCKPL = 0 -> Clock inactive state is low.
+    //   SPI Mode 0 :  UCCKPH * 1 | UCCKPL * 0
+    //   SPI Mode 1 :  UCCKPH * 0 | UCCKPL * 0  <--
+    //   SPI Mode 2 :  UCCKPH * 1 | UCCKPL * 1
+    //   SPI Mode 3 :  UCCKPH * 0 | UCCKPL * 1
+    // UCMSB  = 1 -> MSB premier
+    // UC7BIT = 0 -> 8 bits, 1 -> 7 bits
+    // UCMST  = 0 -> CLK by Master, 1 -> CLK by USCI bit CLK / p441/16.3.6
+    // UCMODE_x  x=0 -> 3-pin SPI,
+    //           x=1 -> 4-pin SPI UC0STE active high,
+    //           x=2 -> 4-pin SPI UC0STE active low,
+    //           x=3 -> iÂ²c.
+    // UCSYNC = 1 -> Mode synchrone (SPI)
+>>>>>>> 2e7a96a1c197c8b25fe272d1cd31108bad28d3ff
     UCB0CTL0 |= ( UCMST | UCMODE_0 | UCSYNC );
     UCB0CTL0 &= ~( UCCKPH | UCCKPL | UCMSB | UC7BIT );
     UCB0CTL1 |= UCSSEL_2;
@@ -76,8 +97,9 @@ void SPIM_init(void)
 //------------------------------------------------------------------------------
 void SPIM_Tx(UCHAR c)
 {
-    while (!(IFG2 & UCB0TXIFG)); // USCI_B0 TX buffer ready?
-    UCB0TXBUF = c;
+    while ((UCB0STAT & UCBUSY));   // attend que USCI_SPI soit dispo.
+    while(!(IFG2 & UCB0TXIFG)); // p442
+    UCB0TXBUF = c;              // Put character in transmit buffer
 }
 
 

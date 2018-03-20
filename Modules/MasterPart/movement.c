@@ -26,6 +26,7 @@
 //******************************************************************************
 
 #include <msp430.h>
+#include "movement.h"
 
 typedef signed int		SINT_32;
 
@@ -154,43 +155,43 @@ void stop(void)
 
 void automode(int mes,unsigned char direction)
 {
-    if (mes<300)
+    if (mes>300)
     {
         switch (direction)
         {
         case '0':   // Object to left
         {
-            move(4,100,100);  // Turn of right of 45 deg
-            __delay_cycles(18500);
-            move(1,100,100);
+            move(RIGHT,100,100);  // Turn of right of 45 deg
+            __delay_cycles(TIME_TO_TURN);
+            move(FORWARD,100,100);
             break;
         }
         case '1':  // Object to left
         {
-            move(4,100,100);    // Turn of right of 90 deg
-            __delay_cycles(37000);
-            move(1,100,100);
+            move(RIGHT,100,100);    // Turn of right of 90 deg
+            __delay_cycles(TIME_TO_TURN*2);
+            move(FORWARD,100,100);
             break;
         }
         case '2':      // Object to forward
         {
-            move(4,100,100);        // Turn of right of 180 deg
-            __delay_cycles(74000);
-            move(1,100,100);
+            move(RIGHT,100,100);        // Turn of right of 180 deg
+            __delay_cycles(TIME_TO_TURN*4);
+            move(FORWARD,100,100);
             break;
         }
         case '3':     // Object to right
         {
-            move(3,100,100);    // Turn of left of 90 deg
-            __delay_cycles(38000);
-            move(1,100,100);
+            move(LEFT,100,100);    // Turn of left of 90 deg
+            __delay_cycles(TIME_TO_TURN*2);
+            move(FORWARD,100,100);
             break;
         }
         case '4':         // Object to right
         {
-            move(3,100,100);    // Turn of left of 45 deg
-            __delay_cycles(19000);
-            move(1,100,100);
+            move(LEFT,100,100);    // Turn of left of 45 deg
+            __delay_cycles(TIME_TO_TURN);
+            move(FORWARD,100,100);
             break;
         }
         default :
@@ -198,5 +199,9 @@ void automode(int mes,unsigned char direction)
             break;
         }
         }
+    }
+    else
+    {
+    	move(FORWARD,100,100); 	// Forward
     }
 }
