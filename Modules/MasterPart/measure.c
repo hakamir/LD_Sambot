@@ -25,6 +25,7 @@
 #include "measure.h"
 #include <math.h>
 
+typedef int UINT32
 
 //------------------------------------------------------------------------------
 // measure_init :  Called to initialized the IR sensor
@@ -45,21 +46,21 @@ void measure_init(void)
 //------------------------------------------------------------------------------
 // measure :  Take measures from the pin 0 - IR sensor
 // IN:        none.
-// OUT:       integer (between 0 and 1023).
+// OUT:       UINT32eger (between 0 and 1023).
 // return:    none.
 //------------------------------------------------------------------------------
-int measure(void)
+UINT32 measure(void)
 {
-    int memory;
-    int tab[10];
-    int value = 0;
-    int i = 0;
+    UINT32 memory;
+    UINT32 tab[10];
+    UINT32 value = 0;
+    UINT32 i = 0;
 
     for(i=0;i<10;i++)
     {
-        ADC_Demarrer_conversion(PIN_SENSOR);
+        ADC_Demarrer_conversion(PIN_SENSOR);	/* The value coming from the sensor is converted by the ADC */
 
-        tab[i] = ADC_Lire_resultat();
+        tab[i] = ADC_Lire_resultat();			/* The digital value is stocked UINT32o a table */
     }
 
     do
@@ -75,28 +76,29 @@ int measure(void)
         }
     }
 
-    while(tab[0]>tab[1] || tab[1]>tab[2] || tab[2]>tab[3] || tab[3]>tab[4] || tab[4]>tab[5] || tab[5]>tab[6] || tab[6]>tab[7] || tab[7]>tab[8] || tab[8]>tab[9]);
+    while((tab[0]>tab[1]) || (tab[1]>tab[2]) || (tab[2]>tab[3]) || (tab[3]>tab[4]) || (tab[4]>tab[5]) || (tab[5]>tab[6]) || (tab[6]>tab[7]) || (tab[7]>tab[8]) || (tab[8]>tab[9]));
 
     for(i=3;i<7;i++)
     {
         value = tab[i] + value;
     }
 
-    value = (int)(value/4);
+    value = (UINT32)(value/4);						/* All the previous code set a means of ten measures taken from the table  */
 
     return value;
 }
 
 //------------------------------------------------------------------------------
 // convert_measure :  converts the value of function measure in meters.
-// IN:        			integer (between 0 and 1023).
-// OUT:       			integer (between 40 and 300).
+// IN:        			UINT32eger (between 0 and 1023).
+// OUT:       			UINT32eger (between 40 and 300).
 // return:    			none.
 //------------------------------------------------------------------------------
-int convert_measure(int mes)
+UINT32 convert_measure(UINT32 mes)
 {
-    double mes_mm = 16184 * pow(mes,-0.692);  // formule find with several measures
-    mes_mm = (int) mes_mm;
-    return mes_mm;
+    /*double mes_mm = 16184 * pow(mes,-0.692);*/  /* Formula finds with several measures /!\ DOES WORK WITH THE MSP430, A POLYNOMIAL REGRESSION HAVE TO BE FOUND /!\ */
+    /*mes_mm = (UINT32) mes_mm;
+    return mes_mm;*/
+	return 0;
 }
 

@@ -1,0 +1,51 @@
+
+Phase : Main Static Analysis - Stat
+Single File
+Source : X:\LD_Sambot\Modules\SlavePart\servomotor.c
+GLH File : C:\LDRA_Workarea\tbwrkfls\servomotor_11.glh
+Executable : C:\LDRA_Toolsuite\c\cstat.exe
+Message produced on: Tue Mar 20 2018 at 09:16:04
+
+ REFERENCE NUMBER IS     11
+ PASS      1
+ LAST PROCEDURE FOUND IS SPIS_Rx
+ LEXEME SEARCHED FOR = ;  LINE =    143
+
+
+
+
+ The message below may have been generated as a result
+ of incorrect LDRA Testbed Analysis Scope settings.
+ Check that your code compiles and as part of this 
+ process, document the compiler preprocessor settings.
+ These settings then need to be reflected in the LDRA 
+ Testbed data file SYSPPVAR.DAT. See Macro Expansion in 
+ the User Manual for further details.
+
+
+      0 NUMBER OF ENTRIES 
+      6 NUMBER OF LINES
+
+
+ NO FILES HAVE BEEN OPENED FOR INCLUSION.
+
+
+ The total line number is:      253
+ The local line number is:      253
+ in the file under test: "X:\LD_Sambot\Modules\SlavePart\servomotor.c"                                                       
+ *******************************************************************************
+ ******                   SYNTACTIC ERROR NO     112                      ******
+ ******                       STATIC ANALYSIS                             ******
+ ******             CHECK THAT PROGRAM BEING ANALYSED COMPILES            ******
+ ******              THEN CONTACT TESTBED MAINTENANCE EITHER              ******
+ ******                            LOCALLY, OR                            ******
+ ******                        AT L. D. R. A.  LTD.                       ******
+ ******                       TEL. NO. (0151) 649 9300                    ******
+ ******                       FAX. NO. (0151) 649 9666                    ******
+ ******                        email: support@ldra.com                    ******
+ ******                QUOTING THE FOLLOWING ERROR MESSAGE.               ******
+ *******************************************************************************
+
+
+
+ ERROR IN SKIPTO - EOF REACHED
