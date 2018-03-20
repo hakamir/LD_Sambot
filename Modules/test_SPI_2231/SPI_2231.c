@@ -72,9 +72,15 @@ void main( void )
     USISRL = 0x23;	// hash, just mean ready; USISRL Vs USIR by ~USI16B set to 0
     USICNT = 0x08;
 
+    __bis_SR_register(LPM4_bits | GIE); // general interrupts enable & Low Power Mode
+
+    // Wait for the SPI clock to be idle (low).
+    while ((P1IN & BIT5)) ;
+
+    USICTL0 &= ~USISWRST;
     USICTL0 &= ~USISWRST;
 
-    __bis_SR_register(LPM4_bits | GIE); // general interrupts enable & Low Power Mode
+
 }
 
 void SPIS_init(void)
@@ -126,9 +132,9 @@ void SPIS_init(void)
 
 unsigned char SPIS_Rx(void)
 {
-    return USISRL;
-    USICNT &= ~USI16B;  // re-load counter & ignore USISRH
-    USICNT = 0x08;      // 8 bits count, that re-enable USI for next transfert
+	USICNT &= ~USI16B;  // re-load counter & ignore USISRH
+	USICNT = 0x08;      // 8 bits count, that re-enable USI for next transfert
+	return USISRL;
 }
 
 /*void main(void)
