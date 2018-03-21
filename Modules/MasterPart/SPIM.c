@@ -1,32 +1,25 @@
-//------------------------------------------------------------------------------
-// Name:                SPIS.c
-//
-// Description:         SPIM.c contains functions managing the SPI master
-//
-// Authors:             Marie DONNET & Rodolphe LATOUR
-//
-// Version:             1.0
-//------------------------------------------------------------------------------
+/******************************************************************************
+ Name:                SPIS.c
+
+ Description:         SPIM.c contains functions managing the SPI master
+
+Marie DONNET & Rodolphe LATOUR
+******************************************************************************/
 
 #include "SPIM.h"
-#define CS         BIT4            /* chip select for SPI Master->Slave ONLY on 4 wires Mode */
+#define CS          BIT4            /* chip select for SPI Master->Slave ONLY on 4 wires Mode */
 #define SCK         BIT5            /* Serial Clock */
 #define DATA_OUT    BIT6            /* DATA out */
 #define DATA_IN     BIT7            /* DATA in */
 
 typedef unsigned char UCHAR;
 
-//------------------------------------------------------------------------------
-// SPIM_init : Initialization of SPI master
-// IN:	 	none.
-// OUT:    	none.
-// return:  none.
-//------------------------------------------------------------------------------
-<<<<<<< HEAD
 
-
-=======
->>>>>>> 2e7a96a1c197c8b25fe272d1cd31108bad28d3ff
+/******************************************************************************
+	SPIM_init :	Initialization of SPIM.
+			input :	N/A
+   	   	    output : N/A
+******************************************************************************/
 void SPIM_init(void)
 {
     /* Waste Time, waiting Slave SYNC */
@@ -40,7 +33,6 @@ void SPIM_init(void)
      set by setting UCSWRST just before */
     IFG2 &= ~(UCB0TXIFG | UCB0RXIFG);
 
-<<<<<<< HEAD
     /* Configuration SPI (voir slau144 p.445)
      UCCKPH = 0 -> Data changed on leading clock edges and sampled on trailing edges.
      UCCKPL = 0 -> Clock inactive state is low.
@@ -56,23 +48,7 @@ void SPIM_init(void)
                x=2 -> 4-pin SPI UC0STE active low,
                x=3 -> i²c.
      UCSYNC = 1 -> Mode synchrone (SPI)*/
-=======
-    // Configuration SPI (voir slau144 p.445)
-    // UCCKPH = 0 -> Data changed on leading clock edges and sampled on trailing edges.
-    // UCCKPL = 0 -> Clock inactive state is low.
-    //   SPI Mode 0 :  UCCKPH * 1 | UCCKPL * 0
-    //   SPI Mode 1 :  UCCKPH * 0 | UCCKPL * 0  <--
-    //   SPI Mode 2 :  UCCKPH * 1 | UCCKPL * 1
-    //   SPI Mode 3 :  UCCKPH * 0 | UCCKPL * 1
-    // UCMSB  = 1 -> MSB premier
-    // UC7BIT = 0 -> 8 bits, 1 -> 7 bits
-    // UCMST  = 0 -> CLK by Master, 1 -> CLK by USCI bit CLK / p441/16.3.6
-    // UCMODE_x  x=0 -> 3-pin SPI,
-    //           x=1 -> 4-pin SPI UC0STE active high,
-    //           x=2 -> 4-pin SPI UC0STE active low,
-    //           x=3 -> iÂ²c.
-    // UCSYNC = 1 -> Mode synchrone (SPI)
->>>>>>> 2e7a96a1c197c8b25fe272d1cd31108bad28d3ff
+
     UCB0CTL0 |= ( UCMST | UCMODE_0 | UCSYNC );
     UCB0CTL0 &= ~( UCCKPH | UCCKPL | UCMSB | UC7BIT );
     UCB0CTL1 |= UCSSEL_2;
@@ -89,12 +65,12 @@ void SPIM_init(void)
     UCB0CTL1 &= ~UCSWRST;                                // activation USCI
 }
 
-//------------------------------------------------------------------------------
-// SPIM_Tx :  master sends a char to slave
-// IN:        char sent to slave (unsigned char).
-// OUT:       none.
-// return:    none.
-//------------------------------------------------------------------------------
+
+/******************************************************************************
+	SPIM_Tx :	master sends a char to slave.
+			input :	char sent to slave (unsigned char)
+   	   	    output : N/A
+******************************************************************************/
 void SPIM_Tx(UCHAR c)
 {
     while ((UCB0STAT & UCBUSY));   // attend que USCI_SPI soit dispo.
@@ -102,16 +78,4 @@ void SPIM_Tx(UCHAR c)
     UCB0TXBUF = c;              // Put character in transmit buffer
 }
 
-
-//------------------------------------------------------------------------------
-// SPIM_Rx : master receive a char to slave
-// IN:	 	none.
-// OUT:    	char sent to slave (unsigned char)
-// return:  none.
-//------------------------------------------------------------------------------
-/*unsigned char SPIM_Rx(void)
-{
-    while(!(IFG2 & UCA0RXIFG));
-    return UCA0RXBUF;
-}*/
 

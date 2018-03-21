@@ -1,12 +1,12 @@
-//------------------------------------------------------------------------------
-// Name:                mainSlave.c
-//
-// Description:         mainSlave.c contains the slaves main
-//
-// Authors:             Marie DONNET & Rodolphe LATOUR
-//
-// Version:             1.0
-//------------------------------------------------------------------------------
+
+/******************************************************************************
+ Name:                mainSlave.c
+
+ Description:         mainSlave.c contains the slaves main
+
+	Marie DONNET
+	Rodolphe LATOUR
+******************************************************************************/
 
 #include <msp430.h>
 #include "servomotor.h"
@@ -14,8 +14,9 @@
 
 void main(void)
 {
-    WDTCTL = WDTPW | WDTHOLD; // Stop watchdog timer
+    WDTCTL = WDTPW | WDTHOLD; /* Stop watchdog timer */
 
+    /*Initialization of robot*/
     SPIS_init();
     servomotor_init();
     
@@ -24,7 +25,7 @@ void main(void)
     while(1);
 }
 
-// Echo back RXed character, confirm TX buffer is ready first
+/* Echo back RXed character, confirm TX buffer is ready first*/
 #pragma vector=USI_VECTOR
 __interrupt void USCI0RX_ISR(void)
 {
@@ -32,81 +33,29 @@ __interrupt void USCI0RX_ISR(void)
     switch (c)
     {
     case 0x30 :
-        servomotor_set_deg(0);
+        servomotor_set_deg(0);			/*servomotor set to 0 deg*/
         __delay_cycles(TIME_TO_CHECK);
         break;
 
     case 0x31 :
-        servomotor_set_deg(45);
+        servomotor_set_deg(45);			/*servomotor set to 45 deg*/
         __delay_cycles(TIME_TO_CHECK);
         break;
 
     case 0x32 :
-        servomotor_set_deg(90);
+        servomotor_set_deg(90);			/*servomotor set to 90 deg*/
         __delay_cycles(TIME_TO_CHECK);
         break;
 
     case 0x33 :
-        servomotor_set_deg(135);
+        servomotor_set_deg(135);		/*servomotor set to 135 deg*/
         __delay_cycles(TIME_TO_CHECK);
         break;
         
     case 0x34 :
-        servomotor_set_deg(180);
+        servomotor_set_deg(180);		/*servomotor set to 180 deg*/
         __delay_cycles(TIME_TO_CHECK);
         break;
     }
 }
 
-
-/*	char scan(void)
-	{
-		int mes[5];
-		char dir;
-		direction = SPIM_Rx();
-		if (direction == '0')
-		{
- *mes = scanc();
-		}
-		elseif(direction == '180')
-		{
- *mes = scand();
-		}
-
-		int right = mes[0] + mes[1];
-		int left =  mes[3] + mes[4]
-								 int forward = mes[2]*2;
-
-		if (right > left && right > forward)
-			dir = 'RIGHT';
-		else if (left > right && left > forward)
-			dir = 'LEFT';
-		else
-			dir = 'FORWARD';
-
-		return(dir);
-	}
-
-	int *scanc(void)
-	{
-		int mes[5];
-		mes[0] = measure();
-		for (i=1,i<5,i++)
-		{
-			direction = SPIM_Rx();
-			mes[i] = measure();
-		}
-		return *mes;
-	}
-
-	int *scand(void)
-	{
-		int mes[5];
-		mes[5] = measure();
-		for (i=4,i>=0,i--)
-		{
-			direction = SPIM_Rx();
-			mes[i] = measure();
-		}
-		return *mes;
-	}*/

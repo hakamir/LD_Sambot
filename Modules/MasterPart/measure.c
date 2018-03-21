@@ -1,38 +1,38 @@
-//******************************************************************************
-//
-//	This module is used to give the distance kept by the IR sensor. It is composed
-//	of a initialization function which call the initialization of the ADC module
-//	and set the P1.1 pin where's the sensor is connected.
-//
-//
-//                  	  		 	MSP430G2231
-//                	   			 -----------------
-//        	 	        	   -|VCC           GND|-
-//        	 	        	   -|P1.0          XIN|-
-//	 	  	   		IR Sensor <-|P1.1         XOUT|-
-//		 	  		Stepmotor <-|P1.2         TEST|-
-//      	       			  <-|P1.3          RST|--->
-// Serial Clock Out (UCA0CLK) <-|P1.4         P1.7|-> Data Out (UCA0SIMO)
-//  			  Slave reset <-|P1.5         P1.6|<- Data In (UCA0SOMI)
-//								 -----------------
-//
-//
-//   Rodolphe LATOUR
-//   March 2018
-//******************************************************************************
+/******************************************************************************
+
+	This module is used to give the distance kept by the IR sensor. It is composed
+	of a initialization function which call the initialization of the ADC module
+	and set the P1.1 pin where's the sensor is connected.
+
+
+                  	  		 		MSP430G2231
+                	   			 -----------------
+        	 	        	   -|VCC           GND|-
+        	 	        	   -|P1.0          XIN|-
+	 	  	   		IR Sensor <-|P1.1         XOUT|-
+		 	  		Stepmotor <-|P1.2         TEST|-
+        	       			  <-|P1.3          RST|--->
+   Serial Clock Out (UCA0CLK) <-|P1.4         P1.7|-> Data Out (UCA0SIMO)
+  			               	   -|P1.5         P1.6|<- Data In (UCA0SOMI)
+								 -----------------
+
+
+   Rodolphe LATOUR
+   Marie DONNET
+   March 2018
+******************************************************************************/
 
 #include "msp430.h"
 #include "measure.h"
 #include <math.h>
 
-typedef int UINT32
 
-//------------------------------------------------------------------------------
-// measure_init :  Called to initialized the IR sensor
-// IN:        none.
-// OUT:       none.
-// return:    none.
-//------------------------------------------------------------------------------
+/******************************************************************************
+	measure_init :	This function initialize the port P1.1 where the IR sensor
+	is connected and initialize the ADC.
+			input :	N/A
+   	   output :	N/A
+******************************************************************************/
 void measure_init(void)
 {
     ADC_init();					/* Initialization of the ADC needed for the whole module */
@@ -43,12 +43,11 @@ void measure_init(void)
 }
 
 
-//------------------------------------------------------------------------------
-// measure :  Take measures from the pin 0 - IR sensor
-// IN:        none.
-// OUT:       UINT32eger (between 0 and 1023).
-// return:    none.
-//------------------------------------------------------------------------------
+/******************************************************************************
+ measure :	Take measures from the pin 0 - IR sensor
+			input :	N/A
+   	   output :	integer (between 0 and 1023)
+******************************************************************************/
 UINT32 measure(void)
 {
     UINT32 memory;
@@ -88,12 +87,13 @@ UINT32 measure(void)
     return value;
 }
 
-//------------------------------------------------------------------------------
-// convert_measure :  converts the value of function measure in meters.
-// IN:        			UINT32eger (between 0 and 1023).
-// OUT:       			UINT32eger (between 40 and 300).
-// return:    			none.
-//------------------------------------------------------------------------------
+
+/******************************************************************************
+ convert_measure :	This function converts the value of function measure in
+  meters. The value sends is between 40 and 300.
+			input :	integer (between 0 and 1023)
+   	   output :	integer (between 40 and 300)
+******************************************************************************/
 UINT32 convert_measure(UINT32 mes)
 {
     /*double mes_mm = 16184 * pow(mes,-0.692);*/  /* Formula finds with several measures /!\ DOES WORK WITH THE MSP430, A POLYNOMIAL REGRESSION HAVE TO BE FOUND /!\ */

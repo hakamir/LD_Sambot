@@ -1,12 +1,11 @@
-//------------------------------------------------------------------------------
-// Name:                mainMaster.c
-//
-// Description:         mainMaster.c contains the masters main
-//
-// Authors:             Marie DONNET & Rodolphe LATOUR
-//
-// Version:             1.0
-//------------------------------------------------------------------------------
+/******************************************************************************
+ Name:                mainMaster.c
+
+ Description:         mainMaster.c contains the masters main
+
+	Marie DONNET
+	Rodolphe LATOUR
+******************************************************************************/
 
 #include <msp430.h>
 #include "movement.h"
@@ -16,61 +15,57 @@
 
 #define TIME_TO_CHECK 300000
 
-int mode = 0;   // Mode manuel au départ
+int mode = 0;   /* Mode manuel to start */
 
 void main(void)
 {
-    WDTCTL = WDTPW | WDTHOLD; // Stop watchdog timer
+    WDTCTL = WDTPW | WDTHOLD; /*Stop watchdog timer*/
 
+    /*Initialization of robot*/
     measure_init();
     init_timer_A1();
     move_init();
     SPIM_init();
     UART_init();
 
+    /*Initialization of variables*/
     int mes;
-    char direction[8] = {'0','1','2','3','4','3','2','1'};
 
-    stop(); // Arrêt du robot
+    /* a char corresponds to a direction
+     0x30 is to 0 deg
+     0x31 is to 45 deg
+     0x32 is to 90 deg
+     0x33 is to 135 deg
+     0x34 is to 180 deg*/
+    unsigned char direction[8] = {0x30,0x31,0x32,0x33,0x34,0x33,0x32,0x31};
+
+    stop();		/*Arrêt du robot*/
 
     __enable_interrupt();
     while(1)
     {
-        if (mode == 1)
-        {
-            unsigned int i = 0;
-            for(i=0;i<8;i++)
-            {
-                SPIM_Tx(direction[i]);
-                __delay_cycles(TIME_TO_CHECK);
-                mes = measure();
-                automode(mes,direction[i]);
-            }
-        }
-        else if (mode == 0)
-        {
-            unsigned int i = 0;
-            for (i=0;i<8;i++)
-            {
-                SPIM_Tx(direction[i]);
-                __delay_cycles(TIME_TO_CHECK);
-                mes = measure();
-                if (mes < 300)
-                {
-                    envoi_msg_UART("Evitez l'objet !");
-                }
-            }
-        }
-
-        /*move("FORWARD",80,80);
-		dir = scan();
-		move(dir,80,80);
-		__delay_cycles(30000);
-		move("FORWARD",80,80);*/
+    	unsigned int i = 0;
+    	for (i=0;i<8;i++)		/* sweeping of servomotor*/
+    	{
+    		SPIM_Tx(direction[i]);
+    		__delay_cycles(TIME_TO_CHECK);
+    		mes = measure();		/* measure with sensor IR*/
+    		if (mode == 1)			/* auto mode */
+    		{
+    			automode(mes,direction[i]);
+    		}
+    		else if (mode == 0)		/* manual mode */
+    		{
+    			if (mes > 300)
+    			{
+    				envoi_msg_UART("\r\nEvitez l'objet !");		/* obstacle forward robot */
+    			}
+    		}
+    	}
     }
 }
 
-// Echo back RXed character, confirm TX buffer is ready first
+/* Echo back RXed character, confirm TX buffer is ready first*/
 #pragma vector=USCIAB0RX_VECTOR
 __interrupt void USCI0RX_ISR(void)
 {
@@ -78,104 +73,51 @@ __interrupt void USCI0RX_ISR(void)
     switch (c)
     {
     case '8' :
-        move(1,100,100);
-        envoi_msg_UART("Le robot avance");
-        mode = 0; // manual mode
+        move(FORWARD,100,100);			/* robot go forward */
+        envoi_msg_UART("\r\nLe robot avance");
+        mode = 0; /* manual mode */
         break;
 
     case '2' :
-        move(2,100,100);
-        envoi_msg_UART("Le robot recule");
-        mode = 0; // manual mode
+        move(BACKWARD,100,100);			/* robot go backward */
+        envoi_msg_UART("\r\nLe robot recule");
+        mode = 0; /* manual mode */
         break;
 
     case '4' :
-        move(3,100,100);
-        __delay_cycles(19000);
-        move(1,100,100);
-        envoi_msg_UART("Le robot tourne a gauche a 45 degres");
-        mode = 0; // manuel mode
+        move(LEFT,100,100);				/* Turn 45 deg left */
+        __delay_cycles(TIME_TO_TURN);
+        move(FORWARD,100,100);			/* robot go forward */
+        envoi_msg_UART("\r\nLe robot tourne a gauche a 45 degres");
+        mode = 0; /* manual mode */
         break;
 
     case '6' :
-        move(4,100,100);
-        __delay_cycles(18500);
-        move(1,100,100);
-        envoi_msg_UART("Le robot tourne a droite a 45 degres");
-        mode = 0; // manuel mode
+        move(RIGHT,100,100);			/* Turn 45 deg right */
+        __delay_cycles(TIME_TO_TURN);
+        move(FORWARD,100,100);			/* robot go forward */
+        envoi_msg_UART("\r\nLe robot tourne a droite a 45 degres");
+        mode = 0; /* manual mode */
         break;
 
     case '5' :
-        stop();
-        envoi_msg_UART("Le robot s'arrete");
-        mode = 0; // manuel mode
+        stop();							/* robot stop */
+        envoi_msg_UART("\r\nLe robot s'arrete");
+        mode = 0; /* manual mode */
         break;
 
     case '1' :
-        mode = 1; // automatic mode
-        envoi_msg_UART("Mode automatique");
+        mode = 1; /* automatic mode */
+        envoi_msg_UART("\r\nMode automatique");
         break;
 
     case '0' :
-        mode = 0; // manuel mode
-        envoi_msg_UART("Mode manuel");
+        mode = 0; /* manual mode */
+        envoi_msg_UART("\r\nMode manuel");
         break;
 
     case 'h' :
-        envoi_msg_UART("h : Aide");
+        envoi_msg_UART("\r\nh : Aide");
         break;
     }
 }
-
-
-/*	char scan(void)
-	{
-		int mes[5];
-		char dir;
-		direction = SPIM_Rx();
-		if (direction == '0')
-		{
- *mes = scanc();
-		}
-		elseif(direction == '180')
-		{
- *mes = scand();
-		}
-
-		int right = mes[0] + mes[1];
-		int left =  mes[3] + mes[4]
-								 int forward = mes[2]*2;
-
-		if (right > left && right > forward)
-			dir = 'RIGHT';
-		else if (left > right && left > forward)
-			dir = 'LEFT';
-		else
-			dir = 'FORWARD';
-
-		return(dir);
-	}
-
-	int *scanc(void)
-	{
-		int mes[5];
-		mes[0] = measure();
-		for (i=1,i<5,i++)
-		{
-			direction = SPIM_Rx();
-			mes[i] = measure();
-		}
-		return *mes;
-	}
-
-	int *scand(void)
-	{
-		int mes[5];
-		mes[5] = measure();
-		for (i=4,i>=0,i--)
-		{
-			direction = SPIM_Rx();
-			mes[i] = measure();
-		}
-		return *mes;
-	}*/

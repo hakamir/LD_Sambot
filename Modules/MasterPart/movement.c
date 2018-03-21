@@ -1,42 +1,41 @@
-//******************************************************************************
-//	Name:                movement.c 
-// 
-//	Description:         This module is used to set the direction and the speed that the robot SAMBot
-// 						 have to get. It is composed of two different functions that interact with the
-//						 pins of the MSP430G2xx3 affected to the manipulation
-//
-//
-//                  	  		 	MSP430G2553
-//                	   			 -----------------
-//        	 	        	   -|VCC           GND|- 
-//        	 	    IR Sensor ->|P1.0          XIN|-
-//	 	  	   Data In (UART) ->|P1.1         XOUT|- 
-//		 	  Data OUT (UART) <-|P1.2         TEST|- 
-//      	        		  <-|P1.3          RST|--->
-// Serial Clock Out (UCA0CLK) <-|P1.4         P1.7|-> Data Out (UCA0SIMO)
-//  			  Slave reset <-|P1.5         P1.6|<- Data In (UCA0SOMI)
-//		 		   odometer A ->|P2.0         P2.5|-> Sense Motor B
-//	  		  	Sense Motor A <-|P2.1         P2.4|-> PWM Motor B
-// 				  PWM Motor A <-|P2.2         P2.3|<- odometer B
-//								 -----------------
-//
-//   Rodolphe LATOUR
-//	 Marie DONNET
-//   March 2018
-//******************************************************************************
+/******************************************************************************
+	Name:                movement.c
+
+	Description:         This module is used to set the direction and the speed that the robot SAMBot
+ 						 have to get. It is composed of two different functions that interact with the
+						 pins of the MSP430G2xx3 affected to the manipulation
+
+
+                  	  		 		MSP430G2553
+                	   			 -----------------
+        	 	        	   -|VCC           GND|-
+        	 	    IR Sensor ->|P1.0          XIN|-
+	 	  	   Data In (UART) ->|P1.1         XOUT|-
+		 	  Data OUT (UART) <-|P1.2         TEST|-
+      	        		  	  <-|P1.3          RST|--->
+   Serial Clock Out (UCA0CLK) <-|P1.4         P1.7|-> Data Out (UCA0SIMO)
+  			  	  Slave reset <-|P1.5         P1.6|<- Data In (UCA0SOMI)
+		 		   odometer A ->|P2.0         P2.5|-> Sense Motor B
+	  		  	Sense Motor A <-|P2.1         P2.4|-> PWM Motor B
+ 				  PWM Motor A <-|P2.2         P2.3|<- odometer B
+								 -----------------
+
+	Rodolphe LATOUR
+	Marie DONNET
+	March 2018
+******************************************************************************/
 
 #include <msp430.h>
 #include "movement.h"
 
-typedef signed int		SINT_32;
 
-//------------------------------------------------------------------------------
-// init_timer_A1 :  Timer A1 - set PWM
-// IN:        none.
-// OUT:       none.
-// return:    none.
-//------------------------------------------------------------------------------
 
+/******************************************************************************
+	 	move_init :	This function initializes the ports of the device connected on
+	the motherboard. (Odometers, motors and sense of rotation)
+			input :	N/A
+   	   	   output :	N/A
+******************************************************************************/
 void init_timer_A1(void)
 {
 
@@ -65,13 +64,15 @@ void move_init(void)
     P2DIR &= ~BIT3;
 }
 
-//------------------------------------------------------------------------------
-// move :  Direction define the sense of rotation of each motor as well as if the motor are on or not
-// IN:        none.
-// OUT:       none.
-// return:    none.
-//------------------------------------------------------------------------------
 
+/******************************************************************************
+	 		 move :	This function initializes the port P1.1 where the IR sensor
+	is connected and initialize the ADC.
+			input :	- enum int {FORWARD, BACKWARD, LEFT, RIGHT} -> direction of the robot
+					- int -> speed of the left motor
+					- int -> speed of the right motor
+   	   	   output :	N/A
+/******************************************************************************/
 void move(SINT_32 direction, SINT_32 speed_l, SINT_32 speed_r)
 {
 
@@ -131,13 +132,12 @@ void move(SINT_32 direction, SINT_32 speed_l, SINT_32 speed_r)
     }
 }
 
-//------------------------------------------------------------------------------
-// stop :  Stop is a function that define the activation mode of each motor to off without interact with the sense of rotation
-// IN:        none.
-// OUT:       none.
-// return:    none.
-//------------------------------------------------------------------------------
 
+/******************************************************************************
+	 		 stop :	This function stops both motors and do not change the sense of rotation
+			input :	N/A
+   	   	   output :	N/A
+******************************************************************************/
 void stop(void)
 {
     P2OUT &= ~BIT2;					/* Left motor is switched off */
@@ -146,50 +146,49 @@ void stop(void)
 }
 
 
-//------------------------------------------------------------------------------
-// automode :  function of automatic mode
-// IN:        integer mes.
-// OUT:       none.
-// return:    none.
-//------------------------------------------------------------------------------
-
+/******************************************************************************
+	 	 automode :	function for automatic mode
+			input :	- integer -> measure of sensor IR
+					- unsigned char -> direction of sensor IR
+   	   output :	N/A
+******************************************************************************/
 void automode(int mes,unsigned char direction)
 {
     if (mes>300)
     {
         switch (direction)
         {
-        case '0':   // Object to left
+        case '0':   /* Object to left */
         {
-            move(RIGHT,100,100);  // Turn of right of 45 deg
+            move(RIGHT,100,100);  /* Turn  45 deg right */
             __delay_cycles(TIME_TO_TURN);
             move(FORWARD,100,100);
             break;
         }
-        case '1':  // Object to left
+        case '1':  /* Object to left */
         {
-            move(RIGHT,100,100);    // Turn of right of 90 deg
+            move(RIGHT,100,100);    /* Turn 90 deg right */
             __delay_cycles(TIME_TO_TURN*2);
             move(FORWARD,100,100);
             break;
         }
-        case '2':      // Object to forward
+        case '2':      /* Object to forward */
         {
-            move(RIGHT,100,100);        // Turn of right of 180 deg
+            move(RIGHT,100,100);        /* Turn 180 deg right */
             __delay_cycles(TIME_TO_TURN*4);
             move(FORWARD,100,100);
             break;
         }
-        case '3':     // Object to right
+        case '3':     /* Object to right */
         {
-            move(LEFT,100,100);    // Turn of left of 90 deg
+            move(LEFT,100,100);    /* Turn 90 deg left */
             __delay_cycles(TIME_TO_TURN*2);
             move(FORWARD,100,100);
             break;
         }
-        case '4':         // Object to right
+        case '4':     /* Object to right */
         {
-            move(LEFT,100,100);    // Turn of left of 45 deg
+            move(LEFT,100,100);    /* Turn 45 deg left */
             __delay_cycles(TIME_TO_TURN);
             move(FORWARD,100,100);
             break;
@@ -202,6 +201,6 @@ void automode(int mes,unsigned char direction)
     }
     else
     {
-    	move(FORWARD,100,100); 	// Forward
+    	move(FORWARD,100,100); 	/* Forward */
     }
 }
