@@ -118,6 +118,13 @@ __interrupt void USCI0RX_ISR(void)
 
     case 'h' :
         envoi_msg_UART("\r\nh : Aide");
+		envoi_msg_UART("\r\n8 : Faire avancer le robot");
+		envoi_msg_UART("\r\n2 : Faire reculer le robot");
+		envoi_msg_UART("\r\n4 : Faire tourner le robot à gauche");
+		envoi_msg_UART("\r\n6 : Faire tourner le robot à droite");
+		envoi_msg_UART("\r\n5 : Arrêter le robot");
+		envoi_msg_UART("\r\n0 : Robot en mode manuel");
+		envoi_msg_UART("\r\n1 : Robot en mode automatique");
         break;
     }
 }
