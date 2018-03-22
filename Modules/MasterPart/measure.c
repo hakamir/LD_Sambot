@@ -24,7 +24,6 @@
 
 #include "msp430.h"
 #include "measure.h"
-#include <math.h>
 
 
 /******************************************************************************
@@ -96,9 +95,14 @@ UINT32 measure(void)
 ******************************************************************************/
 UINT32 convert_measure(UINT32 mes)
 {
-    /*double mes_mm = 16184 * pow(mes,-0.692);*/  /* Formula finds with several measures /!\ DOES WORK WITH THE MSP430, A POLYNOMIAL REGRESSION HAVE TO BE FOUND /!\ */
-    /*mes_mm = (UINT32) mes_mm;
-    return mes_mm;*/
-	return 0;
+	const double a1 = -0.00000000000993030764967767;
+	const double a2 = 0.000000214781420224059;
+	const double a3 = -0.0000180638025675828;
+	const double a4 = 0.007451829732734;
+	const double a5 = -1.55467900656442;
+	const double a6 = 145.552025091649;
+    double mes_mm = a1*mes*mes*mes*mes*mes + a2*mes*mes*mes*mes + a3*mes*mes*mes + a4*mes*mes + a5*mes + a6;  /* Polynomial equation relative to the behaviour of the sensor */
+    mes_mm = (UINT32) mes_mm;
+    return mes_mm;
 }
 
