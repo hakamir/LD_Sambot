@@ -72,7 +72,8 @@ void move_init(void)
 					- int -> speed of the left motor
 					- int -> speed of the right motor
    	   	   output :	N/A
-/******************************************************************************/
+******************************************************************************/
+
 void move(SINT_32 direction, SINT_32 speed_l, SINT_32 speed_r)
 {
 
@@ -152,7 +153,7 @@ void stop(void)
 					- unsigned char -> direction of sensor IR
    	   output :	N/A
 ******************************************************************************/
-void automode(int mes,unsigned char direction)
+void automode(SINT_32 mes,unsigned char direction)
 {
     if (mes>300)
     {

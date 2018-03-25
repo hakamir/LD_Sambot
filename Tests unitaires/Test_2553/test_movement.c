@@ -36,6 +36,7 @@ void main(void) {
     move(RIGHT,20,20);
     __delay_cycles(3000000);
     move(10,120,-4);
+    __delay_cycles(3000000);
     
     /* Test fonction : stop() */
     move(FORWARD,80,80);
@@ -43,11 +44,19 @@ void main(void) {
     
     /* Test fonction : automode() */
     automode(150,'0');
+    __delay_cycles(3000000);
     automode(130,'1');
+    __delay_cycles(3000000);
     automode(10,'2');
+    __delay_cycles(3000000);
     automode(500,'0');
+    __delay_cycles(3000000);
     automode(500,'1');
+    __delay_cycles(3000000);
     automode(500,'2');
+    __delay_cycles(3000000);
     automode(500,'3');
+    __delay_cycles(3000000);
     automode(500,'4');
+    __delay_cycles(3000000);
 }

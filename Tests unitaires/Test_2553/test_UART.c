@@ -36,6 +36,7 @@ void main(void) {
 	envoi_msg_UART("Bonjour");
 	__delay_cycles(3000000);
 	envoi_msg_UART("Test UART");
+    __delay_cycles(3000000);
 
 }
 

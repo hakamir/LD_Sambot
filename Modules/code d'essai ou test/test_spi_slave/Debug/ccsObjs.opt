@@ -1,0 +1,1 @@
+"./SPIS.obj" "./main.obj" "./servomotor.obj" "../lnk_msp430g2231.cmd" -llibc.a 
