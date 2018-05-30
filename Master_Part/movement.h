@@ -32,7 +32,6 @@
 #define TIME_TO_TURN 180000
 
 typedef signed int		SINT_32;
-int speed = 80;
 
 /******************************************************************************
 	 	move_init :	This function initializes the ports of the device connected on
@@ -59,7 +58,7 @@ void move_init(void);
 					- int -> speed of the left motor
 					- int -> speed of the right motor
    	   	   output :	N/A
-/******************************************************************************/
+******************************************************************************/
 void move(SINT_32, SINT_32, SINT_32);
 
 

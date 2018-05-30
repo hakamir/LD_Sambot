@@ -155,6 +155,7 @@ void stop(void)
 ******************************************************************************/
 void automode(SINT_32 mes,unsigned char direction)
 {
+    int speed = 80;
     if (mes>300)
     {
         switch (direction)

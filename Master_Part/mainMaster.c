@@ -16,6 +16,7 @@
 #define TIME_TO_CHECK 300000
 
 int mode = 0;   /* Mode manuel to start */
+int speed = 80;
 
 void main(void)
 {
