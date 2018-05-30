@@ -116,31 +116,31 @@ __interrupt void USCI0RX_ISR(void)
         envoi_msg_UART("\r\nMode manuel");
         break;
 
-    case 'z'
+    case 'z' :
         mode = 0; /* manual mode */
-        speed = 20
+        speed = 20;
         envoi_msg_UART("\r\nVitesse a 20%");
         break;
 
-    case 'u'
+    case 'u' :
         mode = 0; /* manual mode */
         speed = 40;
         envoi_msg_UART("\r\nVitesse a 40%");
         break;
 
-    case 'd'
+    case 'd' :
         mode = 0; /* manual mode */
         speed = 60;
         envoi_msg_UART("\r\nVitesse a 60%");
         break;
 
-    case 't'
+    case 't' :
         mode = 0; /* manual mode */
         speed = 80;
         envoi_msg_UART("\r\nVitesse a 80%");
         break;
 
-    case 'q'
+    case 'q' :
         mode = 0; /* manual mode */
         speed = 100;
         envoi_msg_UART("\r\nVitesse a 100%");
