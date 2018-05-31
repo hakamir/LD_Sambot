@@ -39,9 +39,12 @@
 void init_timer_A1(void)
 {
 
-    TA1CTL = TASSEL_2 | MC_1 | ID_0;	
-    TA1CCTL1 = TA1CCTL2 = OUTMOD_7;		
-    TA1CCR0 = 100;					/* Set to 100. The TA1CCR1 and TA1CCR2 can be a percentage of the TA1CCR0 */
+    BCSCTL1 = CALBC1_1MHZ;
+    DCOCTL = CALDCO_1MHZ;
+    TA1CTL = TASSEL_2 | MC_1;
+    TA1CCTL1 |= OUTMOD_7;
+    TA1CCTL2 |= OUTMOD_7;
+    TA1CCR0=5000;					/* Set to 100. The TA1CCR1 and TA1CCR2 can be a percentage of the TA1CCR0 */
     TA1CCR1 = 0;					/* Used to set the speed of the left motor */
     TA1CCR2 = 0;					/* Used to set the speed of the right motor */
 }
@@ -55,13 +58,15 @@ void init_timer_A1(void)
 
 void move_init(void)
 {
-    P2OUT &= ~(BIT1); 				/* Left motor go forward */
-    P2OUT |= BIT5;					/* Right motor go forward */
-    P2OUT &= ~BIT2;					/* Left motor is switched off */
-    P2OUT &= ~BIT4;					/* Right motor is switched off */
+    //P2OUT &= ~(BIT1); 				/* Left motor go forward */
+    //P2OUT |= BIT5;					/* Right motor go forward */
+    //P2OUT &= ~BIT2;					/* Left motor is switched off */
+    //P2OUT &= ~BIT4;					/* Right motor is switched off */
     P2DIR |= (BIT1 | BIT2 | BIT4 | BIT5) ;
-    P2DIR &= ~BIT0;
-    P2DIR &= ~BIT3;
+    //P2DIR &= ~BIT0;
+    //P2DIR &= ~BIT3;
+    P2SEL |= (BIT4|BIT2);
+    P2SEL2 &= ~(BIT4|BIT2);
 }
 
 
@@ -123,8 +128,8 @@ void move(SINT_32 direction, SINT_32 speed_l, SINT_32 speed_r)
     /*** speed_r is a percentage of the TA1CCR0 set in the A1 timer function and act on the TA1CCR2 ***/
     if(((speed_l >= 0) && (speed_l <= 100)) && ((speed_r >= 0) && (speed_r <= 100)))	//The value taken have to be between 0% and 100%
     {
-        TA1CCR1 = speed_l;		/*The value taken is assigned to the Left motor*/
-        TA1CCR2 = speed_r;		/*The value taken is assigned to the Right motor*/
+        TA1CCR1 = speed_l/100*TA1CCR0;		/*The value taken is assigned to the Left motor*/
+        TA1CCR2 = speed_r/100*TA1CCR0;		/*The value taken is assigned to the Right motor*/
     }
     else
     {

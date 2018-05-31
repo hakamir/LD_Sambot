@@ -120,30 +120,35 @@ __interrupt void USCI0RX_ISR(void)
     case 'z' :
         mode = 0; /* manual mode */
         speed = 20;
+        move(FORWARD,speed,speed);
         envoi_msg_UART("\r\nVitesse a 20%");
         break;
 
     case 'u' :
         mode = 0; /* manual mode */
         speed = 40;
+        move(FORWARD,speed,speed);
         envoi_msg_UART("\r\nVitesse a 40%");
         break;
 
     case 'd' :
         mode = 0; /* manual mode */
         speed = 60;
+        move(FORWARD,speed,speed);
         envoi_msg_UART("\r\nVitesse a 60%");
         break;
 
     case 't' :
         mode = 0; /* manual mode */
         speed = 80;
+        move(FORWARD,speed,speed);
         envoi_msg_UART("\r\nVitesse a 80%");
         break;
 
     case 'q' :
         mode = 0; /* manual mode */
         speed = 100;
+        move(FORWARD,speed,speed);
         envoi_msg_UART("\r\nVitesse a 100%");
         break;
 

@@ -1,0 +1,16 @@
+
+!ENTRY org.eclipse.core.resources 4 568 2018-05-31 09:25:14.870
+!MESSAGE Could not write workspace metadata '\\Mac\Home\Documents\GitHub\LD_Sambot\.metadata\.plugins\org.eclipse.core.resources\3.snap'.
+!STACK 0
+java.io.FileNotFoundException: \\Mac\Home\Documents\GitHub\LD_Sambot\.metadata\.plugins\org.eclipse.core.resources\3.snap (Le chemin d’accès spécifié est introuvable)
+	at java.io.FileOutputStream.open0(Native Method)
+	at java.io.FileOutputStream.open(FileOutputStream.java:270)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:213)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:133)
+	at org.eclipse.core.internal.localstore.SafeChunkyOutputStream.<init>(SafeChunkyOutputStream.java:45)
+	at org.eclipse.core.internal.localstore.SafeChunkyOutputStream.<init>(SafeChunkyOutputStream.java:41)
+	at org.eclipse.core.internal.resources.SaveManager.snapTree(SaveManager.java:1505)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1220)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1165)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:52)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:56)
