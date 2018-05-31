@@ -16,7 +16,7 @@
 #define TIME_TO_CHECK 300000
 
 int mode = 0;   /* Mode manuel to start */
-int speed = 80;
+double speed = 80.0;
 
 void main(void)
 {
@@ -24,7 +24,7 @@ void main(void)
 
     /*Initialization of robot*/
     measure_init();
-    init_timer_A1();
+    //init_timer_A1();
     move_init();
     SPIM_init();
     UART_init();
@@ -119,35 +119,35 @@ __interrupt void USCI0RX_ISR(void)
 
     case 'z' :
         mode = 0; /* manual mode */
-        speed = 20;
+        speed = 20.0;
         move(FORWARD,speed,speed);
         envoi_msg_UART("\r\nVitesse a 20%");
         break;
 
     case 'u' :
         mode = 0; /* manual mode */
-        speed = 40;
+        speed = 40.0;
         move(FORWARD,speed,speed);
         envoi_msg_UART("\r\nVitesse a 40%");
         break;
 
     case 'd' :
         mode = 0; /* manual mode */
-        speed = 60;
+        speed = 60.0;
         move(FORWARD,speed,speed);
         envoi_msg_UART("\r\nVitesse a 60%");
         break;
 
     case 't' :
         mode = 0; /* manual mode */
-        speed = 80;
+        speed = 80.0;
         move(FORWARD,speed,speed);
         envoi_msg_UART("\r\nVitesse a 80%");
         break;
 
     case 'q' :
         mode = 0; /* manual mode */
-        speed = 100;
+        speed = 100.0;
         move(FORWARD,speed,speed);
         envoi_msg_UART("\r\nVitesse a 100%");
         break;

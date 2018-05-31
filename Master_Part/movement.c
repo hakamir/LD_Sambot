@@ -36,18 +36,18 @@
 			input :	N/A
    	   	   output :	N/A
 ******************************************************************************/
-void init_timer_A1(void)
-{
+//void init_timer_A1(void)
+//{
 
-    BCSCTL1 = CALBC1_1MHZ;
-    DCOCTL = CALDCO_1MHZ;
-    TA1CTL = TASSEL_2 | MC_1;
-    TA1CCTL1 |= OUTMOD_7;
-    TA1CCTL2 |= OUTMOD_7;
-    TA1CCR0=5000;					/* Set to 100. The TA1CCR1 and TA1CCR2 can be a percentage of the TA1CCR0 */
-    TA1CCR1 = 0;					/* Used to set the speed of the left motor */
-    TA1CCR2 = 0;					/* Used to set the speed of the right motor */
-}
+//    BCSCTL1 = CALBC1_1MHZ;
+//    DCOCTL = CALDCO_1MHZ;
+//    TA1CTL = TASSEL_2 | MC_1;
+//    TA1CCTL1 |= OUTMOD_7;
+//    TA1CCTL2 |= OUTMOD_7;
+//    TA1CCR0=5000;					/* Set to 100. The TA1CCR1 and TA1CCR2 can be a percentage of the TA1CCR0 */
+//    TA1CCR1 = 0;					/* Used to set the speed of the left motor */
+//    TA1CCR2 = 0;					/* Used to set the speed of the right motor */
+//}
 
 //------------------------------------------------------------------------------
 // move_init :  Initialization of each port
@@ -62,11 +62,30 @@ void move_init(void)
     //P2OUT |= BIT5;					/* Right motor go forward */
     //P2OUT &= ~BIT2;					/* Left motor is switched off */
     //P2OUT &= ~BIT4;					/* Right motor is switched off */
-    P2DIR |= (BIT1 | BIT2 | BIT4 | BIT5) ;
+    //P2DIR |= (BIT1 | BIT2 | BIT4 | BIT5) ;
     //P2DIR &= ~BIT0;
     //P2DIR &= ~BIT3;
-    P2SEL |= (BIT4|BIT2);
-    P2SEL2 &= ~(BIT4|BIT2);
+    //P2SEL |= (BIT4|BIT2);
+    //P2SEL2 &= ~(BIT4|BIT2);
+
+	P2SEL |= (BIT4|BIT2);
+	P2SEL2 &= ~(BIT4|BIT2);
+
+	//Dir Pin Roues
+	P2DIR |= (BIT5|BIT4|BIT2|BIT1);
+
+	//Timer
+	BCSCTL1 = CALBC1_1MHZ;
+	DCOCTL = CALDCO_1MHZ;
+
+	//ini de la PWM
+	TA1CTL = TASSEL_2 | MC_1;
+	TA1CCTL1 |= OUTMOD_7;
+	TA1CCTL2 |= OUTMOD_7;
+
+	TA1CCR0=5000;
+	TA1CCR1 = 0;
+	TA1CCR2 = 0;
 }
 
 
@@ -79,7 +98,7 @@ void move_init(void)
    	   	   output :	N/A
 ******************************************************************************/
 
-void move(SINT_32 direction, SINT_32 speed_l, SINT_32 speed_r)
+void move(SINT_32 direction, double speed_l, double speed_r)
 {
 
 
@@ -88,35 +107,35 @@ void move(SINT_32 direction, SINT_32 speed_l, SINT_32 speed_r)
     {
     case 1 :						/* Forward */
     {
-        P2OUT |= (BIT2 | BIT4);		/* Both motors are switched on */
+        //P2OUT |= (BIT2 | BIT4);		/* Both motors are switched on */
         P2OUT &= ~(BIT1); 			/* Left motor go forward */
         P2OUT |= BIT5;				/* Right motor go forward */
         break;
     }
     case 2 :						/* Backward */
     {
-        P2OUT |= (BIT2 | BIT4);		/* Both motors are switched on */
+        //P2OUT |= (BIT2 | BIT4);		/* Both motors are switched on */
         P2OUT |= BIT1;				/* Left motor go backward */
         P2OUT &= ~(BIT5);			/* Right motor go backward */
         break;
     }
     case 3 :						/* Left */
     {
-        P2OUT |= (BIT2 | BIT4);		/* Both motors are switched on */
+        //P2OUT |= (BIT2 | BIT4);		/* Both motors are switched on */
         P2OUT |= BIT1;				/* Left motor go backward */
         P2OUT |= BIT5;				/* Right motor go forward */
         break;
     }
     case 4 :						/* Right */
     {
-        P2OUT |= (BIT2 | BIT4);		/* Both motors are switched on */
+        //P2OUT |= (BIT2 | BIT4);		/* Both motors are switched on */
         P2OUT &= ~(BIT1);			/* Left motor go forward */
         P2OUT &= ~(BIT5);			/* Right motor go backward */
         break;
     }
     default :						/* Forward as default */
     {
-        P2OUT |= (BIT2 | BIT4);		/* Both motors are switched on */
+        //P2OUT |= (BIT2 | BIT4);		/* Both motors are switched on */
         P2OUT &= ~(BIT1); 			/* Left motor go forward */
         P2OUT |= BIT5;				/* Right motor go forward */
         break;
@@ -126,10 +145,10 @@ void move(SINT_32 direction, SINT_32 speed_l, SINT_32 speed_r)
 
     /*** speed_l is a percentage of the TA1CCR0 set in the A1 timer function and act on the TA1CCR1 ***/
     /*** speed_r is a percentage of the TA1CCR0 set in the A1 timer function and act on the TA1CCR2 ***/
-    if(((speed_l >= 0) && (speed_l <= 100)) && ((speed_r >= 0) && (speed_r <= 100)))	//The value taken have to be between 0% and 100%
+    if(((speed_l >= 0.0) && (speed_l <= 100.0)) && ((speed_r >= 0.0) && (speed_r <= 100.0)))	//The value taken have to be between 0% and 100%
     {
-        TA1CCR1 = speed_l/100*TA1CCR0;		/*The value taken is assigned to the Left motor*/
-        TA1CCR2 = speed_r/100*TA1CCR0;		/*The value taken is assigned to the Right motor*/
+        TA1CCR1 = speed_l/100.0*TA1CCR0;		/*The value taken is assigned to the Left motor*/
+        TA1CCR2 = speed_r/100.0*TA1CCR0;		/*The value taken is assigned to the Right motor*/
     }
     else
     {
@@ -146,8 +165,10 @@ void move(SINT_32 direction, SINT_32 speed_l, SINT_32 speed_r)
 ******************************************************************************/
 void stop(void)
 {
-    P2OUT &= ~BIT2;					/* Left motor is switched off */
-    P2OUT &= ~BIT4;					/* Right motor is switched off */
+	TA1CCR1 = 0;
+	TA1CCR2 = 0;
+    //P2OUT &= ~BIT2;					/* Left motor is switched off */
+    //P2OUT &= ~BIT4;					/* Right motor is switched off */
     return;
 }
 
@@ -160,42 +181,42 @@ void stop(void)
 ******************************************************************************/
 void automode(SINT_32 mes,unsigned char direction)
 {
-    int speed = 80;
+    double speed = 80.0;
     if (mes>300)
     {
         switch (direction)
         {
         case '0':   /* Object to left */
         {
-            move(RIGHT,100,100);  /* Turn  45 deg right */
+            move(RIGHT,100.0,100.0);  /* Turn  45 deg right */
             __delay_cycles(TIME_TO_TURN);
             move(FORWARD,speed,speed);
             break;
         }
         case '1':  /* Object to left */
         {
-            move(RIGHT,100,100);    /* Turn 90 deg right */
+            move(RIGHT,100.0,100.0);    /* Turn 90 deg right */
             __delay_cycles(TIME_TO_TURN*2);
             move(FORWARD,speed,speed);
             break;
         }
         case '2':      /* Object to forward */
         {
-            move(RIGHT,100,100);        /* Turn 180 deg right */
+            move(RIGHT,100.0,100.0);        /* Turn 180 deg right */
             __delay_cycles(TIME_TO_TURN*4);
             move(FORWARD,speed,speed);
             break;
         }
         case '3':     /* Object to right */
         {
-            move(LEFT,100,100);    /* Turn 90 deg left */
+            move(LEFT,100.0,100.0);    /* Turn 90 deg left */
             __delay_cycles(TIME_TO_TURN*2);
             move(FORWARD,speed,speed);
             break;
         }
         case '4':     /* Object to right */
         {
-            move(LEFT,100,100);    /* Turn 45 deg left */
+            move(LEFT,100.0,100.0);    /* Turn 45 deg left */
             __delay_cycles(TIME_TO_TURN);
             move(FORWARD,speed,speed);
             break;
@@ -208,6 +229,6 @@ void automode(SINT_32 mes,unsigned char direction)
     }
     else
     {
-    	move(FORWARD,100,100); 	/* Forward */
+    	move(FORWARD,100.0,100.0); 	/* Forward */
     }
 }

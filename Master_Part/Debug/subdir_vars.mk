@@ -2,8 +2,6 @@
 # Automatically-generated file. Do not edit!
 ################################################################################
 
-SHELL = cmd.exe
-
 # Add inputs and outputs from these tool invocations to the build variables 
 CMD_SRCS += \
 ../lnk_msp430g2553.cmd 
@@ -16,14 +14,6 @@ C_SRCS += \
 ../measure.c \
 ../movement.c 
 
-C_DEPS += \
-./ADC.d \
-./SPIM.d \
-./UART.d \
-./mainMaster.d \
-./measure.d \
-./movement.d 
-
 OBJS += \
 ./ADC.obj \
 ./SPIM.obj \
@@ -32,6 +22,22 @@ OBJS += \
 ./measure.obj \
 ./movement.obj 
 
+C_DEPS += \
+./ADC.pp \
+./SPIM.pp \
+./UART.pp \
+./mainMaster.pp \
+./measure.pp \
+./movement.pp 
+
+C_DEPS__QUOTED += \
+"ADC.pp" \
+"SPIM.pp" \
+"UART.pp" \
+"mainMaster.pp" \
+"measure.pp" \
+"movement.pp" 
+
 OBJS__QUOTED += \
 "ADC.obj" \
 "SPIM.obj" \
@@ -39,14 +45,6 @@ OBJS__QUOTED += \
 "mainMaster.obj" \
 "measure.obj" \
 "movement.obj" 
-
-C_DEPS__QUOTED += \
-"ADC.d" \
-"SPIM.d" \
-"UART.d" \
-"mainMaster.d" \
-"measure.d" \
-"movement.d" 
 
 C_SRCS__QUOTED += \
 "../ADC.c" \

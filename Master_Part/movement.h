@@ -59,7 +59,7 @@ void move_init(void);
 					- int -> speed of the right motor
    	   	   output :	N/A
 ******************************************************************************/
-void move(SINT_32, SINT_32, SINT_32);
+void move(SINT_32, double, double);
 
 
 /******************************************************************************
